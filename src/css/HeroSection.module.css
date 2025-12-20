@@ -1,0 +1,58 @@
+.heroContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.overlay {
+  transition: background-color 0.3s ease;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.mainHeading {
+  animation: fadeInUp 0.8s ease-out;
+  letter-spacing: -0.02em;
+}
+
+.subheading {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.ctaButton {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  border: none;
+}
+
+.ctaButton:hover {
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content {
+    padding: 1.5rem;
+  }
+
+  .mainHeading {
+    word-spacing: 0.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 1rem;
+  }
+}
