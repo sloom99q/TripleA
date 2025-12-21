@@ -1,22 +1,43 @@
 import { Container, Title, Text, Button, Box, Stack, Group, ActionIcon } from '@mantine/core';
 import { IconArrowRight, IconMoon, IconMoonFilled, IconSun, IconSunFilled } from '@tabler/icons-react';
 import styles from '../css/HeroSection.module.css';
+import motionStyles from '../css/HeroScroll.module.css';
 import ColorSchemeContext from '../ColorSchemeContext';
 // import ThemeToggle from '../components/ThemeToggle';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 
 export default function HeroSection() {
+  const [shiftPx, setShiftPx] = useState(0);
+  const lastScrollRef = useRef(0);
 
   // function ThemeToggle() {
-  const colorSchemeContext = useContext (ColorSchemeContext);
-  const dark = colorSchemeContext.colorScheme === 'dark';
+  // const colorSchemeContext = useContext (ColorSchemeContext);
+  // const dark = colorSchemeContext.colorScheme === 'dark';
 
   // return (
   // );
 // }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const current = window.scrollY;
+      const last = lastScrollRef.current;
+      const delta = current - last;
+
+      setShiftPx((prev) => {
+        const next = prev + delta * 0.25; // follow scroll but heavily damped
+        return Math.max(0, Math.min(100, next)); // allow a bit more travel while staying inside
+      });
+
+      lastScrollRef.current = current;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   return (
     <Box m={25}>
-    <ActionIcon
+    {/* <ActionIcon
       variant="light"
       color={dark ? 'yellow' : 'black'}
       onClick={() => {
@@ -30,23 +51,22 @@ export default function HeroSection() {
       ) : (
       <IconMoonFilled style={{ width: 18, height: 18 }} />
       )}
-    </ActionIcon>
+    </ActionIcon> */}
     <Box
       className={styles.heroContainer}
       style={{
-        backgroundImage: 'url(/src/assets/imgs/FamilySpace.JPG)',
+        backgroundImage: 'url(https://framerusercontent.com/images/JSTMEaSil43hxHBsMDeWAkpf8.png?scale-down-to=2048)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         minHeight: '95vh',
         display: 'flex',
-        borderRadius: 35,
+        borderRadius: 70,
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
       }}
     >
-      {/* Dark overlay for better text readability */}
       <Box
         className={styles.overlay}
         style={{
@@ -55,36 +75,45 @@ export default function HeroSection() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          background: 'linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.9) 100%)',
           zIndex: 1,
         }}
       />
 
       {/* Content */}
       <Container size="lg" className={styles.content} style={{ position: 'relative', zIndex: 2 }}>
-        {/* <Button onClick={ThemeToggle}>PRESS UR MOMA</Button> */}
-        <Stack align="center" justify="center" gap="lg">
-          <Title
-            order={1}
-            className={styles.mainHeading}
-            style={{
-              fontSize: 'clamp(2rem, 8vw, 3.5rem)',
-              fontWeight: 700,
-              // fontFamily: 'Raleway',
-              color: 'white',
-              textAlign: 'center',
-              lineHeight: 1.2,
-              maxWidth: '900px',
-            }}
-          >
-            Transforming Spaces, Creating Dreams
-          </Title>
+        <Stack
+          align="center"
+          justify="center"
+          gap="lg"
+          className={motionStyles.textMotion}
+          style={{
+            ['--scrollShift' as string]: `${shiftPx}px`,
+          }}
+        >
+            {/* <Box style={{ maxWidth: '1150px', width: '100%' }}> */}
+              <Title
+                order={1}
+                className={styles.mainHeading}
+                style={{
+                  fontWeight: 550,
+                  color: 'white',
+                  textAlign: 'center',
+                  lineHeight: 1.2,
+                  margin: '0 auto',
+                  fontSize: 'clamp(1.5rem, 8vw, 6rem)', // Small on mobile, very large on desktop
+                  // width: '100%',
+                }}
+              >
+                Transforming Spaces, <br />Creating Dreams
+              </Title>
+            {/* </Box> */}
 
           <Text
             className={styles.subheading}
             style={{
               fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-              // color: '#d0d0d0',
+              color: '#d0d0d0',
               textAlign: 'center',
               maxWidth: '600px',
               fontWeight: 400,

@@ -8,10 +8,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./App";
+import Navbar from "./components/Navbar";
 
 const elem = document.getElementById("root")!;
 const app = (
   <StrictMode>
+    {/* <Navbar /> */}
     <App />
   </StrictMode>
 );

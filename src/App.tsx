@@ -6,6 +6,9 @@ import './index.css';
 import HeroSection from "./pages/HeroSection";
 import { useState } from "react";
 import ColorSchemeContext from "./ColorSchemeContext";
+import Navbar from "./components/Navbar";
+import { ClientsSection } from "./components/ClientsSection";
+import Clients from "./components/ClientsSection";
 
 export function App() {
   const [colorScheme, setColorScheme] = useState('light');
@@ -14,10 +17,12 @@ export function App() {
     <ColorSchemeContext.Provider value={{ colorScheme, onChange: setColorScheme }}>
       <MantineProvider theme={theme}>
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<HeroSection />} />
-            {/* <Route path="/two" element={<HeroSectionTwo />} /> */}
+            <Route path="/clients" element={<Clients />} />
           </Routes>
+            <Clients />
         </BrowserRouter>
       </MantineProvider>
     </ColorSchemeContext.Provider>
