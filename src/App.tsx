@@ -9,6 +9,7 @@ import ColorSchemeContext from "./ColorSchemeContext";
 import Navbar from "./components/Navbar";
 import { ClientsSection } from "./components/ClientsSection";
 import Clients from "./components/ClientsSection";
+import EmaarTestimony from "./pages/EmaarTestimony";
 
 export function App() {
   const [colorScheme, setColorScheme] = useState('light');
@@ -22,6 +23,7 @@ export function App() {
             <Route path="/" element={<HeroSection />} />
             <Route path="/clients" element={<Clients />} />
           </Routes>
+          <EmaarTestimony />
             <Clients />
         </BrowserRouter>
       </MantineProvider>
