@@ -1,5 +1,21 @@
-.textMotion {
-  transition: transform 380ms cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: transform;
-  transform: translateY(var(--scrollShift, 0px));
+:root {
+  --scroll-shift: 0px;
+}
+
+.scrollFloat {
+  translate: 0 calc(var(--scroll-shift, 0px) * 0.9);
+  transition: translate 320ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: translate;
+}
+
+.scrollFloatMedium {
+  translate: 0 calc(var(--scroll-shift, 0px) * 0.18);
+  transition: translate 360ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: translate;
+}
+
+.scrollFloatSmall {
+  translate: 0 calc(var(--scroll-shift, 0px) * 0.5);
+  transition: translate 320ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: translate;
 }

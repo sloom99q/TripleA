@@ -1,18 +1,36 @@
-import { Container, Stack, Text } from '@mantine/core';
-import img from '../assets/imgs/EMAAR.png';
+import { Badge, Container, Stack, Text } from '@mantine/core';
+import img from '@/assets/imgs/EMAAR.png';
 
 export default function EmaarTestimony() {
 	return (
 		<Container size="lg" p={0} py="xl">
-			<Stack align="center" mb={'6rem'} gap="xl">
+
+			<Stack align="center" mb={'10rem'} gap="xl" mt={'10rem'}>
+				<Badge
+					variant="light"
+					// bdrs={'lg'}
+					// size="lg"
+					// px="md"
+					p={'md'}
+					size={'18px'}
+					// py={6}
+					style={{ 
+						backgroundColor: '#f7f7f7',
+						color: '#5e5e5e',
+						fontWeight: 800,
+						// fontSize: '40px',
+						// borderRadius: '8px'
+					}}
+				>
+					CLIENT TESTIMONY
+				</Badge>
 	                <Text
-	                    fw={700}
-	                    size="clamp(2rem, 6vw, 4rem)"
+	                    fw={800}
+	                    size="lg"
 	                    ta="center"
 	                    maw="90%"
                         mb={'3rem'}
 	                    style={{ 
-	                    	marginTop: '10rem',
 	                    	lineHeight: 1.1,
 	                    	color: '#000'
 	                    }}
