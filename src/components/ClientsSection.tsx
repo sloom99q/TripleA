@@ -1,23 +1,11 @@
 import { Container, Title, Text, Grid, Image, Box, Stack } from '@mantine/core';
-import classes from '../css/ClientsSection.module.css';
-import type { ClientsSectionProps } from '../types/Clients';
-import { clientData } from '../mockups/MockUpClients';
-
-// interface Client {
-//   id: string;
-//   logo: string;
-//   alt: string;
-// }
-
-// interface ClientsSectionProps {
-//   title?: string;
-//   description?: string;
-//   clients: Client[];
-// }
+import classes from '@/css/ClientsSection.module.css';
+import type { ClientsSectionProps } from '@/types/Clients';
+import { ClientsData } from '@/mockups/ClientsData';
 
 export function ClientsSection({
-  title = 'Our top Clients',
-  description = 'We are proud to be recognized for our dedication to excellence in design. Our work has been featured in many publications and honored with a variety of awards. Here are a few brands we worked with:',
+  title = 'title',
+  description = 'description',
   clients,
 }: ClientsSectionProps) {
   return (
@@ -75,9 +63,9 @@ export function ClientsSection({
 export default function Clients() {
   return (
     <ClientsSection
-      title="Our Clients"
+      title="Our top Clients"
       description="We are proud to be recognized for our dedication to excellence in design. Our work has been featured in many publications and honored with a variety of awards. Here are a few brands we worked with:"
-      clients={clientData}
+      clients={ClientsData}
     />
   );
 }

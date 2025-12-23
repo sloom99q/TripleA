@@ -1,30 +1,34 @@
-import { ClientsSection } from '../components/ClientsSection';
+import { ClientsSection } from '@/components/ClientsSection';
+import Sahara from '@/assets/imgs/Sahara.png';
+import Health from '@/assets/imgs/Health.png';
+import Wood from '@/assets/imgs/Wood.png';
+import Westport from '@/assets/imgs/Westport.png';
 
-export const clientData = [
+export const ClientsData = [
   {
     id: '1',
-    logo: 'https://via.placeholder.com/150?text=Klover',
-    alt: 'Klover',
+    logo: 'https://via.placeholder.com/150?text=Brand+One',
+    alt: 'Brand One',
   },
   {
     id: '2',
-    logo: 'https://via.placeholder.com/150?text=Logo',
-    alt: 'Logo Design',
+    logo: Wood,
+    alt: 'Wood.',
   },
   {
     id: '3',
-    logo: 'https://via.placeholder.com/150?text=Brand',
-    alt: 'Brand',
+    logo: Sahara,
+    alt: 'Sahara',
   },
   {
     id: '4',
-    logo: 'https://via.placeholder.com/150?text=LogoIpsum',
-    alt: 'Logo Ipsum',
+    logo: Westport,
+    alt: 'Westport college',
   },
   {
     id: '5',
-    logo: 'https://via.placeholder.com/150?text=Connect',
-    alt: 'Connect',
+    logo: Health,
+    alt: 'Sahara health care city',
   },
   {
     id: '6',

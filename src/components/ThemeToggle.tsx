@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ActionIcon } from '@mantine/core';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import ColorSchemeContext from '../ColorSchemeContext';
+import ColorSchemeContext from '@/ColorSchemeContext';
 
 export default function ThemeToggle() {
   const colorSchemeContext = useContext(ColorSchemeContext);
