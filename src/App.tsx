@@ -24,7 +24,7 @@ export function App() {
     <ColorSchemeContext.Provider value={{ colorScheme, onChange: setColorScheme }}>
       <MantineProvider theme={theme}>
         <BrowserRouter>
-          {/* <Navbar /> */}
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/clients" element={<Clients />} />

@@ -21,7 +21,7 @@ const ServicesRow: React.FC = () => {
           borderRadius: borderRadius,
           overflow: 'hidden',
           width: '100%',
-          height: '250px',
+          height: '400px',
           aspectRatio: '1 / 1',
         }}
       >
@@ -69,19 +69,19 @@ const ServicesRow: React.FC = () => {
   );
 
   return (
-    <Container className='nav-boundary' size="xl" py={100} px={0} mt={0}>
-      {/* <Title ta="left" size="lg" fw={500} mb={10}>
+    <Container className='nav-boundary' size="xl" p={0} mt={150} m={50}>
+      <Title ta="left" size="lg" fw={500} mb={10}>
         Start Building Your Dream Project
       </Title>
       <Text ta="left" c="dimmed" mb={50}>
         Write us by completing the form. We will get back to you as soon as possible!
-      </Text> */}
+      </Text>
 
       <Grid gutter={0} mb={40}>
 
         {/* 3x2 grid below */}
         {/* Row 1 */}
-        <Grid.Col mb={100} span={{ base: 12, sm: 6, md: 4 }} p={0}>
+        <Grid.Col mb={50} span={{ base: 12, sm: 6, md: 4 }} p={0}>
           <ServiceBox service={ServicesData[0]} titleUp={false} borderRadius="60px 0 0 0" />
         </Grid.Col>
         <Grid.Col span={{ base: 12, sm: 6, md: 4 }} p={0}>
@@ -103,7 +103,7 @@ const ServicesRow: React.FC = () => {
         </Grid.Col>
 
      {/* Wide box at top */}
-        <Grid.Col mt={250} span={{ base: 12 }} p={0}>
+        <Grid.Col mb={50} span={{ base: 12 }} p={0}>
           <WideBox service={ServicesData[6]} />
         </Grid.Col>
       </Grid>

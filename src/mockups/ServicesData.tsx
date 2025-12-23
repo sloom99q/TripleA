@@ -23,14 +23,14 @@ export const ServicesData = [
     },
     {
         title: 'Ceiling Works',
-        image: Wide,
+        image: Interior,
     },
     {
         title: 'Commercial Design2',
-        image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=500&h=400&fit=crop',
+        image: Ceiling,
     },
     {
         title: 'Interior Design2',
-        image: Wide,
+        image: Flooring,
     },
     ];
