@@ -1,17 +1,16 @@
-import Wide from '@/assets/imgs/InteriorFitOut.png';
-import Interior from '@/assets/imgs/fit-out.jpg';
-import Walls from '@/assets/imgs/Walls.jpg';
-import Flooring from '@/assets/imgs/Flooring.jpg';
-import Ceiling from '@/assets/imgs/FamilySpace.JPG';
+import Interior from '@/assets/imgs/fit-out.webp';
+import Walls from '@/assets/imgs/Walls.webp';
+import Flooring from '@/assets/imgs/Flooring.webp';
+import Ceiling from '@/assets/imgs/FamilySpace.webp';
 
 export const ServicesData = [
     {
-        title: 'Ceiling Works',
-        image: Ceiling,
-    },
-    {
         title: 'Interior Fit-Out',
         image: Interior,
+    },
+    {
+        title: 'Ceiling Works',
+        image: Ceiling,
     },
     {
         title: 'Wall Finishes & Cladding',
@@ -22,15 +21,15 @@ export const ServicesData = [
         image: Flooring,
     },
     {
-        title: 'Ceiling Works',
+        title: 'Authority Approvals',
         image: Interior,
     },
     {
-        title: 'Commercial Design2',
-        image: Ceiling,
+        title: 'Renovation Services',
+        image: Flooring,
     },
     {
-        title: 'Interior Design2',
-        image: Flooring,
+        title: 'MEP Services',
+        image: Ceiling,
     },
     ];

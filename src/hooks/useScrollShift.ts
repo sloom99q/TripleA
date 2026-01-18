@@ -1,32 +1,31 @@
-import { useEffect } from 'react';
+// Direct scroll shift - CSS variable updates WITH scroll position
+// Throttled with RAF for smooth mobile performance
 
-// Sets a single CSS variable on <html> to drive parallax-ish shifts via pure CSS.
+let initialized = false;
+let ticking = false;
+
+function updateShift() {
+  const shift = Math.min(window.scrollY * 0.3, 120);
+  document.documentElement.style.setProperty('--scroll-shift', `${shift}px`);
+  ticking = false;
+}
+
+function onScroll() {
+  if (!ticking) {
+    requestAnimationFrame(updateShift);
+    ticking = true;
+  }
+}
+
+export function initScrollShift() {
+  if (initialized || typeof window === 'undefined') return;
+  initialized = true;
+  
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateShift();
+}
+
+// Hook version for backwards compatibility
 export function useScrollShift() {
-  useEffect(() => {
-    let last = window.scrollY;
-    let shift = 0;
-    let raf: number | null = null;
-
-    const write = () => {
-      document.documentElement.style.setProperty('--scroll-shift', `${shift}px`);
-      raf = null;
-    };
-
-    const onScroll = () => {
-      const current = window.scrollY;
-      const delta = current - last;
-      shift = Math.max(0, Math.min(120, shift + delta * 0.25));
-      last = current;
-      if (raf === null) raf = requestAnimationFrame(write);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    write();
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      if (raf !== null) cancelAnimationFrame(raf);
-      document.documentElement.style.removeProperty('--scroll-shift');
-    };
-  }, []);
+  initScrollShift();
 }

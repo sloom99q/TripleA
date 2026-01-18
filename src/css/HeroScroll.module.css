@@ -3,19 +3,40 @@
 }
 
 .scrollFloat {
-  translate: 0 calc(var(--scroll-shift, 0px) * 0.9);
-  transition: translate 320ms cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: translate;
+  transform: translate3d(0, calc(var(--scroll-shift, 0px) * 0.6), 0);
+  transition: transform 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .scrollFloatMedium {
-  translate: 0 calc(var(--scroll-shift, 0px) * 0.18);
-  transition: translate 360ms cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: translate;
+  transform: translate3d(0, calc(var(--scroll-shift, 0px) * 0.12), 0);
+  transition: transform 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .scrollFloatSmall {
-  translate: 0 calc(var(--scroll-shift, 0px) * 0.5);
-  transition: translate 320ms cubic-bezier(0.19, 1, 0.22, 1);
-  will-change: translate;
+  transform: translate3d(0, calc(var(--scroll-shift, 0px) * 0.2), 0);
+  transition: transform 200ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.scrollFloatUp {
+  transform: translate3d(0, calc(var(--scroll-shift, 0px) * 0.2), 0);
+  transition: transform 400ms cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* On touch devices: no CSS transition - let scroll position drive directly
+   CSS transitions + Lenis scroll = double animation = glitchy lag */
+@media (pointer: coarse) {
+  .scrollFloat,
+  .scrollFloatMedium,
+  .scrollFloatSmall,
+  .scrollFloatUp {
+    transition: none;
+  }
 }

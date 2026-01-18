@@ -1,29 +1,37 @@
-import { ClientsSection } from '@/components/ClientsSection';
-import Sahara from '@/assets/imgs/Sahara.png';
-import Health from '@/assets/imgs/Health.png';
-import Wood from '@/assets/imgs/Wood.png';
-import Westport from '@/assets/imgs/Westport.png';
+import { ClientsSection } from '@/pages/Home/ClientsSection';
+// @ts-ignore
+import Sahara from '@/assets/imgs/Sahara.webp';
+// @ts-ignore
+import Health from '@/assets/imgs/Health.webp';
+// @ts-ignore
+import Wood from '@/assets/imgs/Wood.webp';
+// @ts-ignore
+import Meraas from '@/assets/imgs/Meraas.svg';
+// @ts-ignore
+import Dhofar from '@/assets/imgs/Dhofar.png';
+// @ts-ignore
+import Westford from '@/assets/imgs/WestFord.png';
 
 export const ClientsData = [
   {
     id: '1',
-    logo: 'https://via.placeholder.com/150?text=Brand+One',
-    alt: 'Brand One',
+    logo: Dhofar,
+    alt: 'Dhofar global',
   },
   {
     id: '2',
     logo: Wood,
-    alt: 'Wood.',
+    alt: 'Wood',
   },
-  {
+  {   
     id: '3',
-    logo: Sahara,
-    alt: 'Sahara',
+    logo: Meraas,
+    alt: 'Meraas',
   },
   {
     id: '4',
-    logo: Westport,
-    alt: 'Westport college',
+    logo: Westford,
+    alt: 'Westford university College',
   },
   {
     id: '5',
@@ -32,8 +40,8 @@ export const ClientsData = [
   },
   {
     id: '6',
-    logo: 'https://via.placeholder.com/150?text=Orange',
-    alt: 'Orange Brand',
+    logo: Sahara,
+    alt: 'Sahara Mall',
   },
 ];
 
