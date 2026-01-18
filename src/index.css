@@ -6,8 +6,53 @@
   font-style: normal;
 }
 
+/* Lenis smooth scroll styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
 
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
+    max-width: 1600px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    /* background: linear-gradient(rgb(245, 245, 245) 0%, rgb(255, 255, 255) 100%); */
+    /* background: linear-gradient(rgb(255, 255, 255) 0%, rgb(245, 245, 245) 100%); */
+}
+
+/* Global smooth transitions for all elements */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+}
+
+/* iOS: Prevent rubber-band overscroll at page boundaries */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    overscroll-behavior: none;
+  }
 }
