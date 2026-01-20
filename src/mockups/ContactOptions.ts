@@ -4,10 +4,6 @@ const ContactOptions: string[] = [
    'Request a Quote',
    'Partnership Opportunities',
    'Customer Support',
-   'Feedback and Suggestions',
-   'Careers',
-   'Media Inquiries',
-   'Event Participation',
    'Other Inquiry'
 ];
 

@@ -54,8 +54,8 @@ export const ServiceBox = memo(({ service }: { service: Service }) => {
           alt={service.title}
           fit="cover"
           loading="lazy"
-          w={600}
-          h={400}
+          // w={600}
+          // h={400}
           style={{
             width: '100%',
             height: '100%',
