@@ -6,7 +6,7 @@ import Health from '@/assets/imgs/Health.webp';
 // @ts-ignore
 import Wood from '@/assets/imgs/Wood.webp';
 // @ts-ignore
-import Meraas from '@/assets/imgs/Meraas.svg';
+import Meraas from '@/assets/imgs/Meraas.webp';
 // @ts-ignore
 import Dhofar from '@/assets/imgs/Dhofar.png';
 // @ts-ignore
