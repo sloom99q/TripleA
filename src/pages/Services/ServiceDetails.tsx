@@ -24,6 +24,61 @@ export const ServiceDetails: React.FC = () => {
                 { title: "Premium Materials & Finishes", description: "Luxurious finishes that elevate your interior environment." }
             ]}
             />
+            <Project
+            className="mep-contracting"
+            imagePosition='right'
+            image={Walls}
+            title="MEP Contracting"
+            description="Our Mechanical, Electrical, and Plumbing (MEP) services ensure your property operates efficiently and meets all regulatory standards. We combine advanced technology with industry best practices to deliver seamless integration of systems."
+            features={[
+                { title: "HVAC System Design & Installation", description: "Climate control systems optimized for comfort and energy efficiency." },
+                { title: "Electrical & Lighting Solutions", description: "Advanced electrical infrastructure with intelligent lighting design." },
+                { title: "Plumbing System Installation & Maintenance", description: "Reliable water systems with preventive maintenance programs." }
+            ]}
+            />
+            <Project        
+            className="full/partial-renovations"        
+            image={Walls}
+            title="Full/Partial Renovations"
+            description="Transform your property with our comprehensive renovation services. Whether it's upgrading a space or a complete overhaul, we bring fresh ideas and expertise to refresh your space."
+            features={[
+                { title: "Residential & Commercial Renovations", description: "Complete transformations that breathe new life into any property." },
+                { title: "Structural Improvements", description: "Reinforcement and upgrades that enhance property strength." },
+                { title: "Functional Design Updates", description: "Modern design solutions that prioritize usability and flow." }
+            ]}
+            />
+            <Project
+            className="authority-approvals"
+            imagePosition='right'
+            image={Interior}
+            title="Authority Approvals"
+            description="Handle the challenges of regulatory compliance with our expert guidance. We simplify the process of obtaining necessary permits and approvals, ensuring your projects stay on track."
+            features={[
+                { title: "Local Authority Approvals", description: "Assistance with obtaining necessary permits and approvals from local government bodies." },
+                { title: "Safety & Environmental Compliance", description: "Full compliance to safety rules and industry standards." },
+                { title: "Local Authority Coordination", description: "Expert communication services ensuring smooth government interactions." }
+            ]}
+            />
+            <Project
+            className="annual-maintenance-contract"
+            image={Interior}
+            title="Annual Maintenance Contract"
+            description="Ensure uninterrupted performance and long-term reliability of your facilities with our Annual Maintenance Contract. We provide scheduled maintenance, rapid support, and proactive solutions to keep your operations running smoothly all year round."
+            features={[
+                {
+                title: "Preventive Maintenance",
+                description: "Regular inspections and scheduled servicing to prevent breakdowns and extend the lifespan of systems and equipment."
+                },
+                {
+                title: "Corrective Maintenance & Repairs",
+                description: "Fast response to faults and issues with efficient repair solutions to minimize downtime."
+                },
+                {
+                title: "MEP Systems Coverage",
+                description: "Comprehensive maintenance of mechanical, electrical, and plumbing systems to ensure safety and optimal performance."
+                }
+            ]}
+            />
             <Project        
             className="ceiling-works"        
             imagePosition='right'
@@ -57,40 +112,6 @@ export const ServiceDetails: React.FC = () => {
                 { title: "Porcelain, Marble & Ceramic Tiling", description: "Premium tiles offering elegance, durability, and easy maintenance." },
                 { title: "Large-Format & Big Slab Tiling", description: "Seamless expansive tiles for modern, minimalist designs." },
                 { title: "Carpet Supply & Installation", description: "Soft, comfortable flooring solutions for residential comfort." }
-            ]}
-            />
-            <Project
-            className="authority-approvals"
-            image={Interior}
-            title="Authority Approvals"
-            description="Handle the challenges of regulatory compliance with our expert guidance. We simplify the process of obtaining necessary permits and approvals, ensuring your projects stay on track."
-            features={[
-                { title: "Local Authority Approvals", description: "Assistance with obtaining necessary permits and approvals from local government bodies." },
-                { title: "Safety & Environmental Compliance", description: "Full compliance to safety rules and industry standards." },
-                { title: "Local Authority Coordination", description: "Expert communication services ensuring smooth government interactions." }
-            ]}
-            />
-            <Project        
-            className="renovation-services"        
-            imagePosition='right'
-            image={Walls}
-            title="Renovation Services"
-            description="Transform your property with our comprehensive renovation services. Whether it's upgrading a space or a complete overhaul, we bring fresh ideas and expertise to refresh your space."
-            features={[
-                { title: "Residential & Commercial Renovations", description: "Complete transformations that breathe new life into any property." },
-                { title: "Structural Improvements", description: "Reinforcement and upgrades that enhance property strength." },
-                { title: "Functional Design Updates", description: "Modern design solutions that prioritize usability and flow." }
-            ]}
-            />
-            <Project
-            className="mep-services"
-            image={Walls}
-            title="MEP Services"
-            description="Our Mechanical, Electrical, and Plumbing (MEP) services ensure your property operates efficiently and meets all regulatory standards. We combine advanced technology with industry best practices to deliver seamless integration of systems."
-            features={[
-                { title: "HVAC System Design & Installation", description: "Climate control systems optimized for comfort and energy efficiency." },
-                { title: "Electrical & Lighting Solutions", description: "Advanced electrical infrastructure with intelligent lighting design." },
-                { title: "Plumbing System Installation & Maintenance", description: "Reliable water systems with preventive maintenance programs." }
             ]}
             />
         </Group>

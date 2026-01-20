@@ -9,6 +9,18 @@ export const ServicesData = [
         image: Interior,
     },
     {
+        title: 'MEP Contracting',
+        image: Ceiling,
+    },
+    {
+        title: 'Full/Partial Renovations',
+        image: Flooring,
+    },
+    {
+        title: 'Authority Approvals',
+        image: Interior,
+    },
+    {
         title: 'Ceiling Works',
         image: Ceiling,
     },
@@ -20,16 +32,4 @@ export const ServicesData = [
         title: 'Flooring Solutions',
         image: Flooring,
     },
-    {
-        title: 'Authority Approvals',
-        image: Interior,
-    },
-    {
-        title: 'Renovation Services',
-        image: Flooring,
-    },
-    {
-        title: 'MEP Services',
-        image: Ceiling,
-    },
-    ];
+];
