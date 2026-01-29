@@ -193,7 +193,7 @@ export default function AboutHeroSection() {
           innovative design and flawless execution.
             </Text>
 
-            <Group className={`${styles.ctaButton} ${motionStyles.scrollFloat}`} gap="xl" mt="xs">
+            <Group className={motionStyles.scrollFloat} gap="xl" mt="xs">
           <Group gap="sm">
             <IconMapPin size={22} color="#aaa" stroke={1.8} />
             <Box>

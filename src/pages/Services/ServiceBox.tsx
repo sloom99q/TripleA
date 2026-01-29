@@ -53,7 +53,7 @@ export const ServiceBox = memo(({ service }: { service: Service }) => {
           src={service.image}
           alt={service.title}
           fit="cover"
-          loading="lazy"
+          // loading="lazy"
           // w={600}
           // h={400}
           style={{
