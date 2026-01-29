@@ -22,12 +22,48 @@
 
 .ctaButton {
   animation: fadeInUp 0.8s ease-out 0.4s both;
-  border: none;
+  /* border: none; */
+  margin-top: 25px;
+  padding: 6px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: white;
+  color: black;
+  font-weight: 600;
+
+
+  /* font-family: sans-serif; */
+  border-radius: none;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #111;
+  color: white;
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
 
 .ctaButton:hover {
   box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
   transition: cubic-bezier(0.075, 0.82, 0.165, 1) all 0.6s;
+  cursor: pointer;
 }
 
 @keyframes fadeInUp {
