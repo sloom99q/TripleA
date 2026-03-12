@@ -1,5 +1,7 @@
+'use client';
+
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import Lenis from 'lenis';
 
 // Feature detection
@@ -15,7 +17,7 @@ const isIOS = () =>
 export function useSmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);
   const rafRef = useRef<number | null>(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const iOS = isIOS();
@@ -58,7 +60,7 @@ export function useSmoothScroll() {
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   return lenisRef;
 }

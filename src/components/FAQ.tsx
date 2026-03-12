@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Container, Title, Text, Paper, Collapse, Group, Box, } from '@mantine/core';
 import { IconPlus, IconX } from '@tabler/icons-react';
@@ -27,6 +29,7 @@ const FAQItem = ({ question, answer, defaultOpen }: FAQItemType) => {
         onClick={() => setOpened(!opened)}
       >
         <Text 
+          component="h3"
           size="md" 
           fw={500}
           style={{ flex: 1, paddingRight: '1rem' }}

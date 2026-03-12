@@ -1,9 +1,16 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Container, Title, Text, Box, Image } from '@mantine/core';
 import { IconArrowUpRight } from '@tabler/icons-react';
 
+interface ServiceItem {
+  title: string;
+  image: string;
+}
+
 // Mock data for demonstration
-const ServicesData = [
+const ServicesData: ServiceItem[] = [
   { title: 'Architectural Design', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=800&fit=crop' },
   { title: 'Interior Fit-Out', image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&h=800&fit=crop' },
   { title: 'Project Management', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=800&fit=crop' },
@@ -13,7 +20,7 @@ const ServicesData = [
   { title: 'Turnkey Solutions', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&h=600&fit=crop' },
 ];
 
-const ServiceBox = ({ service, index, isLastRow }) => {
+const ServiceBox = ({ service, index, isLastRow }: { service: ServiceItem; index: number; isLastRow: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -104,7 +111,7 @@ const ServiceBox = ({ service, index, isLastRow }) => {
   );
 };
 
-const WideServiceBox = ({ service }) => {
+const WideServiceBox = ({ service }: { service: ServiceItem }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -257,12 +264,12 @@ const ServicesRow = () => {
         >
           {/* Row 1 - 3 boxes */}
           {ServicesData.slice(0, 3).map((service, index) => (
-            <ServiceBox key={index} service={service} index={index} />
+            <ServiceBox key={index} service={service} index={index} isLastRow={false} />
           ))}
           
           {/* Row 2 - 3 boxes */}
           {ServicesData.slice(3, 6).map((service, index) => (
-            <ServiceBox key={index + 3} service={service} index={index + 3} isLastRow />
+            <ServiceBox key={index + 3} service={service} index={index + 3} isLastRow={true} />
           ))}
         </Box>
 

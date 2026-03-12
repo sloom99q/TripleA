@@ -1,12 +1,13 @@
+'use client';
+
 import { ActionIcon, Box, Button, Divider, Group, Image, Paper, Stack, Text, Title } from '@mantine/core';
 import { IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconPhone } from '@tabler/icons-react';
 import { memo, useCallback } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
-import { useNavigate } from 'react-router-dom';
-// @ts-ignore
+import { useRouter } from 'next/navigation';
 import navLogoWhite from '@/assets/imgs/navlogowhite.webp';
 import '@/css/Footer.css';
-import Socials from '@/pages/Contact/Socials';
+import Socials from '@/components/pages/Contact/Socials';
 
 type FooterLink = {
   label: string;
@@ -22,11 +23,11 @@ const footerLinks: FooterLink[] = [
 ];
 
 const Footer = memo(() => {
-  const navigate = useNavigate();
+  const router = useRouter();
   
   const handleNavigate = useCallback((href: string) => {
-    navigate(href);
-  }, [navigate]);
+    router.push(href);
+  }, [router]);
 
   const handleCall = useCallback(() => {
     window.location.href = 'tel:+971585500359';
@@ -39,8 +40,8 @@ const Footer = memo(() => {
       <Paper mx={25} className="footer__surface" radius={48} shadow="xl" withBorder={false}>
         <Box className="footer__top">
           <Stack className="footer__brand-block" gap="md">
-            <Group className="footer__brand" gap="xs">
-              <Image src={navLogoWhite} alt="Triple A Interiors" loading="lazy" w={180} h={50} />
+              <Group className="footer__brand" gap="xs">
+              <Image src={typeof navLogoWhite === 'string' ? navLogoWhite : navLogoWhite.src} alt="Triple A Interiors logo - white horizontal wordmark" loading="lazy" w={180} h={50} />
             </Group>
 
         <Divider color="rgba(255,255,255,0.06)" my="md" />

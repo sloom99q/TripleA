@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { Box, Flex, Image, Stack, Text, Title } from '@mantine/core';
 import { ProjectDetailsProps } from '../types/ProjectDetails';
@@ -29,7 +31,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
     >
       <Image
         className={styles.heroContainer}
-        src={image}
+        src={typeof image === 'string' ? image : image.src}
         alt={imageAlt}
         loading="lazy"
         style={{            transition: 'transform 1200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms ease',

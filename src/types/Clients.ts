@@ -1,6 +1,8 @@
+import { StaticImageData } from 'next/image';
+
 export interface Client {
   id: string;
-  logo: string;
+  logo: string | StaticImageData;
   alt: string;
 }
 

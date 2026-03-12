@@ -1,7 +1,9 @@
+'use client';
+
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Box, Group, Text, UnstyledButton } from '@mantine/core';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useRouter, usePathname } from 'next/navigation';
 // @ts-ignore
 import navLogo from '@/assets/imgs/navlogo.webp';
 
@@ -58,15 +60,15 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
   const [opened, setOpened] = useState(false);
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const isActive = useCallback((href: string) => location.pathname === href, [location.pathname]);
+  const isActive = useCallback((href: string) => pathname === href, [pathname]);
 
   const handleNavigate = useCallback((href: string) => {
     setOpened(false);
-    navigate(href);
-  }, [navigate]);
+    router.push(href);
+  }, [router]);
 
   const toggleMenu = useCallback(() => setOpened(prev => !prev), []);
 
@@ -125,7 +127,7 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
   // Close menu on route change
   useEffect(() => {
     setOpened(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
   // Border radius: capsule when closed, normal when menu open on mobile
   const borderRadius = isMobile ? (opened ? 24 : 50) : 50;
@@ -163,8 +165,8 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
       >
         <Group justify="space-between" align="center" wrap="nowrap">
           {/* Logo */}
-          <UnstyledButton onClick={() => handleNavigate('/')}>
-            <img src={navLogo} alt="Triple A" width={isMobile ? 96 : 114} height={isMobile ? 32 : 38} style={{ height: isMobile ? 32 : 38, width: 'auto' }} />
+            <UnstyledButton onClick={() => handleNavigate('/')}>
+            <img src={typeof navLogo === 'string' ? navLogo : navLogo.src} alt="Triple A Interiors logo - compact brand mark" width={isMobile ? 96 : 114} height={isMobile ? 32 : 38} style={{ height: isMobile ? 32 : 38, width: 'auto' }} />
           </UnstyledButton>
 
           {/* Desktop Links */}

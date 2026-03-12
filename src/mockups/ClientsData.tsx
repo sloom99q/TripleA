@@ -1,4 +1,4 @@
-import { ClientsSection } from '@/pages/Home/ClientsSection';
+import { ClientsSection } from '@/components/pages/Home/ClientsSection';
 // @ts-ignore
 import Sahara from '@/assets/imgs/Sahara.webp';
 // @ts-ignore

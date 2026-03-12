@@ -1,0 +1,25 @@
+# Robots.txt for Triple A Interiors - SEO optimized
+# Allow all bots to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow private or admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Slow down aggressive bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://triple-a.ae/sitemap.xml
+
+# Cache control
+Cache-Control: max-age=604800

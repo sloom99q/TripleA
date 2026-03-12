@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState, RefObject } from 'react';
 
 interface ParallaxOptions {
@@ -17,6 +19,7 @@ export function useParallax<T extends HTMLElement = HTMLElement>(
     if (!element) return;
 
     let ticking = false;
+    let rafId: number | null = null;
     let currentY = 0;
     let targetY = 0;
 
@@ -42,15 +45,19 @@ export function useParallax<T extends HTMLElement = HTMLElement>(
       
       // Apply transform with will-change for GPU acceleration
       element.style.transform = `translate3d(0, ${currentY}px, 0)`;
-      element.style.willChange = 'transform';
       
-      // Continue animation loop
-      ticking = true;
-      requestAnimationFrame(animate);
+      // Continue animation loop only if we're still ticking
+      if (ticking) {
+        rafId = requestAnimationFrame(animate);
+      }
     };
 
     const onScroll = () => {
       updatePosition();
+      if (!ticking) {
+        ticking = true;
+        animate();
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -58,12 +65,13 @@ export function useParallax<T extends HTMLElement = HTMLElement>(
     
     // Initial position
     updatePosition();
-    animate();
 
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updatePosition);
       ticking = false;
+      if (rafId) cancelAnimationFrame(rafId);
+      element.style.willChange = 'auto';
     };
   }, [speed, direction]);
 
@@ -84,6 +92,7 @@ export function useScrollScale<T extends HTMLElement = HTMLElement>(
     let currentScale = minScale;
     let targetScale = minScale;
     let rafId: number | null = null;
+    let ticking = false;
 
     const lerp = (start: number, end: number, factor: number) => {
       return start + (end - start) * factor;
@@ -107,25 +116,32 @@ export function useScrollScale<T extends HTMLElement = HTMLElement>(
       currentScale = lerp(currentScale, targetScale, 0.025);
       
       element.style.transform = `scale(${currentScale})`;
-      element.style.willChange = 'transform';
       
-      rafId = requestAnimationFrame(animate);
+      // Continue animation loop only if ticking
+      if (ticking) {
+        rafId = requestAnimationFrame(animate);
+      }
     };
 
     const onScroll = () => {
       updateScale();
+      if (!ticking) {
+        ticking = true;
+        animate();
+      }
     };
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', updateScale, { passive: true });
     
     updateScale();
-    animate();
 
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', updateScale);
+      ticking = false;
       if (rafId) cancelAnimationFrame(rafId);
+      element.style.willChange = 'auto';
     };
   }, [minScale, maxScale]);
 

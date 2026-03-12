@@ -1,25 +1,29 @@
-import { Outlet, useLocation } from 'react-router-dom';
+'use client';
+
+import { usePathname, useRouter } from 'next/navigation';
 import Navbar from '@/components/common/Navbar';
 import Footer from '@/components/common/Footer';
 import { useEffect } from 'react';
-import PageContainer from './PageContainer';
+import { PageContainer } from './PageContainer';
 
-function MainLayout() {
-  const location = useLocation();
+interface MainLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function MainLayout({ children }: MainLayoutProps) {
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (!location.hash) {
-      window.scrollTo(0, 0);
-    }
-  }, [location.pathname]);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <>
       <Navbar />
-      <Outlet />
-        <Footer />
+      <PageContainer>
+        {children}
+      </PageContainer>
+      <Footer />
     </>
   );
 }
-
-export default MainLayout;
