@@ -72,7 +72,6 @@ export const useContactStore = create<ContactState>((set, get) => ({
         message: formData.message,
       };
       
-      console.log("Sending contact form:", payload);
 
       // Call the Next.js API route instead of external backend
       const res = await fetch("/api/send-email", {
@@ -81,12 +80,9 @@ export const useContactStore = create<ContactState>((set, get) => ({
         body: JSON.stringify(payload),
       });
 
-      console.log("Response status:", res.status, "Content-Type:", res.headers.get("content-type"));
-      
       let responseData: any = {};
       try {
         const text = await res.text();
-        console.log("Raw response text:", text);
         if (text) {
           responseData = JSON.parse(text);
         }
@@ -95,7 +91,6 @@ export const useContactStore = create<ContactState>((set, get) => ({
         responseData = {};
       }
       
-      console.log("Parsed API Response:", responseData, "Status:", res.status);
 
       if (!res.ok) {
         const errorMessage = responseData.error || responseData.message || "Failed to send email";
@@ -104,7 +99,6 @@ export const useContactStore = create<ContactState>((set, get) => ({
       }
 
       // Success case - email was sent
-      console.log("Email sent successfully!", responseData);
       set({
         status: "success",
         formData: {

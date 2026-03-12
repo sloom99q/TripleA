@@ -1,0 +1,14 @@
+
+> triple-a-interiors@0.2.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use by process 78102, using available port 3001 instead.
+   ▲ Next.js 15.5.12
+   - Local:        http://localhost:3001
+   - Network:      http://192.168.1.139:3001
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+   Reload env: .env.local
+   Reload env: .env.local

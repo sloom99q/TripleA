@@ -43,8 +43,6 @@ export async function POST(request: NextRequest) {
   try {
     // Parse request body
     const body: ContactFormData = await request.json();
-    
-    console.log("Email request body:", body);
 
     // Validate required fields
     if (!body.name || !body.email || !body.phone || !body.subject || !body.message) {
@@ -88,8 +86,6 @@ export async function POST(request: NextRequest) {
       html: contactEmailTemplate(emailData),
     });
 
-    console.log("Resend result:", result);
-
     // Handle Resend API errors
     if (result.error) {
       console.error("Resend error:", result.error);
@@ -115,7 +111,6 @@ export async function POST(request: NextRequest) {
     }
 
     // Send success response
-    console.log("Email sent successfully:", result.data?.id);
     return NextResponse.json(
       {
         success: true,

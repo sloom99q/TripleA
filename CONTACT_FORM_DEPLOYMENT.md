@@ -24,7 +24,6 @@ The contact form is now configured to work on **both localhost development and p
 ### Setup
 1. **Resend API Key** is already set in `.env.local`:
    ```
-   RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
    ```
 
 2. **Start development server**:
@@ -37,15 +36,14 @@ The contact form is now configured to work on **both localhost development and p
    - Fill form with valid email (e.g., `test@example.com`)
    - Click Submit
    - Should see "Message Sent" modal
-   - Email arrives at `smsazzawi@gmail.com`
+   - Email arrives at `info@triple-a.ae`
 
 ## Production Deployment (triple-a.ae)
 
 ### Environment Variables
 Production uses `.env.production`:
 ```
-RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-CONTACT_EMAIL=smsazzawi@gmail.com
+CONTACT_EMAIL=info@triple-a.ae
 NODE_ENV=production
 NEXT_PUBLIC_API_URL=https://triple-a.ae
 ```
