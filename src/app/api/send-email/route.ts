@@ -43,9 +43,18 @@ export async function POST(request: NextRequest) {
   try {
     // Parse request body
     const body: ContactFormData = await request.json();
+    
+    console.log("Email request body:", body);
 
     // Validate required fields
     if (!body.name || !body.email || !body.phone || !body.subject || !body.message) {
+      console.error("Missing required fields:", {
+        name: !!body.name,
+        email: !!body.email,
+        phone: !!body.phone,
+        subject: !!body.subject,
+        message: !!body.message,
+      });
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
@@ -79,11 +88,28 @@ export async function POST(request: NextRequest) {
       html: contactEmailTemplate(emailData),
     });
 
+    console.log("Resend result:", result);
+
     // Handle Resend API errors
     if (result.error) {
       console.error("Resend error:", result.error);
+      
+      // Check for invalid API key
+      if (result.error.statusCode === 401) {
+        return NextResponse.json(
+          { 
+            error: "Invalid Resend API key. Please check your environment variables.",
+            details: "Check that RESEND_API_KEY is set correctly in .env.local"
+          },
+          { status: 500 }
+        );
+      }
+      
       return NextResponse.json(
-        { error: "Failed to send email" },
+        { 
+          error: "Failed to send email", 
+          details: result.error.message 
+        },
         { status: 500 }
       );
     }

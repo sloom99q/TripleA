@@ -50,6 +50,12 @@ export const useContactStore = create<ContactState>((set, get) => ({
     if (!formData.email) errors.email = "Email is required";
     if (!formData.message) errors.message = "Message is required";
 
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email)) {
+      errors.email = "Please enter a valid email address";
+    }
+
     if (Object.keys(errors).length) {
       set({ errors });
       return;
@@ -58,21 +64,47 @@ export const useContactStore = create<ContactState>((set, get) => ({
     try {
       set({ status: "loading", popoverOpen: true });
 
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      };
+      
+      console.log("Sending contact form:", payload);
+
       // Call the Next.js API route instead of external backend
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          subject: formData.subject,
-          message: formData.message,
-        }),
+        body: JSON.stringify(payload),
       });
 
-      if (!res.ok) throw new Error("Failed to send email");
+      console.log("Response status:", res.status, "Content-Type:", res.headers.get("content-type"));
+      
+      let responseData: any = {};
+      try {
+        const text = await res.text();
+        console.log("Raw response text:", text);
+        if (text) {
+          responseData = JSON.parse(text);
+        }
+      } catch (parseError) {
+        console.error("Failed to parse response:", parseError);
+        responseData = {};
+      }
+      
+      console.log("Parsed API Response:", responseData, "Status:", res.status);
 
+      if (!res.ok) {
+        const errorMessage = responseData.error || responseData.message || "Failed to send email";
+        console.error("Email send failed:", errorMessage, responseData);
+        throw new Error(errorMessage);
+      }
+
+      // Success case - email was sent
+      console.log("Email sent successfully!", responseData);
       set({
         status: "success",
         formData: {
@@ -84,7 +116,8 @@ export const useContactStore = create<ContactState>((set, get) => ({
         },
         errors: {},
       });
-    } catch {
+    } catch (error) {
+      console.error("Submit error:", error);
       set({ status: "error" });
     }
   },
