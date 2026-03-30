@@ -20,7 +20,10 @@ export function idParams() {
 const ProjectPage: React.FC = () => {
     const selectedProject = idParams();
     const seoConfig = {
-        ...createProjectSEOMetadata(selectedProject),
+        ...createProjectSEOMetadata({
+            ...selectedProject,
+            image: typeof selectedProject.image === 'string' ? selectedProject.image : selectedProject.image?.src,
+        }),
         ogUrl: `${BASE_URL}/project/${selectedProject.id}`,
     };
 

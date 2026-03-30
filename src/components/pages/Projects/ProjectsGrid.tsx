@@ -5,12 +5,17 @@ import { Box, Grid, Text, Title } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { ProjectsData } from '@/mockups/ProjectsData';
 import ProjectsBox from '@/components/pages/Projects/ProjectsBox';
+import { StaticImageData } from 'next/image';
 
 interface Project {
   id: string;
   title: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
+  story?: string;
+  client?: string;
+  duration?: string;
+  location?: string;
 }
 
 const SECTION_BG = 'radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06) 0%, rgba(10, 10, 10, 0) 28%), radial-gradient(circle at 80% 0%, rgba(140,140,140,0.08) 0%, rgba(12, 12, 12, 0) 22%), linear-gradient(145deg, #080808ff 0%, #0d0d0dff 50%, #060606ff 100%)';

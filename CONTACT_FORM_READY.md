@@ -16,7 +16,7 @@ Your contact form is now fully configured to work on **both localhost developmen
 **Development (`.env.local`):**
 ```
 RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-CONTACT_EMAIL=smsazzawi@gmail.com
+CONTACT_EMAIL=info@triple-a.ae
 NODE_ENV=development
 NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
@@ -24,7 +24,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3000
 **Production (`.env.production`):**
 ```
 RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-CONTACT_EMAIL=smsazzawi@gmail.com
+CONTACT_EMAIL=info@triple-a.ae
 NODE_ENV=production
 NEXT_PUBLIC_API_URL=https://triple-a.ae
 ```
@@ -58,7 +58,7 @@ Visit: http://localhost:3000/contact
 3. Should see:
    - Loading state (button shows "Sending...")
    - Success modal with "Message Sent" ✅
-   - Email arrives at `smsazzawi@gmail.com`
+   - Email arrives at `info@triple-a.ae`
 
 ---
 
@@ -73,7 +73,7 @@ git push origin main
 # 1. Connect GitHub repo
 # 2. Add Environment Variables:
 #    - RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-#    - CONTACT_EMAIL=smsazzawi@gmail.com
+#    - CONTACT_EMAIL=info@triple-a.ae
 # 3. Vercel automatically reads .env.production for production builds
 # 4. Deploy
 ```
@@ -87,7 +87,7 @@ npm run build
 
 # Set environment variables
 export RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-export CONTACT_EMAIL=smsazzawi@gmail.com
+export CONTACT_EMAIL=info@triple-a.ae
 export NODE_ENV=production
 
 # Start server
@@ -105,7 +105,7 @@ RUN npm install
 RUN npm run build
 
 ENV RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-ENV CONTACT_EMAIL=smsazzawi@gmail.com
+ENV CONTACT_EMAIL=info@triple-a.ae
 ENV NODE_ENV=production
 
 EXPOSE 3000
@@ -141,7 +141,7 @@ Server receives request with valid Resend API key from .env.local
          ↓
 Server validates email format
          ↓
-Resend API sends email to smsazzawi@gmail.com
+Resend API sends email to info@triple-a.ae
          ↓
 User sees "Message Sent" modal ✅
 ```
@@ -156,7 +156,7 @@ Server receives request with valid Resend API key from .env.production
          ↓
 Server validates email format
          ↓
-Resend API sends email to smsazzawi@gmail.com
+Resend API sends email to info@triple-a.ae
          ↓
 User sees "Message Sent" modal ✅
 ```
@@ -210,7 +210,7 @@ All routes: ✓ Generated
 | Variable | Purpose | Development | Production |
 |----------|---------|-------------|-----------|
 | `RESEND_API_KEY` | Email service authentication | `re_CiETWJ2h_...` | `re_CiETWJ2h_...` (same) |
-| `CONTACT_EMAIL` | Where emails are sent | `smsazzawi@gmail.com` | `smsazzawi@gmail.com` (same) |
+| `CONTACT_EMAIL` | Where emails are sent | `info@triple-a.ae` | `info@triple-a.ae` (same) |
 | `NODE_ENV` | Environment mode | `development` | `production` |
 | `NEXT_PUBLIC_API_URL` | Client-side API base URL | `http://localhost:3000` | `https://triple-a.ae` |
 
@@ -227,7 +227,7 @@ All routes: ✓ Generated
 
 ### Email not received
 1. Check spam folder
-2. Verify `CONTACT_EMAIL` is correct: `smsazzawi@gmail.com`
+2. Verify `CONTACT_EMAIL` is correct: `info@triple-a.ae`
 3. Check Resend dashboard for delivery status
 4. Check server logs for errors
 

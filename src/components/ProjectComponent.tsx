@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box, Flex, Image, Stack, Text, Title } from '@mantine/core';
+import { Box, Flex, Image, List, Stack, Text, Title } from '@mantine/core';
 import { ProjectDetailsProps } from '../types/ProjectDetails';
 import styles from '@/css/HeroSection.module.css';
 import { useMediaQuery } from '@mantine/hooks';
@@ -11,14 +11,23 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   imageAlt = 'Project image',
   title,
   description,
+  scopeOfWork,
   features,
   imagePosition = 'left',
   className,
 }) => {
 
   const isMobile = useMediaQuery('(max-width: 768px)');
+  const hasContent = Boolean(
+    title?.trim() ||
+    description?.trim() ||
+    (scopeOfWork && scopeOfWork.length > 0) ||
+    (features && features.length > 0)
+  );
+  const hasImage = Boolean(image);
+  const imageSrc = image ? (typeof image === 'string' ? image : image.src) : '';
   
-  const imageColumn = (
+  const imageColumn = hasImage ? (
     <Box
             // ref={imageRef}
 
@@ -31,7 +40,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
     >
       <Image
         className={styles.heroContainer}
-        src={typeof image === 'string' ? image : image.src}
+        src={imageSrc}
         alt={imageAlt}
         loading="lazy"
         style={{            transition: 'transform 1200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms ease',
@@ -44,7 +53,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         h={{ base: '200px', sm: '300px', md: '95vh' }}
       />
     </Box>
-  );
+  ) : null;
 
   const contentColumn = (
     <Box key="content" style={{ flex: 1 }}>
@@ -56,6 +65,19 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         <Text ml={5} size="md" c="dimmed" ta={'justify'} lineClamp={undefined}>
           {description}
         </Text>
+
+        {scopeOfWork && scopeOfWork.length > 0 && (
+          <Box ml={{ base: 8, md: 20 }} mt={{ base: 'sm', md: 'md' }}>
+            <Text fw={500} size={isMobile ? 'md' : 'lg'} mb="xs">
+              Scope of work
+            </Text>
+            <List spacing="xs" withPadding size={isMobile ? 'sm' : 'md'}>
+              {scopeOfWork.map((item, index) => (
+                <List.Item key={`${item}-${index}`}>{item}</List.Item>
+              ))}
+            </List>
+          </Box>
+        )}
 
         {features && features.length > 0 && (
           <Box ml={25} mt="md">
@@ -82,6 +104,11 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
 
   return (
     <Box w="100%" p={0} className={className}>
+      {!hasContent && hasImage ? (
+        <Box w="100%">{imageColumn}</Box>
+      ) : !hasImage ? (
+        <Box w="100%">{contentColumn}</Box>
+      ) : (
       <Flex
         direction={{ base: 'column', md: imagePosition === 'right' ? 'row-reverse' : 'row' }}
         align="center"
@@ -91,6 +118,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         {imageColumn}
         {contentColumn}
       </Flex>
+      )}
     </Box>
   );
 };

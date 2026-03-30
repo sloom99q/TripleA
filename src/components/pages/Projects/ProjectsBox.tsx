@@ -5,12 +5,14 @@ import { useMediaQuery } from '@mantine/hooks';
 import { Text, Image, Box, Group, UnstyledButton, Badge } from '@mantine/core';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import { useRouter } from 'next/navigation';
+import { StaticImageData } from 'next/image';
 
 interface Project {
   id: string;
   title: string;
-  image: string;
+  image: string | StaticImageData;
   description: string;
+  client?: string;
 }
 
 type ProjectVariant = 'hero' | 'spotlight' | 'standard' | 'band';
@@ -114,7 +116,7 @@ const ProjectsBox = memo(
               }}
             >
               <Image
-                src={project.image}
+                src={typeof project.image === 'string' ? project.image : project.image.src}
                 alt={project.title}
                 loading="lazy"
                 // w={800}
@@ -149,7 +151,7 @@ const ProjectsBox = memo(
                   letterSpacing: 0.3,
                 }}
               >
-                Case Study
+                {project.client || 'Case Study'}
               </Box>
             </Box>
 

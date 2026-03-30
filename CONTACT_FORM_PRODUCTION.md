@@ -14,14 +14,14 @@ Your contact form is now **fully production-ready** and works on both `localhost
 #### 2. ✅ Environment Variables Configured
 - **Created** `.env.production` for production deployment
   ```
-  CONTACT_EMAIL=smsazzawi@gmail.com
+  CONTACT_EMAIL=info@triple-a.ae
   NODE_ENV=production
   NEXT_PUBLIC_API_URL=https://triple-a.ae
   ```
 
 - **Updated** `.env.local` for development
   ```
-  CONTACT_EMAIL=smsazzawi@gmail.com
+  CONTACT_EMAIL=info@triple-a.ae
   NODE_ENV=development
   NEXT_PUBLIC_API_URL=http://localhost:3000
   ```
@@ -61,7 +61,7 @@ Routes:
 3. Clicks Submit
 4. Request sent to http://localhost:3000/api/send-email (same domain, no CORS issues)
 5. Server receives request with Resend API key from .env.local
-6. Server validates and sends email to smsazzawi@gmail.com
+6. Server validates and sends email to info@triple-a.ae
 7. User sees "Message Sent" success modal ✅
 ```
 
@@ -72,7 +72,7 @@ Routes:
 3. Clicks Submit
 4. Request sent to https://triple-a.ae/api/send-email (same domain, no CORS issues)
 5. Server receives request with Resend API key from .env.production
-6. Server validates and sends email to smsazzawi@gmail.com
+6. Server validates and sends email to info@triple-a.ae
 7. User sees "Message Sent" success modal ✅
 ```
 
@@ -102,7 +102,7 @@ Visit http://localhost:3000/contact and test form submission.
 2. Project Settings → Environment Variables
 3. Add for Production environment:
    - RESEND_API_KEY = re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-   - CONTACT_EMAIL = smsazzawi@gmail.com
+   - CONTACT_EMAIL = info@triple-a.ae
 4. Redeploy
 5. Test at https://triple-a.ae/contact
 ```
@@ -122,7 +122,7 @@ npm run build
 
 # Set environment variables in .env or system
 export RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-export CONTACT_EMAIL=smsazzawi@gmail.com
+export CONTACT_EMAIL=info@triple-a.ae
 export NODE_ENV=production
 
 # Start server with process manager
@@ -139,7 +139,7 @@ docker build -t triple-a-interiors .
 # Run container
 docker run -d \
   -e RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda \
-  -e CONTACT_EMAIL=smsazzawi@gmail.com \
+  -e CONTACT_EMAIL=info@triple-a.ae \
   -e NODE_ENV=production \
   -p 3000:3000 \
   triple-a-interiors
@@ -157,7 +157,7 @@ docker run -d \
 - [ ] Form fields are visible
 - [ ] Can submit form with valid email
 - [ ] Success modal appears
-- [ ] Email received at smsazzawi@gmail.com
+- [ ] Email received at info@triple-a.ae
 
 ---
 
@@ -166,7 +166,7 @@ docker run -d \
 | Variable | Dev Value | Prod Value | Purpose |
 |----------|-----------|-----------|---------|
 | `RESEND_API_KEY` | `re_CiETWJ2h_...` | `re_CiETWJ2h_...` | Email service API key (same for both) |
-| `CONTACT_EMAIL` | `smsazzawi@gmail.com` | `smsazzawi@gmail.com` | Where form emails are sent (same for both) |
+| `CONTACT_EMAIL` | `info@triple-a.ae` | `info@triple-a.ae` | Where form emails are sent (same for both) |
 | `NODE_ENV` | `development` | `production` | Optimization level |
 | `NEXT_PUBLIC_API_URL` | `http://localhost:3000` | `https://triple-a.ae` | Client-side base URL |
 
@@ -238,7 +238,7 @@ Before deploying to production, verify locally:
 - [ ] Form shows "Sending..." on submit
 - [ ] Success modal appears (green checkmark)
 - [ ] Form resets after success
-- [ ] Email arrives at smsazzawi@gmail.com
+- [ ] Email arrives at info@triple-a.ae
 
 ### Error Cases
 - [ ] Invalid API key shows clear error
@@ -338,7 +338,7 @@ A: No. Environment variables are only used on the server. The API key never reac
    - Visit https://triple-a.ae/contact
    - Fill form and submit
    - Verify success modal appears
-   - Check email arrives at smsazzawi@gmail.com
+   - Check email arrives at info@triple-a.ae
 
 5. **Monitor**
    - Check Resend dashboard for email delivery

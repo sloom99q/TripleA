@@ -29,7 +29,7 @@ export function useSmoothScroll() {
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.65,
+      wheelMultiplier: 0.75,
       touchMultiplier: 1.0,
       // iOS: NO touch control (native only), Android: allow syncTouch
       syncTouch: isTouch && !iOS,

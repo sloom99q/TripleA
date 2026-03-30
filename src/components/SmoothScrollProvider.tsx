@@ -1,6 +1,7 @@
 'use client';
 
 import { useSmoothScroll } from '@/hooks/useSmoothScroll';
+import { useScrollShift } from '@/hooks/useScrollShift';
 import { ReactNode } from 'react';
 
 interface SmoothScrollProviderProps {
@@ -9,5 +10,6 @@ interface SmoothScrollProviderProps {
 
 export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
   useSmoothScroll();
+  useScrollShift();
   return <>{children}</>;
 }

@@ -7,6 +7,8 @@ import "@/index.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * Root Layout for Next.js App Router
@@ -41,8 +43,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Navbar />
             <main>{children}</main>
             <Footer />
+            <WhatsAppFloatingButton />
           </MantineProvider>
         </SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   );

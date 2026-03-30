@@ -66,7 +66,7 @@ NEXT_PUBLIC_API_URL=https://triple-a.ae
 2. Set environment variables on server:
    ```bash
    export RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-   export CONTACT_EMAIL=smsazzawi@gmail.com
+   export CONTACT_EMAIL=info@triple-a.ae
    export NODE_ENV=production
    ```
 3. Start production server:

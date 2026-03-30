@@ -78,7 +78,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
               textTransform: 'uppercase',
             }}
           >
-            Residential Design
+            Project Overview
           </Text>
 
           <Title

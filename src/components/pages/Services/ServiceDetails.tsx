@@ -9,6 +9,9 @@ import Walls from '@/assets/imgs/Walls.webp';
 import Flooring from '@/assets/imgs/Flooring.webp';
 // @ts-ignore
 import Ceiling from '@/assets/imgs/FamilySpace.webp';
+import Authority from '@/assets/imgs/Auth.jpeg';
+import MEP from '@/assets/imgs/MEP.png';
+import Renovation from '@/assets/imgs/renovation.jpg';
 
 export const ServiceDetails: React.FC = () => {
     return (
@@ -29,7 +32,7 @@ export const ServiceDetails: React.FC = () => {
             className="mep-contracting"
             imageAlt="MEP contracting infrastructure showing HVAC, electrical, and plumbing systems installation"
             imagePosition='right'
-            image={Walls}
+            image={MEP}
             title="MEP Contracting"
             description="Our Mechanical, Electrical, and Plumbing (MEP) services ensure your property operates efficiently and meets all regulatory standards. We combine advanced technology with industry best practices to deliver seamless integration of systems."
             features={[
@@ -41,7 +44,7 @@ export const ServiceDetails: React.FC = () => {
             <Project        
             className="full/partial-renovations"
             imageAlt="Residential renovation project displaying modern upgrades and space transformation"        
-            image={Walls}
+            image={Renovation}
             title="Full/Partial Renovations"
             description="Transform your property with our comprehensive renovation services. Whether it's upgrading a space or a complete overhaul, we bring fresh ideas and expertise to refresh your space."
             features={[
@@ -54,7 +57,7 @@ export const ServiceDetails: React.FC = () => {
             className="authority-approvals"
             imageAlt="Authority compliance documentation and building approval permits for construction projects"
             imagePosition='right'
-            image={Interior}
+            image={Authority}
             title="Authority Approvals"
             description="Handle the challenges of regulatory compliance with our expert guidance. We simplify the process of obtaining necessary permits and approvals, ensuring your projects stay on track."
             features={[
@@ -65,8 +68,6 @@ export const ServiceDetails: React.FC = () => {
             />
             <Project
             className="annual-maintenance-contract"
-            imageAlt="Preventive maintenance services showing regular inspections and system checks"
-            image={Interior}
             title="Annual Maintenance Contract"
             description="Ensure uninterrupted performance and long-term reliability of your facilities with our Annual Maintenance Contract. We provide scheduled maintenance, rapid support, and proactive solutions to keep your operations running smoothly all year round."
             features={[

@@ -78,9 +78,15 @@ export async function POST(request: NextRequest) {
     };
 
     // Send email using Resend
+    // NOTE: When using onboarding@resend.dev (free tier without verified domain),
+    // you can ONLY send emails to the email address that registered the Resend account.
+    // To send to any email (like info@triple-a.ae), you must:
+    // 1. Add and verify your domain (triple-a.ae) in Resend dashboard
+    // 2. Use your verified domain as the "from" address (e.g., noreply@triple-a.ae)
+    const recipientEmail = process.env.CONTACT_EMAIL || "info@triple-a.ae";
     const result = await resend.emails.send({
       from: "onboarding@resend.dev", // Use Resend's verified domain
-      to: process.env.CONTACT_EMAIL || "smsazzawi@gmail.com", // Get recipient from env
+      to: recipientEmail,
       replyTo: body.email, // User's email for reply-to
       subject: `New Contact Form Submission: ${body.subject}`,
       html: contactEmailTemplate(emailData),
@@ -88,7 +94,7 @@ export async function POST(request: NextRequest) {
 
     // Handle Resend API errors
     if (result.error) {
-      console.error("Resend error:", result.error);
+      console.error("Resend error:", JSON.stringify(result.error, null, 2));
       
       // Check for invalid API key
       if (result.error.statusCode === 401) {
@@ -104,7 +110,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: "Failed to send email", 
-          details: result.error.message 
+          details: result.error.message,
+          statusCode: result.error.statusCode
         },
         { status: 500 }
       );

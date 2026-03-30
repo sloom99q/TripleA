@@ -2,6 +2,9 @@ import Interior from '@/assets/imgs/fit-out.webp';
 import Walls from '@/assets/imgs/Walls.webp';
 import Flooring from '@/assets/imgs/Flooring.webp';
 import Ceiling from '@/assets/imgs/FamilySpace.webp';
+import Authority from '@/assets/imgs/Auth.jpeg';
+import MEP from '@/assets/imgs/MEP.png';
+import Renovation from '@/assets/imgs/renovation.jpg';
 
 export const ServicesData = [
     {
@@ -10,15 +13,15 @@ export const ServicesData = [
     },
     {
         title: 'MEP Contracting',
-        image: Ceiling,
+        image: MEP,
     },
     {
         title: 'Full/Partial Renovations',
-        image: Flooring,
+        image: Renovation,
     },
     {
         title: 'Authority Approvals',
-        image: Interior,
+        image: Authority,
     },
     {
         title: 'Ceiling Works',

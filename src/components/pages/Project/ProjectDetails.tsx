@@ -10,11 +10,56 @@ import Walls from '@/assets/imgs/Walls.webp';
 import Flooring from '@/assets/imgs/Flooring.webp';
 // @ts-ignore
 import Ceiling from '@/assets/imgs/FamilySpace.webp';
+import Wood1 from '@/assets/imgs/wood/1.jpg';
+import Wood2 from '@/assets/imgs/wood/2.jpg';
+import Wood3 from '@/assets/imgs/wood/3.jpg';
+import Wood4 from '@/assets/imgs/wood/4.jpeg';
+import Wood5 from '@/assets/imgs/wood/5.jpeg';
+import Wood6 from '@/assets/imgs/wood/6.jpeg';
+import Wood7 from '@/assets/imgs/wood/7.jpeg';
+import Wood8 from '@/assets/imgs/wood/8.jpeg';
+import Wood9 from '@/assets/imgs/wood/9.jpeg';
+import Wood10 from '@/assets/imgs/wood/10.jpeg';
+import Wood11 from '@/assets/imgs/wood/11.jpeg';
+import Wood12 from '@/assets/imgs/wood/12.jpeg';
+import Wood13 from '@/assets/imgs/wood/13.jpeg';
+// import Wood14 from '@/assets/imgs/wood/14.jpeg';
+import Wood14 from '@/assets/imgs/wood/3tg.jpg';
+import FacadeEmaar from '@/assets/imgs/Facade-Emaar.webp';
+import LandscapingEmaar from '@/assets/imgs/Landscaping-Emaar.webp';
+import CustomFloatingDesk from '@/assets/imgs/CustomFloatingDesk.gif';
+import Forma2 from '@/assets/imgs/Forma2.jpeg';
+import Forma3 from '@/assets/imgs/Forma3.jpeg';
+import Forma4 from '@/assets/imgs/Forma4.jpeg';
+import Forma from '@/assets/imgs/forma/5tg.jpg';
+import Forma5 from '@/assets/imgs/forma/5.jpeg';
+import Forma6 from '@/assets/imgs/forma/6.jpeg';
+import Forma7 from '@/assets/imgs/forma/7.jpeg';
+import out1 from '@/assets/imgs/city-walk/out1.jpeg';
+import out2 from '@/assets/imgs/city-walk/out2.jpeg';
+import out3 from '@/assets/imgs/city-walk/out3.jpeg';
+import inside1 from '@/assets/imgs/city-walk/inside1.jpeg';
+import inside2 from '@/assets/imgs/city-walk/inside2.jpeg';
+import city1 from '@/assets/imgs/city-walk/1.webp';
+import city2 from '@/assets/imgs/city-walk/2.webp';
+import city3 from '@/assets/imgs/city-walk/3.webp';
+import city4 from '@/assets/imgs/city-walk/4.webp';
+import city5 from '@/assets/imgs/city-walk/5.webp';
+import city6 from '@/assets/imgs/city-walk/6.webp';
+import city7 from '@/assets/imgs/city-walk/7.webp';
+import city8 from '@/assets/imgs/city-walk/8.webp';
+import city9 from '@/assets/imgs/city-walk/9.webp';
+import Jamaica1 from '@/assets/imgs/jamaica-blue/1.webp';
+import Jamaica2 from '@/assets/imgs/jamaica-blue/2.jpg';
+import Dune1 from '@/assets/imgs/dune-sahara/1.jpg';
+import DuneHeader from '@/assets/imgs/dune-sahara/DuneHeader.webp';
 
 type Detail = {
     image: string | StaticImageData;
     title: string;
     description: string;
+    scopeOfWork?: string[];
+    descriptionVariant?: 'default' | 'keypoints';
     imagePosition?: 'right' | 'left';
 };
 
@@ -44,81 +89,237 @@ const defaultDetails: Detail[] = [
 ];
 
 const detailsByProject: Record<string, Detail[]> = {
-    'emaar': [
+    'wood-group-corporate-office-fitout': [
         {
-            image: 'https://framerusercontent.com/images/B2Fiokv3psMmLi34o7oSvXVkEvM.png',
-            title: 'Facade',
-            description: 'The façade is a harmonious blend of design and functionality, showcasing clean lines, architectural details, and balanced proportions. Large windows allow natural light to flow in, framed by elegant trims or modern, minimalist edges. High-quality materials like stone, wood, or sleek cladding add texture and sophistication. The entrance is inviting, with a well-crafted door and thoughtful landscaping framing the structure. Lighting accents highlight the features at night, creating a dynamic and welcoming appearance that reflects the home’s personality and design ethos.'
+            image: Wood1,
+            title: 'Wood Group Fit-out',
+            description: "Engineering excellence meets commercial interior design. We delivered a high-performance fit-out for Wood Group, creating a workspace as precise as their technical heritage."
         },
         {
-            image: 'https://framerusercontent.com/images/KWy4402clYiRHjVjnPOLmeeQ1os.png',
+            image: Wood2,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: Wood3,
+            title: '',
+            description: '',
+        },
+        {
+            image: Wood4,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        // {
+        //     image: Wood5,
+        //     title: 'After',
+        //     description: '',
+        // },
+        {
+            image: Wood7,
+            title: '',
+            description: '',
+        },
+        {
+            image: Wood8,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: Wood9,
+            title: '',
+            description: '',
+        },
+        {
+            image: Wood14,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        }
+    ],
+    'forma-studio-architecture-office-design': [
+        {
+            image: CustomFloatingDesk,
+            title: 'Custom Floating Desk',
+            description: ''
+        },
+        {
+            image: Forma2,
+            title: '',
+            description: '',
+            scopeOfWork: [
+                'Ceiling works',
+                'Lightning system',
+                'Tiling works',
+                'Wall cladding',
+            ],
+            imagePosition: 'right'
+        },
+        {
+            image: Forma3,
+            title: 'Glass partition',
+            description: `Glass partition with switchable film for privacy and openness as needed, integrated with acoustic seals to maintain sound control while allowing natural light to permeate the workspace.`,
+            imagePosition: 'left'
+        },
+        {
+            image: Forma4,
+            title: `Joinery works`,
+            description: `Custom joinery with hidden cabinet doors that blend seamlessly into the wall, providing ample storage while maintaining a clean and minimalist aesthetic. The design incorporates push-to-open mechanisms for a sleek, handle-free look, and the cabinetry is finished in a matte material that complements the overall interior palette.`,
+            imagePosition: 'right'
+        },
+        {
+            image: Forma,
+            title: ``,
+            description: ``
+        },
+        {
+            image: Forma5,
+            title: ``,
+            description: ``
+        },
+        {
+            image: Forma6,
+            title: ``,
+            description: ``,
+            imagePosition: 'right'
+        },
+        {
+            image: Forma7,
+            title: ``,
+            description: ``,
+        }
+    ],
+    'celadon-central-park-residential-buildings': [
+        {
+            image: out1,
+            title: '',
+            description: '',
+            scopeOfWork: [
+                'Interior design fit-out',
+                'External building paint',
+                'Plaster',
+                'Paint',
+                'Gypsum board',
+                'Ceiling',
+                'Tiling',
+                'Joinery',
+            ],
+        },
+        {
+            image: out2,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: inside1,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: inside2,
+            title: '',
+            description: ''
+        },
+        {
+            image: city6,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: city1,
+            title: '',
+            description: ''
+        },
+        {
+            image: city2,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: city3,
+            title: '',
+            description: ''
+        },
+        {
+            image: city4,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: city5,
+            title: '',
+            description: ''
+        },
+        {
+            image: city7,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: city8,
+            title: '',
+            description: ''
+        },
+        {
+            image: city9,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+    ],
+    'emaar-villas-luxury-interior-design': [
+        {
+            image: LandscapingEmaar,
+            title: '',
+            description: '',
+            scopeOfWork: [
+                'Spray plaster system',
+                'Exterior paint',
+                'Landscape',
+                'Cement board',
+                'Cladding',
+                'Tiling',
+            ],
+        },
+        {
+            image: FacadeEmaar,
             title: 'Landscaping Area',
             description: 'The landscaping area is a carefully curated blend of nature and design. Lush greenery, vibrant flower beds, and neatly trimmed shrubs frame the property, creating a welcoming atmosphere. Winding stone pathways lead to seating nooks and functional spaces, such as a patio or garden beds. Decorative elements like water features, garden lighting, and sculptural accents add charm and character. Native plants and sustainable design practices ensure low maintenance and environmental harmony, while the layout encourages outdoor living and connection with nature.',
             imagePosition: 'right'
         }
     ],
-    'wall-finishes-cladding': [
+    'jamaica-blue-coffee-shop-hospitality-fitout': [
         {
-            image: Walls,
-            title: 'Wall Finishes & Cladding',
-            description: 'Durable, elegant cladding systems engineered for longevity.'
-        },
-        {
-            image: Interior,
-            title: 'Acoustic Treatments',
-            description: 'Performance walls that balance acoustics and aesthetics.',
-            imagePosition: 'right'
-        }
-    ],
-    'flooring-solutions': [
-        {
-            image: Flooring,
-            title: 'Flooring Solutions',
-            description: 'High-traffic-ready flooring with precise leveling and finishes.'
-        },
-        {
-            image: Ceiling,
-            title: 'Complementary Ceilings',
-            description: 'Integrated ceiling details to complete the spatial rhythm.',
-            imagePosition: 'right'
-        }
-    ],
-    'authority-approvals': [
-        {
-            image: Interior,
-            title: 'Authority Approvals',
-            description: 'Documentation, drawings, and coordination to secure approvals quickly.'
-        },
-        {
-            image: Walls,
-            title: 'Compliance Detailing',
-            description: 'Code-aligned finishes that meet authority specifications.',
-            imagePosition: 'right'
-        }
-    ],
-    'renovation-services': [
-        {
-            image: Flooring,
-            title: 'Renovation Services',
-            description: 'Phased renovation plans that minimize downtime for occupants.'
-        },
-        {
-            image: Interior,
+            image: Jamaica1,
             title: 'Adaptive Reuse',
-            description: 'Refreshed interiors that retain what works and improve what doesn’t.',
+            description: 'Refreshed interiors that retain what works and improve what doesn’t.'
+        },
+        {
+            image: Jamaica2,
+            title: '',
+            description: '',
             imagePosition: 'right'
         }
     ],
-    'mep-services': [
+    'dune-london-retail-store-fitout': [
         {
-            image: Ceiling,
-            title: 'MEP Services',
-            description: 'Integrated mechanical, electrical, and plumbing delivery with clean routing.'
+            image: Dune1,
+            title: '',
+            description: 'A premium commercial interior and full fitout for Dune London, featuring a bespoke ceiling design with integrated theatrical lighting, luxury footwear display systems, and high-traffic retail flooring.'
         },
         {
-            image: Walls,
-            title: 'Service Coordination',
-            description: 'Clash-free coordination ensuring finishes and services align.',
+            image: DuneHeader,
+            title: '',
+            description: '',
             imagePosition: 'right'
         }
     ],
@@ -140,6 +341,7 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId }) => 
                     imagePosition={detail.imagePosition}
                     title={detail.title}
                     description={detail.description}
+                    scopeOfWork={detail.scopeOfWork}
                 />
             ))}
         </Group>

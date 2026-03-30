@@ -1,7 +1,15 @@
+import EmaarShowcase from '@/assets/imgs/EmaarShowcase.webp';
+import FormaStudio from '@/assets/imgs/FormaStudio.png';
+import CityWalkHeader from '@/assets/imgs/city-walk/Header.jpg';
+import WoodHeader from '@/assets/imgs/wood/WoodHeader.jpg';
+import JamaicaHeader from '@/assets/imgs/jamaica-blue/JamaicaHeader.webp';
+import Dune1 from '@/assets/imgs/dune-sahara/1.jpg';
+import { StaticImageData } from 'next/image';
+
 export interface ProjectHeroProps {
   project?: {
     title: string;
-    image: string;
+    image: string | StaticImageData;
     description?: string;
     story?: string;
     client?: string;
@@ -12,63 +20,65 @@ export interface ProjectHeroProps {
 
 export const ProjectsData = [
     {
-        id: 'emaar',
+        id: 'wood-group-corporate-office-fitout',
+        title: 'Wood Group Fit-out',
+        image: WoodHeader,
+        description: 'Engineering excellence meets commercial interior design. We delivered a high-performance fit-out for Wood Group, creating a workspace as precise as their technical heritage.',
+        story: 'A full commercial interior fit-out featuring advanced MEP systems and acoustic glass partitions. We focused on ergonomic workstations and sustainable lighting for this corporate headquarters.',
+        client: 'Wood Group',
+        duration: '10 weeks',
+        location: 'Sharjah, Sahara Healthcare city',
+    },
+    {
+        id: 'forma-studio-architecture-office-design',
+        title: 'Forma Office Design',
+        image: FormaStudio,
+        description: 'A commercial interior built by designers, for designers. This fit-out for Forma Studio showcases a "living portfolio" of raw materials and structural transparency.',
+        story: 'Minimalist commercial fit-out highlighting industrial aesthetics. The interior features custom metal joinery, exposed concrete finishes, and an integrated architectural material library.',
+        client: 'Forma Studio',
+        duration: '10 weeks',
+        location: 'JVC, Bin-Ghatty',
+    },
+    {
+        id: 'celadon-central-park-residential-buildings',
+        title: `Celadon Central Park
+        by Merass
+        `,
+        image: CityWalkHeader,
+        description: 'Redefining high-end living at Central Park. Our commercial-grade fit-out for Celadon brings park-side serenity into every interior through organic textures and panoramic framing.',
+        story: 'High-spec interior fit-out for premium residential buildings. We handled the commercial procurement of marble finishes, smart-home automation, and bespoke cabinetry across multiple units.',
+        client: 'Merass',
+        duration: '18 weeks',
+        location: 'City Walk, Dubai',
+    },
+    {
+        id: 'emaar-villas-luxury-interior-design',
         title: 'Emaar',
-        image: 'https://framerusercontent.com/images/Ei18CfnuW3fLZxkwxmki15Yhdo.png',
-        description: 'Linear art moments, recessed light, and graphite walls over a long run.',
-        story: 'A monochrome executive wing featuring recessed linear lighting, graphite walls, and walnut accents tailored for quiet leadership zones. The design balances function with restrained luxury.',
+        image: EmaarShowcase,
+        description: 'Luxury executive office interior design in Dubai with recessed linear lighting, graphite feature walls, and custom walnut detailing.',
+        story: 'This Emaar executive wing was delivered as a high-end commercial interior fit-out in Dubai, combining monochrome palettes, recessed linear lighting, graphite walls, and walnut accents to create quiet leadership zones with premium functionality and timeless design.',
         client: 'Emaar Properties',
         duration: '14 weeks',
         location: 'Dubai, UAE',
     },
     {
-        id: 'concrete-studio',
-        title: 'Concrete Studio',
-        image: 'https://framerusercontent.com/images/44Jl7kH6R3saHM3s1qcGaHq33s.png',
-        description: 'Open plan with polished concrete, modular glazing, and monochrome furnishings.',
-        story: 'A modular studio space with polished concrete floors, switchable glazing, and floating track lighting designed for agile teams and rapid workshops.',
-        client: 'Studio Collective',
-        duration: '10 weeks',
-        location: 'Dubai Media City',
+        id: 'jamaica-blue-coffee-shop-hospitality-fitout',
+        title: 'Jamaica Blue Fit-out',
+        image: JamaicaHeader,
+        description: 'An urban coffee oasis. Our commercial interior strategy for Jamaica Blue uses warm timber fit-out elements to create a sensory escape for the modern commuter.',
+        story: 'Specialist hospitality commercial fit-out compliant with franchise standards. The interior features heavy-duty kitchen plumbing, custom counter joinery, and specialized acoustic dampening.',
+        client: 'Jamaica',
+        duration: '8 weeks',
+        location: 'Sharjah, Sahara Center',
     },
     {
-        id: 'monochrome-lobby',
-        title: 'Monochrome Lobby',
-        image: 'https://framerusercontent.com/images/BYd2fAKoSdoiNuFXD15OwuNQg.png?scale-down-to=1024',
-        description: 'Arrival space layered with stone, graphite metal, and diffused lighting.',
-        story: 'A restrained arrival hall with stone slabs, graphite metal trims, and diffused lighting to keep circulation calm and legible for visitors.',
-        client: 'DIFC Tower',
-        duration: '6 weeks',
-        location: 'DIFC, Dubai',
-    },
-    {
-        id: 'executive-boardroom',
-        title: 'Executive Boardroom',
-        image: 'https://framerusercontent.com/images/auuJrb6Saou2vqGY2RzjfKZcU.png?scale-down-to=2048',
-        description: 'Acoustic walls, smoked glass, and matte metals for focused decision rooms.',
-        story: 'A decision suite with acoustic walling, smoked glass partitions, concealed AV systems, and matte metals for distraction-free sessions.',
-        client: 'Private Investment Firm',
-        duration: '5 weeks',
-        location: 'Business Bay',
-    },
-    {
-        id: 'minimal-suite',
-        title: 'Minimal Suite',
-        image: 'https://framerusercontent.com/images/vV9y7xIdvUY4EsQatim3lRG34.png?scale-down-to=1024',
-        description: 'Residential suite in quiet neutrals with inset lighting and soft textiles.',
-        story: 'A calm residential suite with inset lighting, soft textiles, and smoked mirrors to extend perceived depth while maintaining warmth.',
-        client: 'Private Residence',
-        duration: '7 weeks',
-        location: 'Palm Jumeirah',
-    },
-    {
-        id: 'terrace-lounge',
-        title: 'Terrace Lounge',
-        image: 'https://framerusercontent.com/images/OUP0Tgayq6T57PMqkuvkOoOWYU.jpg?scale-down-to=2048',
-        description: 'Indoor-outdoor lounge with charcoal palette, low seating, and filtered daylight.',
-        story: 'An indoor-outdoor lounge space with charcoal masonry, low seating, and filtered daylight under a slatted canopy for seamless entertaining.',
-        client: 'Hospitality Group',
-        duration: '9 weeks',
-        location: 'JLT, Dubai',
+        id: 'dune-london-retail-store-fitout',
+        title: 'Dune London Retail',
+        image: Dune1,
+        description: 'The art of the "walk-through." We delivered a rhythmic commercial interior for Dune London, using a premium fit-out to turn a retail shop into a theatrical brand experience.',
+        story: 'ast-track commercial retail fit-out including modular display systems and high-traffic flooring. The interior design emphasizes theatrical lighting and luxury visual merchandising.',
+        client: 'Sahara Center',
+        duration: '8 weeks',
+        location: 'Sharjah, Sahara Center',
     },
 ];

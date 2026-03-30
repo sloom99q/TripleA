@@ -19,7 +19,7 @@ git push origin main
 # 2. Project settings → Environment Variables
 # 3. Add these for Production:
 #    RESEND_API_KEY = re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-#    CONTACT_EMAIL = smsazzawi@gmail.com
+#    CONTACT_EMAIL = info@triple-a.ae
 # 4. Redeploy
 # 5. Test at https://triple-a.ae/contact
 ```
@@ -41,7 +41,7 @@ npm run build
 
 # Set environment variables
 export RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda
-export CONTACT_EMAIL=smsazzawi@gmail.com
+export CONTACT_EMAIL=info@triple-a.ae
 export NODE_ENV=production
 
 # Start server (use PM2 or similar for persistence)
@@ -60,7 +60,7 @@ docker build -t triple-a .
 # Run container with env vars
 docker run -d \
   -e RESEND_API_KEY=re_CiETWJ2h_9MHcrnbihqT1uFYQy7hhERda \
-  -e CONTACT_EMAIL=smsazzawi@gmail.com \
+  -e CONTACT_EMAIL=info@triple-a.ae \
   -e NODE_ENV=production \
   -p 3000:3000 \
   triple-a
@@ -79,7 +79,7 @@ docker run -d \
 - [ ] Email validation rejects bad emails (e.g., "asd")
 - [ ] Valid email (e.g., "test@example.com") submits
 - [ ] Success modal appears
-- [ ] Email arrives in smsazzawi@gmail.com inbox within 2 minutes
+- [ ] Email arrives in info@triple-a.ae inbox within 2 minutes
 - [ ] Form resets after submission
 
 ## Key Points

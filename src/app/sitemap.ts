@@ -20,6 +20,42 @@
 import { MetadataRoute } from "next";
 import { ProjectsData } from "@/mockups/ProjectsData";
 
+// Blog posts data (only published posts will be included)
+const blogPostsData = [
+  {
+    slug: "complete-guide-interior-fit-out-dubai",
+    published: true,
+  },
+  {
+    slug: "mep-contracting-complete-overview",
+    published: false,
+  },
+  {
+    slug: "interior-design-trends-2025",
+    published: false,
+  },
+  {
+    slug: "renovation-costs-budgeting-guide",
+    published: false,
+  },
+  {
+    slug: "wall-finishes-cladding-options-guide",
+    published: false,
+  },
+  {
+    slug: "flooring-solutions-comparison",
+    published: false,
+  },
+  {
+    slug: "ceiling-design-acoustic-solutions",
+    published: false,
+  },
+  {
+    slug: "authority-approvals-dubai-fit-out",
+    published: false,
+  },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://triple-a.ae";
   const lastModified = new Date();
@@ -66,16 +102,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  // Blog posts (expandable)
-  const blogPages: MetadataRoute.Sitemap = [
-    {
-      url: `${baseUrl}/blog/getting-started-with-interior-design`,
+  // Blog posts (only published ones)
+  const blogPages: MetadataRoute.Sitemap = blogPostsData
+    .filter(post => post.published)
+    .map(post => ({
+      url: `${baseUrl}/blog/${post.slug}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.6,
-    },
-    // Add more blog posts here as they're created
-  ];
+    }));
 
   return [...staticPages, ...projectPages, ...blogPages];
 }

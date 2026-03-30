@@ -6,10 +6,11 @@ export interface Feature {
 }
 
 export interface ProjectDetailsProps {
-  image: string | StaticImageData;
+  image?: string | StaticImageData;
   imageAlt?: string;
   title: string;
   description: string;
+  scopeOfWork?: string[];
   features?: Feature[];
   imagePosition?: 'left' | 'right';
   className?: string;
