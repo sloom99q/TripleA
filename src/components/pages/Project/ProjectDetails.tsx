@@ -32,9 +32,6 @@ import Forma2 from '@/assets/imgs/Forma2.jpeg';
 import Forma3 from '@/assets/imgs/Forma3.jpeg';
 import Forma4 from '@/assets/imgs/Forma4.jpeg';
 import Forma from '@/assets/imgs/forma/5tg.jpg';
-import Forma5 from '@/assets/imgs/forma/5.jpeg';
-import Forma6 from '@/assets/imgs/forma/6.jpeg';
-import Forma7 from '@/assets/imgs/forma/7.jpeg';
 import out1 from '@/assets/imgs/city-walk/out1.jpeg';
 import out2 from '@/assets/imgs/city-walk/out2.jpeg';
 import out3 from '@/assets/imgs/city-walk/out3.jpeg';
@@ -174,22 +171,6 @@ const detailsByProject: Record<string, Detail[]> = {
             image: Forma,
             title: ``,
             description: ``
-        },
-        {
-            image: Forma5,
-            title: ``,
-            description: ``
-        },
-        {
-            image: Forma6,
-            title: ``,
-            description: ``,
-            imagePosition: 'right'
-        },
-        {
-            image: Forma7,
-            title: ``,
-            description: ``,
         }
     ],
     'celadon-central-park-residential-buildings': [

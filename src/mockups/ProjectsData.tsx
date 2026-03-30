@@ -1,5 +1,5 @@
 import EmaarShowcase from '@/assets/imgs/EmaarShowcase.webp';
-import FormaStudio from '@/assets/imgs/FormaStudio.png';
+import FormaStudio from '@/assets/imgs/FormaStudio.webp';
 import CityWalkHeader from '@/assets/imgs/city-walk/Header.jpg';
 import WoodHeader from '@/assets/imgs/wood/WoodHeader.jpg';
 import JamaicaHeader from '@/assets/imgs/jamaica-blue/JamaicaHeader.webp';
