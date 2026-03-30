@@ -5,112 +5,88 @@
  * 
  * This file:
  * - Generates an XML sitemap dynamically
- * - Includes all pages and blog posts
+ * - Includes all static pages with appropriate priorities
+ * - Includes only PUBLISHED blog posts
+ * - Includes all project pages with proper slugs
  * - Auto-updates when content changes
  * - Helps search engines crawl the site
  * - Available at /sitemap.xml
  * 
- * Benefits:
- * ✓ Automatic sitemap generation
- * ✓ SEO-friendly
- * ✓ Scalable (easy to add new pages)
- * ✓ No manual maintenance needed
+ * Static Page Priorities:
+ * - Homepage: 1.0
+ * - Services: 1.0
+ * - About, Projects: 0.9
+ * - Contact, Blog: 0.8
+ * 
+ * Dynamic Page Priorities:
+ * - Project pages: 0.8
+ * - Blog posts: 0.7
  */
 
 import { MetadataRoute } from "next";
 import { ProjectsData } from "@/mockups/ProjectsData";
-
-// Blog posts data (only published posts will be included)
-const blogPostsData = [
-  {
-    slug: "complete-guide-interior-fit-out-dubai",
-    published: true,
-  },
-  {
-    slug: "mep-contracting-complete-overview",
-    published: false,
-  },
-  {
-    slug: "interior-design-trends-2025",
-    published: false,
-  },
-  {
-    slug: "renovation-costs-budgeting-guide",
-    published: false,
-  },
-  {
-    slug: "wall-finishes-cladding-options-guide",
-    published: false,
-  },
-  {
-    slug: "flooring-solutions-comparison",
-    published: false,
-  },
-  {
-    slug: "ceiling-design-acoustic-solutions",
-    published: false,
-  },
-  {
-    slug: "authority-approvals-dubai-fit-out",
-    published: false,
-  },
-];
+import { getPublishedBlogPosts } from "@/mockups/BlogPostsData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://triple-a.ae";
-  const lastModified = new Date();
+  const currentDate = new Date();
 
-  // Main static pages
+  // Main static pages with appropriate priorities
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${baseUrl}`,
-      lastModified,
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
+      priority: 1.0,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified,
+      lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/projects`,
-      lastModified,
+      lastModified: currentDate,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified,
+      lastModified: currentDate,
       changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly",
       priority: 0.8,
     },
   ];
 
-  // Dynamic project pages
+  // Dynamic project pages - using actual project IDs/slugs
   const projectPages: MetadataRoute.Sitemap = ProjectsData.map((project) => ({
     url: `${baseUrl}/projects/${project.id}`,
-    lastModified,
+    lastModified: currentDate,
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
 
-  // Blog posts (only published ones)
-  const blogPages: MetadataRoute.Sitemap = blogPostsData
-    .filter(post => post.published)
-    .map(post => ({
-      url: `${baseUrl}/blog/${post.slug}`,
-      lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    }));
+  // Blog posts - ONLY published posts with their actual dates
+  const publishedPosts = getPublishedBlogPosts();
+  const blogPages: MetadataRoute.Sitemap = publishedPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishDate),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
 
   return [...staticPages, ...projectPages, ...blogPages];
 }

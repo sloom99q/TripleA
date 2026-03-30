@@ -31,100 +31,17 @@ import { PageContainer } from '@/layout/PageContainer';
 import Link from 'next/link';
 import '@/css/HeroScroll.globals.css';
 import motionStyles from '@/css/HeroScroll.module.css';
-
-// Import blog posts
-const blogPosts = [
-  {
-    slug: "complete-guide-interior-fit-out-dubai",
-    title: "Complete Guide to Interior Fit-Out in Dubai: Process, Timeline & Costs",
-    description: "Everything you need to know about interior fit-out projects in Dubai, from planning to completion.",
-    category: "Fit-Out",
-    author: "Triple A Interiors",
-    publishDate: "2025-03-01",
-    readTime: "8 min read",
-    published: true,
-  },
-  {
-    slug: "mep-contracting-complete-overview",
-    title: "MEP Contracting Explained: Mechanical, Electrical & Plumbing Systems",
-    description: "In-depth guide to MEP contracting, the essential infrastructure behind every building.",
-    category: "MEP",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-28",
-    readTime: "7 min read",
-    published: false,
-  },
-  {
-    slug: "interior-design-trends-2025",
-    title: "Interior Design Trends 2025: What's New and Timeless",
-    description: "Stay ahead of design trends with our guide to modern interior design styles for 2025.",
-    category: "Design Trends",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-25",
-    readTime: "6 min read",
-    published: false,
-  },
-  {
-    slug: "renovation-costs-budgeting-guide",
-    title: "Renovation Costs 2025: Budgeting Guide for Your Interior Project",
-    description: "Complete breakdown of renovation costs and how to budget effectively for interior projects.",
-    category: "Budget & Planning",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-22",
-    readTime: "8 min read",
-    published: false,
-  },
-  {
-    slug: "wall-finishes-cladding-options-guide",
-    title: "Wall Finishes & Cladding: Complete Guide to Modern Options",
-    description: "Explore wall finishes and cladding options for your interior design project.",
-    category: "Materials",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-20",
-    readTime: "7 min read",
-    published: false,
-  },
-  {
-    slug: "flooring-solutions-comparison",
-    title: "Complete Guide to Flooring Solutions for Every Space",
-    description: "Explore flooring options including tiles, wood, vinyl, and epoxy for your interior project.",
-    category: "Materials",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-18",
-    readTime: "8 min read",
-    published: false,
-  },
-  {
-    slug: "ceiling-design-acoustic-solutions",
-    title: "Ceiling Design & Acoustic Solutions for Modern Interiors",
-    description: "Explore false ceiling options, acoustic treatments, and ceiling design trends.",
-    category: "Design",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-15",
-    readTime: "7 min read",
-    published: false,
-  },
-  {
-    slug: "authority-approvals-dubai-fit-out",
-    title: "Navigate Authority Approvals for Interior Fit-Out in Dubai",
-    description: "Complete guide to Dubai Municipality, DEWA, and other approvals needed for fit-out projects.",
-    category: "Regulations",
-    author: "Triple A Interiors",
-    publishDate: "2025-02-12",
-    readTime: "8 min read",
-    published: false,
-  },
-];
+import { BlogPostsData } from '@/mockups/BlogPostsData';
 
 // Extract unique categories
-const categories = Array.from(new Set(blogPosts.map(post => post.category)));
+const categories = Array.from(new Set(BlogPostsData.map(post => post.category).filter(Boolean)));
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Filter posts based on search, category, and published status
-  const filteredPosts = blogPosts.filter(post => {
+  const filteredPosts = BlogPostsData.filter(post => {
     const matchesSearch = 
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -190,7 +107,7 @@ export default function BlogPage() {
                   <Button
                     key={category}
                     variant={selectedCategory === category ? 'filled' : 'light'}
-                    onClick={() => setSelectedCategory(category)}
+                    onClick={() => setSelectedCategory(category || null)}
                     size="xs"
                   >
                     {category}
@@ -201,7 +118,7 @@ export default function BlogPage() {
 
             {/* Results Count */}
             <Text c="dimmed" size="sm">
-              Showing {sortedPosts.length} of {blogPosts.length} articles
+              Showing {sortedPosts.length} of {BlogPostsData.length} articles
             </Text>
           </Box>
 
