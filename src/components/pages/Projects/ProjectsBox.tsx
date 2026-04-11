@@ -39,6 +39,18 @@ const ProjectsBox = memo(
 
     const accent = useMemo(() => accentPalette[index % accentPalette.length], [index]);
 
+    // Manual mobile heights for each index - gradual progression
+    const getMobileHeight = () => {
+      if (!isMobile) return height;
+      // Progressive sizing: largest at top, smaller towards bottom, but all visible
+      if (index === 0) return 420;
+      if (index === 1) return 380;
+      if (index === 2) return 420;
+      if (index === 3) return 340;
+      if (index === 4) return 340;
+      return 340; // Last item still visible
+    };
+
     const handleMouseEnter = useCallback(() => setIsHovered(true), []);
     const handleMouseLeave = useCallback(() => setIsHovered(false), []);
     const handleNavigate = useCallback(() => router.push(`/projects/${project.id}`), [router, project.id]);
@@ -82,7 +94,7 @@ const ProjectsBox = memo(
           style={{
             position: 'relative',
             overflow: 'hidden',
-            height: isMobile ? height * 0.85 : height,
+            height: getMobileHeight(),
             borderRadius: CARD_RADIUS - 1,
               background: 'linear-gradient(145deg, #080808ff 0%, #050505ff 60%, #0d0d0dff 100%)',
             border: '1px solid rgba(255,255,255,0.06)',

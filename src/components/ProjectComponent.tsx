@@ -68,7 +68,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
 
         {scopeOfWork && scopeOfWork.length > 0 && (
           <Box ml={{ base: 8, md: 20 }} mt={{ base: 'sm', md: 'md' }}>
-            <Text fw={500} size={isMobile ? 'md' : 'lg'} mb="xs">
+            <Text fw={500} size={isMobile ? 'xl' : 'lg'} mb="xs">
               Scope of work
             </Text>
             <List spacing="xs" withPadding size={isMobile ? 'sm' : 'md'}>

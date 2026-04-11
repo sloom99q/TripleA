@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import React from "react";
@@ -19,12 +19,114 @@ import { Analytics } from "@vercel/analytics/next";
  * - Includes the global Footer component
  * - Applies global styles
  * - Sets up the HTML/body structure
+ * - Configures comprehensive SEO meta tags for social sharing
  */
 
+const SITE_URL = "https://triple-a.ae";
+const SITE_NAME = "Triple A Interiors";
+const DEFAULT_DESCRIPTION = "Transform your space with Triple A Interiors - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
+const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#000000",
+};
+
 export const metadata: Metadata = {
-  title: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
-  description:
-    "Transform your space with Triple A Interiors - Dubai's leading interior fit-out company specializing in commercial and residential design.",
+  // Base metadata
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
+    template: "%s | Triple A Interiors",
+  },
+  description: DEFAULT_DESCRIPTION,
+  keywords: [
+    "interior fit-out Dubai",
+    "interior design Dubai",
+    "office fit-out",
+    "residential design",
+    "interior company UAE",
+    "commercial interior design",
+    "luxury interiors Dubai",
+    "fit-out contractor Dubai",
+    "interior renovation Dubai",
+    "Triple A Interiors",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  // Canonical
+  alternates: {
+    canonical: SITE_URL,
+  },
+
+  // Open Graph - Facebook, WhatsApp, Instagram, LinkedIn
+  openGraph: {
+    type: "website",
+    locale: "en_AE",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
+    description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: OG_IMAGE_URL,
+        width: 1200,
+        height: 723,
+        alt: "Triple A Interiors - Premium Interior Fit-Out in Dubai",
+        type: "image/png",
+      },
+    ],
+  },
+
+  // Twitter Card
+  twitter: {
+    card: "summary_large_image",
+    title: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE_URL],
+    creator: "@tripleainteriors",
+    site: "@tripleainteriors",
+  },
+
+  // Additional metadata
+  category: "Interior Design",
+  classification: "Business",
+
+  // App links (for mobile)
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: SITE_NAME,
+  },
+
+  // Verification (add your actual verification codes)
+  // verification: {
+  //   google: "your-google-verification-code",
+  //   yandex: "your-yandex-verification-code",
+  // },
+
+  // Other
+  other: {
+    "fb:app_id": "", // Add Facebook App ID if available
+    "og:locale:alternate": "ar_AE",
+  },
 };
 
 interface RootLayoutProps {

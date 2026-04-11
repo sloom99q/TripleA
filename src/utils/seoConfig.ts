@@ -2,8 +2,6 @@
  * SEO Configuration utility for managing meta tags and OpenGraph data
  * Provides a reusable hook and utility functions for consistent SEO across pages
  */
-// @ts-ignore
-import ogImage from '@/assets/imgs/og-image.png';
 
 export interface SEOMetadata {
   title: string;
@@ -22,7 +20,8 @@ export interface SEOMetadata {
 
 export const BASE_URL = 'https://triple-a.ae';
 export const DEFAULT_BRAND = 'Triple A Interiors';
-export const DEFAULT_OG_IMAGE = `${ogImage}`; // Update with actual OG image path
+export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
+export const DEFAULT_DESCRIPTION = "Transform your space with Triple A Interiors - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
 
 /**
  * Create complete SEO metadata object with defaults
@@ -30,9 +29,9 @@ export const DEFAULT_OG_IMAGE = `${ogImage}`; // Update with actual OG image pat
 export const createSEOMetadata = (config: Partial<SEOMetadata>): SEOMetadata => {
   return {
     title: config.title || DEFAULT_BRAND,
-    description: config.description || 'Premium interior fit-out company in Dubai',
+    description: config.description || DEFAULT_DESCRIPTION,
     ogTitle: config.ogTitle || config.title || DEFAULT_BRAND,
-    ogDescription: config.ogDescription || config.description || 'Premium interior fit-out company in Dubai',
+    ogDescription: config.ogDescription || config.description || DEFAULT_DESCRIPTION,
     ogImage: config.ogImage || DEFAULT_OG_IMAGE,
     ogType: config.ogType || 'website',
     ogUrl: config.ogUrl || BASE_URL,
