@@ -23,8 +23,8 @@ import { Analytics } from "@vercel/analytics/next";
  */
 
 const SITE_URL = "https://triple-a.ae";
-const SITE_NAME = "Triple A Interiors";
-const DEFAULT_DESCRIPTION = "Transform your space with Triple A Interiors - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
+const SITE_NAME = "TripleA";
+const DEFAULT_DESCRIPTION = "Transform your space with TripleA - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 export const viewport: Viewport = {
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   // Base metadata
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
-    template: "%s | Triple A Interiors",
+    default: "TripleA | Premium Interior Fit-Out Company in Dubai",
+    template: "%s | TripleA",
   },
   description: DEFAULT_DESCRIPTION,
   keywords: [
@@ -82,7 +82,7 @@ export const metadata: Metadata = {
     locale: "en_AE",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
+    title: "TripleA | Premium Interior Fit-Out Company in Dubai",
     description: DEFAULT_DESCRIPTION,
     images: [
       {
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: "summary_large_image",
-    title: "Triple A Interiors | Premium Interior Fit-Out Company in Dubai",
+    title: "TripleA | Premium Interior Fit-Out Company in Dubai",
     description: DEFAULT_DESCRIPTION,
     images: [OG_IMAGE_URL],
     creator: "@tripleainteriors",
@@ -133,11 +133,42 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+// Organization Schema with Logo for Search Results
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "TripleA",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  description: DEFAULT_DESCRIPTION,
+  sameAs: [
+    "https://www.facebook.com/tripleainteriors",
+    "https://www.instagram.com/tripleainteriors",
+    "https://www.linkedin.com/company/triple-a-interiors",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "Customer Service",
+    telephone: "+971-4-XXX-XXXX", // Update with actual phone
+    email: "info@triple-a.ae", // Update with actual email
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Dubai, UAE", // Update with actual address
+    addressLocality: "Dubai",
+    addressCountry: "AE",
+  },
+};
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        {/* Additional meta tags can be added here */}
+        {/* Organization Schema for Search Results */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
       </head>
       <body>
         <SmoothScrollProvider>
