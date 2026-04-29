@@ -140,7 +140,7 @@ A successful interior fit-out project in Dubai requires careful planning, experi
     author: "Triple A Interiors",
     publishDate: "2025-02-28",
     readTime: "7 min read",
-    published: false,
+    published: true,
     category: "MEP",
     content: `## What is MEP Contracting?
 
@@ -246,7 +246,7 @@ MEP contracting is the foundation of modern buildings. Investing in quality MEP 
     author: "Triple A Interiors",
     publishDate: "2025-02-25",
     readTime: "6 min read",
-    published: false,
+    published: true,
     category: "Design Trends",
     content: `## Interior Design Trends Shaping 2025
 
