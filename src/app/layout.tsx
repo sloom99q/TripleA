@@ -26,6 +26,8 @@ const SITE_URL = "https://triple-a.ae";
 const SITE_NAME = "TripleA";
 const DEFAULT_DESCRIPTION = "Transform your space with TripleA - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
+const LOGO_URL = `${SITE_URL}/logo.png`;
+const LOGO_URL_WEBP = `${SITE_URL}/logo.webp`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -86,6 +88,13 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
     images: [
       {
+        url: LOGO_URL,
+        width: 256,
+        height: 256,
+        alt: "TripleA Logo",
+        type: "image/png",
+      },
+      {
         url: OG_IMAGE_URL,
         width: 1200,
         height: 723,
@@ -100,7 +109,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TripleA | Premium Interior Fit-Out Company in Dubai",
     description: DEFAULT_DESCRIPTION,
-    images: [OG_IMAGE_URL],
+    images: [LOGO_URL, OG_IMAGE_URL],
     creator: "@tripleainteriors",
     site: "@tripleainteriors",
   },
@@ -129,10 +138,22 @@ export const metadata: Metadata = {
     "og:image:type": "image/png",
     "og:image:width": "1200",
     "og:image:height": "723",
+    "og:logo": LOGO_URL,
+    "business:contact_data:street_address": "Dubai, UAE",
+    "business:contact_data:locality": "Dubai",
+    "business:contact_data:postal_code": "",
+    "business:contact_data:country_name": "United Arab Emirates",
   },
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/logo.webp", type: "image/webp" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo.webp" },
+      { url: "/logo.png" },
+    ],
+    shortcut: "/logo.png",
   },
 };
 

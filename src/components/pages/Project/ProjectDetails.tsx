@@ -10,6 +10,9 @@ import Walls from '@/assets/imgs/Walls.webp';
 import Flooring from '@/assets/imgs/Flooring.webp';
 // @ts-ignore
 import Ceiling from '@/assets/imgs/FamilySpace.webp';
+import Woodnew1 from '@/assets/imgs/wood/new1.jpg';
+import Woodnew2 from '@/assets/imgs/wood/new2.jpg';
+import Woodnew3 from '@/assets/imgs/wood/new3.jpg';
 import Wood1 from '@/assets/imgs/wood/1.jpg';
 import Wood2 from '@/assets/imgs/wood/2.jpg';
 import Wood3 from '@/assets/imgs/wood/3.jpg';
@@ -91,6 +94,23 @@ const detailsByProject: Record<string, Detail[]> = {
             image: Wood1,
             title: 'Wood Group Fit-out',
             description: "Engineering excellence meets commercial interior design. We delivered a high-performance fit-out for Wood Group, creating a workspace as precise as their technical heritage."
+        },
+        {
+            image: Woodnew1,
+            title: '',
+            description: '',
+            imagePosition: 'right'
+        },
+        {
+            image: Woodnew2,
+            title: '',
+            description: '',
+        },
+        {
+            image: Woodnew3,
+            title: '',
+            description: '',
+            imagePosition: 'right'
         },
         {
             image: Wood2,
