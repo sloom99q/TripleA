@@ -60,39 +60,39 @@ export default function BlogPage() {
       {/* Hero Section */}
       <Box
         style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(145deg, #0f1018ff 0%, #1a1a2e 50%, #16213e 100%)',
           color: 'white',
-          padding: '80px 20px',
+          padding: '60px 20px',
           textAlign: 'center',
         }}
       >
         <Container>
-          <Title order={1} size="h1" mb={20} className={motionStyles.scrollFloatMedium}>
+          <Title order={1} size="h2" mb={16} className={motionStyles.scrollFloatMedium}>
             Interior Design & Construction Blog
           </Title>
-          <Text size="lg" mb={10} style={{ maxWidth: '600px', margin: '0 auto' }} className={motionStyles.scrollFloatSmall}>
+          <Text size="md" mb={10} style={{ maxWidth: '600px', margin: '0 auto' }} className={motionStyles.scrollFloatSmall}>
             Expert insights on interior fit-out, design trends, materials, and Dubai construction regulations
           </Text>
         </Container>
       </Box>
 
       {/* Blog Content */}
-      <Container py={80} size="lg">
+      <Container py={60} size="lg">
           {/* Search and Filter Section */}
-          <Box mb={60}>
+          <Box mb={50}>
             {/* Search Bar */}
             <Input
               placeholder="Search blog posts..."
-              size="lg"
-              mb={30}
+              size="md"
+              mb={24}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.currentTarget.value)}
               style={{ maxWidth: '400px' }}
             />
 
             {/* Category Filter */}
-            <Box mb={30}>
-              <Text fw={600} mb={12} size="sm">
+            <Box mb={24}>
+              <Text fw={600} mb={10} size="xs">
                 Filter by Category:
               </Text>
               <Group gap={8}>
@@ -124,7 +124,7 @@ export default function BlogPage() {
 
           {/* Blog Posts Grid */}
           {sortedPosts.length > 0 ? (
-            <SimpleGrid cols={{ base: 1, sm: 1, md: 2, lg: 2 }} spacing="lg" mb={60}>
+            <SimpleGrid cols={{ base: 1, sm: 1, md: 2, lg: 2 }} spacing="md" mb={50}>
               {sortedPosts.map((post) => (
                 <Link
                   key={post.slug}
@@ -162,12 +162,12 @@ export default function BlogPage() {
                     </Group>
 
                     {/* Title */}
-                    <Title order={3} mb={12} lineClamp={2}>
+                    <Title order={4} mb={10} lineClamp={2} size="h5">
                       {post.title}
                     </Title>
 
                     {/* Description */}
-                    <Text c="dimmed" size="sm" mb={20} lineClamp={3}>
+                    <Text c="dimmed" size="sm" mb={16} lineClamp={3}>
                       {post.description}
                     </Text>
 
@@ -198,17 +198,17 @@ export default function BlogPage() {
 
           {/* CTA Section */}
           <Box
-            mt={80}
-            pt={60}
+            mt={60}
+            pt={40}
             style={{
               borderTop: '1px solid #dee2e6',
               textAlign: 'center',
             }}
           >
-            <Title order={2} mb={20}>
+            <Title order={3} mb={16}>
               Ready to Transform Your Space?
             </Title>
-            <Text mb={30} size="lg" c="dimmed" style={{ maxWidth: '600px', margin: '0 auto 30px' }}>
+            <Text mb={24} size="md" c="dimmed" style={{ maxWidth: '600px', margin: '0 auto 24px' }}>
               Our expert team at Triple A Interiors is here to turn your vision into reality.
               Contact us today for a free consultation on your next interior fit-out project.
             </Text>

@@ -32,19 +32,19 @@ function MarkdownContent({ content }: { content: string }) {
     // Headings
     if (line.startsWith('## ')) {
       elements.push(
-        <Title key={`h2-${i}`} order={2} mt={30} mb={15}>
+        <Title key={`h2-${i}`} order={2} mt={24} mb={12} size="h4">
           {line.replace('## ', '')}
         </Title>
       );
     } else if (line.startsWith('### ')) {
       elements.push(
-        <Title key={`h3-${i}`} order={3} mt={20} mb={12}>
+        <Title key={`h3-${i}`} order={3} mt={18} mb={10} size="h5">
           {line.replace('### ', '')}
         </Title>
       );
     } else if (line.startsWith('#### ')) {
       elements.push(
-        <Title key={`h4-${i}`} order={4} mt={15} mb={10}>
+        <Title key={`h4-${i}`} order={4} mt={12} mb={8} size="h6">
           {line.replace('#### ', '')}
         </Title>
       );
@@ -58,9 +58,9 @@ function MarkdownContent({ content }: { content: string }) {
       }
       i--; // Adjust because loop will increment
       elements.push(
-        <Box key={`list-${i}`} component="ul" ml={20} mb={15}>
+        <Box key={`list-${i}`} component="ul" ml={20} mb={12}>
           {listItems.map((item, idx) => (
-            <Text key={idx} component="li" mb={5}>
+            <Text key={idx} component="li" mb={4} size="sm">
               {item}
             </Text>
           ))}
@@ -70,7 +70,7 @@ function MarkdownContent({ content }: { content: string }) {
     // Bold text pattern
     else if (line.trim().startsWith('**') && line.trim().endsWith('**')) {
       elements.push(
-        <Text key={`bold-${i}`} fw={600} mb={10}>
+        <Text key={`bold-${i}`} fw={600} mb={8} size="sm">
           {line.replace(/\*\*/g, '')}
         </Text>
       );
@@ -150,13 +150,13 @@ function MarkdownContent({ content }: { content: string }) {
     // Regular paragraphs
     else if (line.trim()) {
       elements.push(
-        <Text key={`p-${i}`} mb={15} size="md" lineClamp={undefined}>
+        <Text key={`p-${i}`} mb={12} size="sm" lineClamp={undefined} style={{ lineHeight: 1.6 }}>
           {line}
         </Text>
       );
     } else {
       // Empty lines
-      elements.push(<Box key={`empty-${i}`} h={10} />);
+      elements.push(<Box key={`empty-${i}`} h={6} />);
     }
 
     i++;
@@ -171,30 +171,30 @@ function MarkdownContent({ content }: { content: string }) {
 export function BlogPostContent({ post }: { post: BlogPost }) {
   return (
     <PageContainer>
-      <Box py={80} mt={50} component="article">
+      <Box py={60} mt={30} component="article">
         {/* Semantic H1 for SEO */}
-        <h1 style={{ marginBottom: "1rem", fontSize: "2.5rem", fontWeight: 700 }}>
+        <h1 style={{ marginBottom: "1.2rem", fontSize: "2rem", fontWeight: 700, lineHeight: 1.3 }}>
           {post.title}
         </h1>
 
         {/* Article metadata */}
-        <Box mb={40}>
+        <Box mb={30}>
           <Text c="dimmed" size="sm">
             By {post.author} • {post.publishDate} • {post.readTime}
           </Text>
         </Box>
 
         {/* Article content */}
-        <Box component="section" style={{ maxWidth: "800px" }}>
+        <Box component="section" style={{ maxWidth: "750px" }}>
           <MarkdownContent content={post.content} />
         </Box>
 
         {/* Share and CTA Section */}
-        <Box mt={60} pt={40} style={{ borderTop: "1px solid #dee2e6" }}>
-          <Text fw={600} mb={15}>
+        <Box mt={50} pt={30} style={{ borderTop: "1px solid #dee2e6" }}>
+          <Text fw={600} mb={12} size="sm">
             Ready to start your interior fit-out project?
           </Text>
-          <Text mb={20} size="sm" c="dimmed">
+          <Text mb={16} size="sm" c="dimmed">
             Contact Triple A Interiors for a free consultation on your next project.
           </Text>
         </Box>
