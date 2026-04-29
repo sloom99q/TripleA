@@ -126,6 +126,13 @@ export const metadata: Metadata = {
   other: {
     "fb:app_id": "", // Add Facebook App ID if available
     "og:locale:alternate": "ar_AE",
+    "og:image:type": "image/png",
+    "og:image:width": "1200",
+    "og:image:height": "723",
+  },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
   },
 };
 
@@ -139,7 +146,13 @@ const organizationSchema = {
   "@type": "Organization",
   name: "TripleA",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+    width: 256,
+    height: 256,
+  },
+  image: `${SITE_URL}/logo.png`,
   description: DEFAULT_DESCRIPTION,
   sameAs: [
     "https://www.facebook.com/tripleainteriors",
@@ -160,14 +173,45 @@ const organizationSchema = {
   },
 };
 
+// Local Business Schema for better local search visibility
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": SITE_URL,
+  name: "TRIPLEA INTERIORS",
+  image: `${SITE_URL}/logo.png`,
+  description: DEFAULT_DESCRIPTION,
+  url: SITE_URL,
+  telephone: "+971585500359",
+  email: "info@triple-a.ae",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Dubai, UAE",
+    addressLocality: "Dubai",
+    addressRegion: "DU",
+    addressCountry: "AE",
+  },
+  sameAs: [
+    "https://www.facebook.com/tripleainteriors",
+    "https://www.instagram.com/tripleainteriors",
+    "https://www.linkedin.com/company/triple-a-interiors",
+  ],
+  priceRange: "$$",
+};
+
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        {/* Organization Schema for Search Results */}
+        {/* Organization Schema with Logo for Search Results */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        {/* Local Business Schema for Local Search Visibility and Logo Display */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
       <body>
