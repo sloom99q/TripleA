@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 /**
  * Projects Page for Next.js App Router
  * 
@@ -17,7 +15,9 @@ import { Box } from "@mantine/core";
 import ProjectsHero from "@/components/pages/Projects/ProjectsHero";
 import ProjectsGrid from "@/components/pages/Projects/ProjectsGrid";
 import { CTASection } from "@/components/pages/About";
-import { FullPageContainer } from "@/layout/PageContainer";
+import { FullPageContainer, PageContainer } from "@/layout/PageContainer";
+import { VastuShastraSection } from "@/components/pages/Projects/VastuOffice";
+import FAQComponent from "@/components/FAQ";
 
 /**
  * Projects Page Component
@@ -35,12 +35,22 @@ export default function ProjectsPage() {
         <ProjectsHero />
       </Box>
 
+      {/* Vastu Shastra Section */}
+      <VastuShastraSection />
+
       {/* Projects Grid */}
       <FullPageContainer>
         <Box component="section" aria-label="Projects grid" mt={80} mb={80}>
           <ProjectsGrid noBg />
         </Box>
       </FullPageContainer>
+
+      {/* FAQ Section */}
+      <PageContainer>
+        <Box component="section" aria-label="Frequently asked questions" mt={100} mb={60}>
+          <FAQComponent />
+        </Box>
+      </PageContainer>
 
       {/* Call-to-Action Section */}
       <Box component="section" aria-label="Call to action" mb={60}>
