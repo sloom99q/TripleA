@@ -71,12 +71,21 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Triple A Interiors",
-  url: "https://triple-a.ae",
-  logo: "https://triple-a.ae/logo.png",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "TRIPLE A INTERIORS",
+      url: "https://triple-a.ae",
+      logo: "https://triple-a.ae/logo.png",
+    },
+    {
+      "@type": "WebSite",
+      name: "TRIPLE A INTERIORS",
+      url: "https://triple-a.ae/",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -90,7 +99,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify(structuredData),
           }}
         />
       </head>
