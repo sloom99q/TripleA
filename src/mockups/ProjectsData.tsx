@@ -2,7 +2,7 @@ import EmaarShowcase from '@/assets/imgs/EmaarShowcase.webp';
 import FormaStudio from '@/assets/imgs/FormaStudio.webp';
 import CityWalkHeader from '@/assets/imgs/city-walk/Header.jpg';
 import WoodHeader from '@/assets/imgs/wood/WoodHeader.jpg';
-import JVCHeader from '@/assets/imgs/Jvc-ac/Header.jpeg';
+import JVCHeader from '@/assets/imgs/jvc-ac/Header.jpeg';
 import Dune1 from '@/assets/imgs/dune-sahara/1.jpg';
 import { StaticImageData } from 'next/image';
 

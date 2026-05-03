@@ -59,10 +59,8 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [{ url: "/onlyLogoBlack.png", type: "image/png", sizes: "192x192" }],
-    apple: [
-      { url: "/onlyLogoBlack.png", sizes: "192x192", type: "image/png" },
-    ],
+    icon: [{ url: "/logo-bg.png", type: "image/png", sizes: "192x192" }],
+    apple: [{ url: "/logo-bg.png", sizes: "180x180", type: "image/png" }],
   },
 
   twitter: {
