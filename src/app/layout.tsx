@@ -10,11 +10,6 @@ import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import { Analytics } from "@vercel/analytics/next";
 
-const SITE_URL = "https://triple-a.ae";
-const SITE_NAME = "Triple A Interiors";
-const DESCRIPTION =
-  "Premium interior fit-out company in Dubai specializing in commercial and residential projects. High-end design, execution, and turnkey solutions.";
-
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -22,18 +17,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://triple-a.ae"),
 
   title: {
-    default:
-      "Premium Interior Fit-Out Company in Dubai | Triple A Interiors",
+    default: "Triple A Interiors Dubai | Luxury Fit-Out & Turnkey Projects",
     template: "%s | Triple A Interiors",
   },
 
-  description: DESCRIPTION,
+  description:
+    "Triple A Interiors delivers luxury fit-out and turnkey solutions across Dubai, built for high-end residential and commercial spaces.",
 
   alternates: {
-    canonical: SITE_URL,
+    canonical: "https://triple-a.ae/",
   },
 
   robots: {
@@ -43,11 +38,11 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    title:
-      "Premium Interior Fit-Out Company in Dubai | Triple A Interiors",
-    description: DESCRIPTION,
+    url: "https://triple-a.ae/",
+    siteName: "Triple A Interiors",
+    title: "Triple A Interiors Dubai | Luxury Fit-Out & Turnkey Projects",
+    description:
+      "Luxury interior fit-out and turnkey solutions in Dubai.",
     images: [
       {
         url: "/og-image.png",
@@ -58,27 +53,30 @@ export const metadata: Metadata = {
     ],
   },
 
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Premium Interior Fit-Out Company in Dubai | Triple A Interiors",
-    description: DESCRIPTION,
-    images: ["/og-image.png"],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
   },
 
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/logo.png",
+  twitter: {
+    card: "summary_large_image",
+    title: "Triple A Interiors Dubai | Luxury Fit-Out & Turnkey Projects",
+    description:
+      "Triple A Interiors delivers luxury fit-out and turnkey solutions across Dubai, built for high-end residential and commercial spaces.",
+    images: ["/og-image.png"],
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  name: "Triple A Interiors",
+  url: "https://triple-a.ae",
+  logo: "https://triple-a.ae/logo.png",
 };
 
 export default function RootLayout({

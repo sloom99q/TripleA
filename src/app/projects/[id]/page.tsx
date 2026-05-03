@@ -60,15 +60,6 @@ export async function generateMetadata({
   return {
     title: pageTitle,
     description: description,
-    keywords: [
-      cleanTitle,
-      "interior project",
-      "fit-out project Dubai",
-      "interior design",
-      project.client || "",
-      project.location || "",
-      "Triple A Interiors",
-    ].filter(Boolean),
     alternates: {
       canonical: `${SITE_URL}/projects/${resolvedParams.id}`,
     },

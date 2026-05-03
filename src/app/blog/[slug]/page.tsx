@@ -52,13 +52,6 @@ export async function generateMetadata({
   return {
     title: pageTitle,
     description: description,
-    keywords: [
-      post.category || "Interior Design",
-      "Dubai fit-out",
-      "interior design tips",
-      "construction Dubai",
-      "Triple A Interiors Blog",
-    ],
     authors: [{ name: post.author }],
     robots: post.published ? 'index, follow' : 'noindex, nofollow',
     alternates: {
