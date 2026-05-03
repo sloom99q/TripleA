@@ -18,6 +18,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://triple-a.ae"),
+  applicationName: "Triple A Interiors",
 
   title: {
     default: "Triple A Interiors Dubai | Luxury Fit-Out & Turnkey Projects",
@@ -34,6 +35,10 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+
+  appleWebApp: {
+    title: "Triple A Interiors",
   },
 
   openGraph: {
@@ -54,12 +59,10 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/logo.png", type: "image/png", sizes: "192x192" },
+    icon: [{ url: "/onlyLogoBlack.png", type: "image/png", sizes: "192x192" }],
+    apple: [
+      { url: "/onlyLogoBlack.png", sizes: "192x192", type: "image/png" },
     ],
-    shortcut: "/favicon.ico",
-    apple: [{ url: "/logo.png", sizes: "180x180", type: "image/png" }],
   },
 
   twitter: {
@@ -76,13 +79,13 @@ const structuredData = {
   "@graph": [
     {
       "@type": "Organization",
-      name: "TRIPLE A INTERIORS",
+      name: "Triple A Interiors",
       url: "https://triple-a.ae",
-      logo: "https://triple-a.ae/logo.png",
+      logo: "https://triple-a.ae/onlyLogoBlack.png",
     },
     {
       "@type": "WebSite",
-      name: "TRIPLE A INTERIORS",
+      name: "Triple A Interiors",
       url: "https://triple-a.ae/",
     },
   ],

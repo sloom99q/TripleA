@@ -53,7 +53,15 @@ import city8 from '@/assets/imgs/city-walk/8.webp';
 import city9 from '@/assets/imgs/city-walk/9.webp';
 import Jamaica1 from '@/assets/imgs/jamaica-blue/1.webp';
 import Jamaica2 from '@/assets/imgs/jamaica-blue/2.jpg';
-import Dune1 from '@/assets/imgs/dune-sahara/1.jpg';
+import BEFORE from '@/assets/imgs/dune-sahara/BEFORE.png';
+import BEFORE2 from '@/assets/imgs/dune-sahara/BEFORE2.png';
+import Dune2 from '@/assets/imgs/dune-sahara/2.jpg';
+import Dune3 from '@/assets/imgs/dune-sahara/3.jpg';
+import Dune4 from '@/assets/imgs/dune-sahara/4.jpg';
+import Dune5 from '@/assets/imgs/dune-sahara/5.jpg';
+import Dune6 from '@/assets/imgs/dune-sahara/6.jpg';
+import Dune7 from '@/assets/imgs/dune-sahara/7.jpg';
+import Dune8 from '@/assets/imgs/dune-sahara/8.jpg';
 import DuneHeader from '@/assets/imgs/dune-sahara/DuneHeader.webp';
 
 type Detail = {
@@ -311,18 +319,52 @@ const detailsByProject: Record<string, Detail[]> = {
             imagePosition: 'right'
         }
     ],
-    'dune-london-retail-store-fitout': [
+    'marbilla-villa-renovation': [
         {
-            image: Dune1,
-            title: '',
-            description: 'A premium commercial interior and full fitout for Dune London, featuring a bespoke ceiling design with integrated theatrical lighting, luxury footwear display systems, and high-traffic retail flooring.'
-        },
-        {
-            image: DuneHeader,
+            image: BEFORE,
             title: '',
             description: '',
-            imagePosition: 'right'
-        }
+        },
+        {
+            image: BEFORE2,
+            title: '',
+            description: '',
+        },
+        {
+            image: Dune2,
+            title: '',
+            description: '',
+        },
+        {
+            image: Dune3,
+            title: '',
+            description: ''
+        },
+        {
+            image: Dune4,
+            title: '',
+            description: '',
+        },
+        {
+            image: Dune5,
+            title: '',
+            description: ''
+        },
+        {
+            image: Dune6,
+            title: '',
+            description: '',
+        },
+        {
+            image: Dune7,
+            title: '',
+            description: ''
+        },
+        {
+            image: Dune8,
+            title: '',
+            description: '',
+        },
     ],
 };
 
