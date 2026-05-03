@@ -1,8 +1,9 @@
+'use client';
+
 import { Box, Container, Grid, Stack, Text, Title } from '@mantine/core';
 import CustomBadge from '@/components/CustomBadge';
 import { WhyChooseUsData } from '@/mockups/AboutData';
 import type { Icon } from '@tabler/icons-react';
-import { useMediaQuery } from '@mantine/hooks';
 
 interface WhyChooseItem {
   icon: Icon;
@@ -18,14 +19,11 @@ interface WhyChooseUsSectionProps {
 
 const FeatureCard = ({ item, index }: { item: WhyChooseItem; index: number }) => {
   const Icon = item.icon;
-  const isMobile = useMediaQuery('(max-width: 762px)');
 
   return (
     <Box
       p="xl"
-      bdrs={
-        isMobile ? '0px 50px 0 50px' : '50px'
-      }
+      bdrs={{ base: '0px 50px 0 50px', sm: '50px' }}
       style={{
         height: '100%',
         backgroundColor: index % 2 === 0 ? '#0a0a0a' : '#1a1a1a'

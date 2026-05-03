@@ -1,6 +1,7 @@
+'use client';
+
 import { Box, Container, Stack, Text, Title, Timeline as MantineTimeline, Badge } from '@mantine/core';
 import { TimelineData } from '@/mockups/AboutData';
-import { useMediaQuery } from '@mantine/hooks';
 
 interface TimelineItem {
   step: string;
@@ -19,11 +20,10 @@ export default function TimelineSection({
   subtitle = 'How We Work',
   items = TimelineData,
 }: TimelineSectionProps) {
-  const isMobile = useMediaQuery('(max-width: 768px)');
   return (
     <Box
       py={80}
-      px={isMobile ? 20 : 80}
+      px={{ base: 20, sm: 80 }}
       style={{
         width: '100%',
         background: 'radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06) 0%, rgba(10, 10, 10, 0) 28%), radial-gradient(circle at 80% 0%, rgba(140,140,140,0.08) 0%, rgba(12, 12, 12, 0) 22%), linear-gradient(145deg, #080808ff 0%, #0d0d0dff 50%, #060606ff 100%)',

@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { Container, Group, Text, Box, Stack, Button, TextInput, Select, Textarea, Grid, Anchor } from '@mantine/core';
 import { IconPhone, IconMail, IconMapPin, IconBrandInstagram, IconBrandX, IconBrandLinkedin } from '@tabler/icons-react';
 

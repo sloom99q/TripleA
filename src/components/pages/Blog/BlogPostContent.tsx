@@ -171,7 +171,7 @@ function MarkdownContent({ content }: { content: string }) {
 export function BlogPostContent({ post }: { post: BlogPost }) {
   return (
     <PageContainer>
-      <Box py={60} mt={30} component="article">
+      <Box py={60} mt={150} component="article">
         {/* Semantic H1 for SEO */}
         <h1 style={{ marginBottom: "1.2rem", fontSize: "2rem", fontWeight: 700, lineHeight: 1.3 }}>
           {post.title}

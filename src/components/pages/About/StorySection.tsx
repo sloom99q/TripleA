@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Grid, Image, Stack, Text, Title } from '@mantine/core';
 import CustomBadge from '@/components/CustomBadge';
 import { StoryData } from '@/mockups/AboutData';

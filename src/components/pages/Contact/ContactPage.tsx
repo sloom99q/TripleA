@@ -1,3 +1,5 @@
+'use client';
+
 import ContactForm from '@/components/pages/Contact/ContactForm';
 import ContactInfo from '@/components/pages/Contact/ContactInfo';
 import FAQComponent from '@/components/FAQ';

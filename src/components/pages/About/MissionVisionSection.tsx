@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Grid, Stack, Text, Title } from '@mantine/core';
 import { IconTargetArrow, IconEye, type Icon } from '@tabler/icons-react';
 import CustomBadge from '@/components/CustomBadge';

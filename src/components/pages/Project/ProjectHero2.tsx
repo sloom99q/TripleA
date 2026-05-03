@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Box, Stack, Group, Text, Grid, Badge } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import {

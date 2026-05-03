@@ -32,6 +32,7 @@ import Link from 'next/link';
 import '@/css/HeroScroll.globals.css';
 import motionStyles from '@/css/HeroScroll.module.css';
 import { BlogPostsData } from '@/mockups/BlogPostsData';
+import { CTASection } from '@/components/pages/About';
 
 // Extract unique categories
 const categories = Array.from(new Set(BlogPostsData.map(post => post.category).filter(Boolean)));
@@ -60,20 +61,12 @@ export default function BlogPage() {
       {/* Hero Section */}
       <Box
         style={{
-          background: 'linear-gradient(145deg, #0f1018ff 0%, #1a1a2e 50%, #16213e 100%)',
+          background: 'linear-gradient(145deg, #1d1d1dff 0%, #212121ff 50%, #232323ff 100%)',
           color: 'white',
           padding: '60px 20px',
           textAlign: 'center',
         }}
       >
-        <Container>
-          <Title order={1} size="h2" mb={16} className={motionStyles.scrollFloatMedium}>
-            Interior Design & Construction Blog
-          </Title>
-          <Text size="md" mb={10} style={{ maxWidth: '600px', margin: '0 auto' }} className={motionStyles.scrollFloatSmall}>
-            Expert insights on interior fit-out, design trends, materials, and Dubai construction regulations
-          </Text>
-        </Container>
       </Box>
 
       {/* Blog Content */}
@@ -196,28 +189,7 @@ export default function BlogPage() {
             </Box>
           )}
 
-          {/* CTA Section */}
-          <Box
-            mt={60}
-            pt={40}
-            style={{
-              borderTop: '1px solid #dee2e6',
-              textAlign: 'center',
-            }}
-          >
-            <Title order={3} mb={16}>
-              Ready to Transform Your Space?
-            </Title>
-            <Text mb={24} size="md" c="dimmed" style={{ maxWidth: '600px', margin: '0 auto 24px' }}>
-              Our expert team at Triple A Interiors is here to turn your vision into reality.
-              Contact us today for a free consultation on your next interior fit-out project.
-            </Text>
-            <Link href="/contact">
-              <Button size="lg" color="blue">
-                Start Your Project
-              </Button>
-            </Link>
-          </Box>
+          <CTASection />
       </Container>
     </>
   );

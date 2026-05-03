@@ -42,7 +42,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         className={styles.heroContainer}
         src={imageSrc}
         alt={imageAlt}
-        loading="lazy"
+        // loading="lazy"
         style={{            transition: 'transform 1200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms ease',
             // opacity: isHovered ? 0.7 : 0.85,
             borderRadius: 'inherit',

@@ -1,3 +1,5 @@
+'use client';
+
 import { Container, Title, Text, Grid, Image, Box, Stack } from '@mantine/core';
 import type { ClientsSectionProps } from '@/types/Clients';
 import { ClientsData } from '@/mockups/ClientsData';
@@ -49,7 +51,7 @@ export function ClientsSection({
                   fit="contain"
                   height={100}
                   w={200}
-                  loading="lazy"
+                  // loading="lazy"
                   style={{ maxWidth: '80%' }}
                 />
               </Box>

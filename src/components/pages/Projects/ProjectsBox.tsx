@@ -130,7 +130,7 @@ const ProjectsBox = memo(
               <Image
                 src={typeof project.image === 'string' ? project.image : project.image.src}
                 alt={project.title}
-                loading="lazy"
+                // loading="lazy"
                 // w={800}
                 // h={600}
                 style={{

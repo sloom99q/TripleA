@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { PAGE_SEO_CONFIG, BASE_URL } from '@/utils/seoConfig';
 import { Box } from '@mantine/core';

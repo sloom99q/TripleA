@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Stack, Text } from "@mantine/core";
 import styles from '@/css/HeroSection.module.css';
 import '@/css/HeroScroll.globals.css';

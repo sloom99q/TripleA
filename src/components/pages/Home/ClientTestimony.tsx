@@ -1,3 +1,5 @@
+'use client';
+
 import { Badge, Container, Stack, Text } from '@mantine/core';
 import Image from 'next/image';
 import img from '@/assets/imgs/Wood.webp';

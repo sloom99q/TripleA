@@ -1,3 +1,5 @@
+'use client';
+
 import { Stack, Text, Group, Box } from '@mantine/core';
 import { socials } from '@/mockups/SocialsData';
 

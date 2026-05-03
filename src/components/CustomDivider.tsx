@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Image } from "@mantine/core";
 // @ts-ignore
 import onlyLogoBlack from "@/assets/imgs/onlyLogoBlack.webp";

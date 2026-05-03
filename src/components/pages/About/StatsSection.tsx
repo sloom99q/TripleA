@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Grid, Stack, Text, Title } from '@mantine/core';
 import { StatsData } from '@/mockups/AboutData';
 
