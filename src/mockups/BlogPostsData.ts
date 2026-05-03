@@ -333,7 +333,7 @@ Smart homes and invisible technology are becoming standard.
     author: "Triple A Interiors",
     publishDate: "2025-02-22",
     readTime: "8 min read",
-    published: false,
+    published: true,
     category: "Budgeting",
     content: `## Understanding Renovation Costs in 2025
 
@@ -383,7 +383,7 @@ Renovation costs require careful planning and realistic budgeting. By understand
     author: "Triple A Interiors",
     publishDate: "2025-02-20",
     readTime: "7 min read",
-    published: false,
+    published: true,
     category: "Materials",
     content: `## Wall Finishes and Cladding Options
 
@@ -461,7 +461,7 @@ Wall finishes and cladding define your space's character. From subtle paint colo
     author: "Triple A Interiors",
     publishDate: "2025-02-18",
     readTime: "8 min read",
-    published: false,
+    published: true,
     category: "Materials",
     content: `## Flooring Solutions: Types, Benefits, and Comparisons
 
@@ -549,7 +549,7 @@ The right flooring elevates your space's functionality and aesthetic. Whether yo
     author: "Triple A Interiors",
     publishDate: "2025-02-15",
     readTime: "7 min read",
-    published: false,
+    published: true,
     category: "Design",
     content: `## Ceiling Design: Functionality Meets Aesthetics
 
@@ -616,7 +616,7 @@ The ceiling plays a crucial role in interior design. From sleek gypsum surfaces 
     author: "Triple A Interiors",
     publishDate: "2025-02-12",
     readTime: "8 min read",
-    published: false,
+    published: true,
     category: "Regulations",
     content: `## Authority Approvals for Interior Fit-Out in Dubai
 
@@ -695,12 +695,6 @@ One of the most critical yet complex aspects of fit-out projects in Dubai is sec
 Navigating Dubai's authority approvals requires expertise, documentation, and early planning. Working with experienced professionals ensures smoother approval processes and timely project completion.`,
   },
 ];
-
-/**
- * Get only published blog posts
- */
-export const getPublishedBlogPosts = () => 
-  BlogPostsData.filter(post => post.published === true);
 
 /**
  * Get blog post by slug

@@ -25,7 +25,7 @@
 
 import { MetadataRoute } from "next";
 import { ProjectsData } from "@/mockups/ProjectsData";
-import { getPublishedBlogPosts } from "@/mockups/BlogPostsData";
+import { BlogPostsData } from "@/mockups/BlogPostsData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://triple-a.ae";
@@ -79,9 +79,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Blog posts - ONLY published posts with their actual dates
-  const publishedPosts = getPublishedBlogPosts();
-  const blogPages: MetadataRoute.Sitemap = publishedPosts.map((post) => ({
+  // Blog posts - all posts with their actual dates
+  const blogPages: MetadataRoute.Sitemap = BlogPostsData.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(post.publishDate),
     changeFrequency: "weekly" as const,

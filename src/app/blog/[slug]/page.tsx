@@ -53,7 +53,7 @@ export async function generateMetadata({
     title: pageTitle,
     description: description,
     authors: [{ name: post.author }],
-    robots: post.published ? 'index, follow' : 'noindex, nofollow',
+    robots: 'index, follow',
     alternates: {
       canonical: `${SITE_URL}/blog/${post.slug}`,
     },

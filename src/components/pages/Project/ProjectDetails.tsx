@@ -170,10 +170,8 @@ const detailsByProject: Record<string, Detail[]> = {
             title: '',
             description: '',
             scopeOfWork: [
-                'Ceiling works',
-                'Lightning system',
-                'Tiling works',
-                'Wall cladding',
+                'Full Fit-out',
+                'MEP services',
             ],
             imagePosition: 'right'
         },

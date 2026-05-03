@@ -41,14 +41,13 @@ export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  // Filter posts based on search, category, and published status
+  // Filter posts based on search and category
   const filteredPosts = BlogPostsData.filter(post => {
     const matchesSearch = 
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.description.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = !selectedCategory || post.category === selectedCategory;
-    const isPublished = post.published === true;
-    return matchesSearch && matchesCategory && isPublished;
+    return matchesSearch && matchesCategory;
   });
 
   // Sort by date (newest first)
