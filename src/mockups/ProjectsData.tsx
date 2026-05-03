@@ -2,7 +2,7 @@ import EmaarShowcase from '@/assets/imgs/EmaarShowcase.webp';
 import FormaStudio from '@/assets/imgs/FormaStudio.webp';
 import CityWalkHeader from '@/assets/imgs/city-walk/Header.jpg';
 import WoodHeader from '@/assets/imgs/wood/WoodHeader.jpg';
-import JamaicaHeader from '@/assets/imgs/jamaica-blue/JamaicaHeader.webp';
+import JVCHeader from '@/assets/imgs/Jvc-ac/Header.jpeg';
 import Dune1 from '@/assets/imgs/dune-sahara/1.jpg';
 import { StaticImageData } from 'next/image';
 
@@ -77,15 +77,15 @@ export const ProjectsData: ProjectData[] = [
         location: 'Dubai, UAE',
     },
     {
-        id: 'jamaica-blue-coffee-shop-hospitality-fitout',
-        title: 'Jamaica Blue Fit-out',
-        image: JamaicaHeader,
-        ogImage: '/projects/jamaica.webp',
-        description: 'An urban coffee oasis. Our commercial interior strategy for Jamaica Blue uses warm timber fit-out elements to create a sensory escape for the modern commuter.',
-        story: 'Specialist hospitality commercial fit-out compliant with franchise standards. The interior features heavy-duty kitchen plumbing, custom counter joinery, and specialized acoustic dampening.',
-        client: 'Jamaica',
+        id: 'jvc-apartment-renovation',
+        title: 'JVC Apartment Renovation',
+        image: JVCHeader,
+        ogImage: '/projects/jvc.webp',
+        description: 'A residential interior fit-out. We transformed a JVC apartment into a warm, inviting urban retreat using custom timber joinery, integrated greenery, and ambient lighting.',
+        story: 'This project was an interior fit-out for a residential apartment, transforming it into a warm and inviting urban retreat. The design features custom timber joinery, integrated greenery, and ambient lighting to create a cozy yet sophisticated atmosphere.',
+        client: 'Private Owner',
         duration: '8 weeks',
-        location: 'Sharjah, Sahara Center',
+        location: 'JVC, Dubai',
     },
     {
         id: 'marbilla-villa-renovation',

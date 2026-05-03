@@ -51,8 +51,20 @@ import city6 from '@/assets/imgs/city-walk/6.webp';
 import city7 from '@/assets/imgs/city-walk/7.webp';
 import city8 from '@/assets/imgs/city-walk/8.webp';
 import city9 from '@/assets/imgs/city-walk/9.webp';
-import Jamaica1 from '@/assets/imgs/jamaica-blue/1.webp';
-import Jamaica2 from '@/assets/imgs/jamaica-blue/2.jpg';
+import JVCHeader from '@/assets/imgs/Jvc-ac/Header.jpeg';
+import JVC1 from '@/assets/imgs/Jvc-ac/1.jpeg';
+import JVC2 from '@/assets/imgs/Jvc-ac/2.jpeg';
+import JVC3 from '@/assets/imgs/Jvc-ac/3.jpeg';
+import JVC4 from '@/assets/imgs/Jvc-ac/4.jpeg';
+import JVC5 from '@/assets/imgs/Jvc-ac/5.jpeg';
+import JVC6 from '@/assets/imgs/Jvc-ac/6.jpeg';
+import JVC8 from '@/assets/imgs/Jvc-ac/8.jpeg';
+import JVC9 from '@/assets/imgs/Jvc-ac/9.jpeg';
+import c1 from '@/assets/imgs/Jvc-ac/c1.jpeg';
+import c2 from '@/assets/imgs/Jvc-ac/c2.jpeg';
+import c3 from '@/assets/imgs/Jvc-ac/c3.jpeg';
+import c4 from '@/assets/imgs/Jvc-ac/c4.jpeg';
+import c5 from '@/assets/imgs/Jvc-ac/c5.jpeg';
 import BEFORE from '@/assets/imgs/dune-sahara/BEFORE.png';
 import BEFORE2 from '@/assets/imgs/dune-sahara/BEFORE2.png';
 import Dune2 from '@/assets/imgs/dune-sahara/2.jpg';
@@ -306,17 +318,75 @@ const detailsByProject: Record<string, Detail[]> = {
             imagePosition: 'right'
         }
     ],
-    'jamaica-blue-coffee-shop-hospitality-fitout': [
+    'jvc-apartment-renovation': [
         {
-            image: Jamaica1,
-            title: 'Adaptive Reuse',
-            description: 'Refreshed interiors that retain what works and improve what doesn’t.'
-        },
-        {
-            image: Jamaica2,
+            image: JVCHeader,
             title: '',
             description: '',
-            imagePosition: 'right'
+            scopeOfWork: [
+                'Full design and fit-out package',
+                'MEP services',
+            ],
+        },
+        {
+            image: JVC9,
+            title: '',
+            description: '',
+        },
+        {
+            image: c4,
+            title: '',
+            description: '',
+        },
+        {
+            image: c5,
+            title: '',
+            description: '',
+        },
+        {
+            image: JVC2,
+            title: '',
+            description: '',
+        },
+        {
+            image: JVC3,
+            title: '',
+            description: '',
+        },
+        {
+            image: JVC4,
+            title: '',
+            description: '',
+        },
+        {
+            image: JVC5,
+            title: '',
+            description: ''
+        },
+        {
+            image: JVC6,
+            title: '',
+            description: '',
+        },
+        {
+            image: JVC8,
+            title: '',
+            description: ''
+        },
+        {
+            image: c1,
+            title: '',
+            description: ''
+        },
+        {
+            image: c2,
+            title: '',
+            description: ''
+        },
+        {
+            image: c3,
+            title: '',
+            description: ''
         }
     ],
     'marbilla-villa-renovation': [
@@ -364,7 +434,7 @@ const detailsByProject: Record<string, Detail[]> = {
             image: Dune8,
             title: '',
             description: '',
-        },
+        }
     ],
 };
 
