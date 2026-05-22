@@ -7,8 +7,60 @@
  */
 
 import React from 'react';
-import { Container, Title, Text, Box } from '@mantine/core';
+import { Container, Title, Text, Box, Anchor } from '@mantine/core';
 import { PageContainer } from '@/layout/PageContainer';
+
+/**
+ * Renders inline markdown within a line of text:
+ * - [label](url)  -> anchor (internal links keep same tab; external open in new tab)
+ * - **bold**      -> semibold span
+ * Plain text with no markers is returned unchanged.
+ */
+function renderInline(text: string): React.ReactNode {
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g;
+  const nodes: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let key = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+
+    if (match[1] !== undefined) {
+      const label = match[1];
+      const url = match[2];
+      const isExternal = /^https?:\/\//.test(url) && !url.includes('triple-a.ae');
+      nodes.push(
+        <Anchor
+          key={`a-${key++}`}
+          href={url}
+          c="inherit"
+          fw={600}
+          underline="always"
+          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+        >
+          {label}
+        </Anchor>
+      );
+    } else if (match[3] !== undefined) {
+      nodes.push(
+        <Text key={`b-${key++}`} component="span" fw={600}>
+          {match[3]}
+        </Text>
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+}
 
 interface BlogPost {
   title: string;
@@ -61,7 +113,7 @@ function MarkdownContent({ content }: { content: string }) {
         <Box key={`list-${i}`} component="ul" ml={20} mb={12}>
           {listItems.map((item, idx) => (
             <Text key={idx} component="li" mb={4} size="sm">
-              {item}
+              {renderInline(item)}
             </Text>
           ))}
         </Box>
@@ -151,7 +203,7 @@ function MarkdownContent({ content }: { content: string }) {
     else if (line.trim()) {
       elements.push(
         <Text key={`p-${i}`} mb={12} size="sm" lineClamp={undefined} style={{ lineHeight: 1.6 }}>
-          {line}
+          {renderInline(line)}
         </Text>
       );
     } else {

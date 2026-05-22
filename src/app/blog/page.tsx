@@ -66,6 +66,12 @@ export default function BlogPage() {
           textAlign: 'center',
         }}
       >
+        <Title order={1} size={'clamp(2rem, 5vw, 3rem)'} fw={600} mb={10}>
+          Insights & Guides
+        </Title>
+        <Text size="md" c="rgba(255,255,255,0.7)" style={{ maxWidth: 620, margin: '0 auto' }}>
+          Expert perspectives on interior fit-out, design, and renovation in Dubai.
+        </Text>
       </Box>
 
       {/* Blog Content */}

@@ -10,11 +10,6 @@ import ContactLayout from "./ContactLayout";
 export default function ContactPage() {
   return (
     <>
-      {/* Hidden H1 for SEO */}
-      <h1 style={{ position: "absolute", left: "-9999px" }}>
-        Contact Triple A Interiors - Get Your Interior Fit-Out Quote
-      </h1>
-
       {/* Hero Section */}
       <section aria-label="Contact hero section">
         <HeroContact />

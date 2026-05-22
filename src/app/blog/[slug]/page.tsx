@@ -19,13 +19,14 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { BlogPostContent } from "@/components/pages/Blog/BlogPostContent";
 import { BlogPostsData, getBlogPostBySlug } from "@/mockups/BlogPostsData";
+import { JsonLd } from "@/components/JsonLd";
 
 const SITE_URL = "https://triple-a.ae";
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
 
 // Generate static params for build-time generation
 export function generateStaticParams() {
-  return BlogPostsData.map((post) => ({
+  return BlogPostsData.filter((post) => post.published).map((post) => ({
     slug: post.slug,
   }));
 }
@@ -97,9 +98,42 @@ export default async function BlogPostPage({
   const resolvedParams = await params;
   const post = getBlogPostBySlug(resolvedParams.slug);
 
-  if (!post) {
+  if (!post || !post.published) {
     notFound();
   }
 
-  return <BlogPostContent post={post} />;
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.publishDate,
+    dateModified: post.publishDate,
+    image: OG_IMAGE_URL,
+    articleSection: post.category || "Interior Design",
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Triple A Interiors",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/onlyLogoBlack.png`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
+  };
+
+  return (
+    <>
+      <JsonLd data={articleSchema} />
+      <BlogPostContent post={post} />
+    </>
+  );
 }

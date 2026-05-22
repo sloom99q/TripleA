@@ -53,7 +53,7 @@ export default function HeroContact() {
         }}
       />
       <Stack mt={100} gap="md" style={{ position: 'relative', zIndex: 2 }}>
-        <Text className={`${styles.mainHeading} ${motionStyles.scrollFloatSmall}`} size="lg" fw={600} style={{ lineHeight: 1.2 }}>Your Fit-out Vision Is <br /> Within Reach</Text>
+        <Text component="h1" className={`${styles.mainHeading} ${motionStyles.scrollFloatSmall}`} size="lg" fw={600} style={{ lineHeight: 1.2 }}>Your Fit-out Vision Is <br /> Within Reach</Text>
         <Text className={`${styles.subheading} ${motionStyles.scrollFloatSmall}`} size="md" c="#d0d0d0">Start the conversation and take the first step.</Text>
       </Stack>
     </Box>

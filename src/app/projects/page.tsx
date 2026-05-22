@@ -8,11 +8,6 @@ import FAQComponent from "@/components/FAQ";
 export default function ProjectsPage() {
   return (
     <>
-      {/* Hidden H1 for SEO */}
-      <h1 style={{ position: "absolute", left: "-9999px" }}>
-        Our Interior Fit-Out Projects in Dubai
-      </h1>
-
       {/* Hero Section */}
       <section aria-label="Projects hero section">
         <ProjectsHero />

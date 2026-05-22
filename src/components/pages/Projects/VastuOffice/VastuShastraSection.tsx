@@ -156,7 +156,7 @@ export default function VastuShastraSection() {
           <CustomBadge mb="xl">Design Philosophy</CustomBadge>
 
           <Title
-            order={1} fw={700}
+            order={2} fw={700}
             style={{ fontSize: 'clamp(3rem,9vw,7rem)', lineHeight: 0.96, letterSpacing: '-3px', color: '#0a0a0a', marginBottom: isMobile ? 28 : 40 }}
           >
             Vastu{' '}

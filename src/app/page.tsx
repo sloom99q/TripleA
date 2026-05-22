@@ -4,6 +4,7 @@ import EmaarTestimony from "@/components/pages/Home/ClientTestimony";
 import FAQComponent from "@/components/FAQ";
 import { CTASection, TimelineSection } from "@/components/pages/About";
 import { ProjectsGrid } from "@/components/pages/Projects";
+import ProcessComplianceSection from "@/components/ProcessComplianceSection";
 import { PageContainer, FullPageContainer } from "@/layout/PageContainer";
 
 export default function HomePage() {
@@ -13,11 +14,6 @@ export default function HomePage() {
       <section aria-label="Hero section">
         <HeroSection />
       </section>
-
-      {/* Hidden H1 for SEO */}
-      <h1 style={{ position: "absolute", left: "-9999px" }}>
-        Premium Interior Fit-Out Services in Dubai
-      </h1>
 
       {/* Client Testimony Section */}
       <PageContainer>
@@ -49,6 +45,9 @@ export default function HomePage() {
           <FAQComponent />
         </div>
       </PageContainer>
+
+      {/* Process & Compliance Section */}
+      <ProcessComplianceSection />
 
       {/* Call-to-Action Section */}
       <CTASection />

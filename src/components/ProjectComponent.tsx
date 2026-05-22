@@ -58,7 +58,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   const contentColumn = (
     <Box key="content" style={{ flex: 1 }}>
       <Stack pt={{ base: 25, md: 0 }} gap="md">
-        <Title order={1} w={'80%'} size={'clamp(2rem, 7vw, 5rem)'} fw={400}>
+        <Title order={2} w={'80%'} size={'clamp(2rem, 7vw, 5rem)'} fw={400}>
           {title}
         </Title>
 

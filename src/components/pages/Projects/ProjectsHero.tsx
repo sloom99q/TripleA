@@ -53,7 +53,7 @@ export default function ProjectsHero() {
         }}
       />
       <Stack mt={100} gap="md" align="center" style={{ position: 'relative', zIndex: 2 }}>
-        <Text className={`${styles.mainHeading} ${motionStyles.scrollFloatSmall}`} size="lg" fw={600} style={{ lineHeight: 1.2 }}>Featured Projects</Text>
+        <Text component="h1" className={`${styles.mainHeading} ${motionStyles.scrollFloatSmall}`} size="lg" fw={600} style={{ lineHeight: 1.2 }}>Featured Projects</Text>
         <Text className={`${styles.subheading} ${motionStyles.scrollFloatSmall}`} size="md" c="#d0d0d0">Discover our most exceptional interior fit-out projects</Text>
       </Stack>
     </Box>

@@ -106,11 +106,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
 
   return (
     <>
-      {/* Semantic H1 for SEO */}
-      <Box visibleFrom="xs" style={{ position: "absolute", left: "-9999px" }}>
-        <h1>{selectedProject.title}</h1>
-      </Box>
-
       {/* Project Hero Section */}
       <Box component="section" aria-label={`${selectedProject.title} project hero`}>
         <ProjectHero project={selectedProject} />

@@ -9,11 +9,6 @@ import { PageContainer, FullPageContainer } from "@/layout/PageContainer";
 export default function AboutPage() {
   return (
     <>
-      {/* Hidden H1 for SEO */}
-      <h1 style={{ position: "absolute", left: "-9999px" }}>
-        About Triple A Interiors - Dubai's Premier Interior Design Company
-      </h1>
-
       {/* Hero Section */}
       <section aria-label="About hero section">
         <AboutHero />

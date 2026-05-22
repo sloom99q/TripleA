@@ -158,6 +158,7 @@ export default function AboutHeroSection() {
           }
           >
           <Text
+            component="h1"
             size="lg"
             fw={700}
             c="white"

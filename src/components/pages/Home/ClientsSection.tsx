@@ -13,7 +13,7 @@ export function ClientsSection({
     <Box py={80} px={20}>
       <Container bg={'white'} size="lg">
         <Stack align="center" gap="lg" mb={60}>
-          <Title ta={'center'} order={1} size={48}>
+          <Title ta={'center'} order={2} size={48}>
             {title}
           </Title>
           <Text size="md" c="dimmed" style={{ maxWidth: 600, textAlign: 'center' }}>

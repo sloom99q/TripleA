@@ -86,8 +86,8 @@ export default function FAQComponent() {
           <CustomBadge>
             FAQ
           </CustomBadge>
-          <Title 
-            order={1} 
+          <Title
+            order={2}
             size='clamp(2rem, 5vw, 3rem)'
             fw={500}
             mt={'sm'}
