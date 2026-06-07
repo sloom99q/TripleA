@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PAGE_SEO_CONFIG } from "@/utils/seoConfig";
+import { PAGE_SEO_CONFIG, DEFAULT_OG_IMAGES } from "@/utils/seoConfig";
 
 export const metadata: Metadata = {
   title: { absolute: PAGE_SEO_CONFIG.services.title },
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
     siteName: "Triple A Interiors",
     title: PAGE_SEO_CONFIG.services.title,
     description: PAGE_SEO_CONFIG.services.description,
+    images: DEFAULT_OG_IMAGES,
   },
 };
 

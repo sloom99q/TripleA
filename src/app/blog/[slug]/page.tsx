@@ -20,6 +20,7 @@ import { Metadata } from "next";
 import { BlogPostContent } from "@/components/pages/Blog/BlogPostContent";
 import { BlogPostsData, getBlogPostBySlug } from "@/mockups/BlogPostsData";
 import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbLd, ORG_ID, WEBSITE_ID } from "@/utils/structuredData";
 
 const SITE_URL = "https://triple-a.ae";
 const OG_IMAGE_URL = `${SITE_URL}/og-image.png`;
@@ -105,34 +106,34 @@ export default async function BlogPostPage({
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${SITE_URL}/blog/${post.slug}#article`,
     headline: post.title,
     description: post.description,
     datePublished: post.publishDate,
     dateModified: post.publishDate,
     image: OG_IMAGE_URL,
+    inLanguage: "en-AE",
     articleSection: post.category || "Interior Design",
-    author: {
-      "@type": "Organization",
-      name: post.author,
-      url: SITE_URL,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Triple A Interiors",
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/onlyLogoBlack.png`,
-      },
-    },
+    keywords: [post.category || "Interior Design", "Fit-Out", "Dubai"],
+    author: { "@id": ORG_ID, "@type": "Organization", name: post.author },
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": WEBSITE_ID },
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${SITE_URL}/blog/${post.slug}`,
     },
   };
 
+  const breadcrumbLd = buildBreadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
+
   return (
     <>
       <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbLd} />
       <BlogPostContent post={post} />
     </>
   );

@@ -105,7 +105,7 @@ export default function HeroSection() {
           fontWeight: 400,
         }}
         >
-        Hundreds of satisfied clients trust our expert architectural design services
+        Luxury interior fit-out, MEP and turnkey solutions for homes and businesses across Dubai
         </Text>
 
         <Group justify="center" mt="xl">

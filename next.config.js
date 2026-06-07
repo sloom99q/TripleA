@@ -12,7 +12,10 @@ const nextConfig = {
 
   // Optimize images
   images: {
-    domains: ["triple-a.ae", "framerusercontent.com"],
+    remotePatterns: [
+      { protocol: "https", hostname: "triple-a.ae" },
+      { protocol: "https", hostname: "framerusercontent.com" },
+    ],
     formats: ["image/avif", "image/webp"],
   },
 

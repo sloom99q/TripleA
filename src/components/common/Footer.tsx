@@ -81,7 +81,7 @@ const Footer = memo(() => {
             </Group>
 
             <Text component="address" className="footer__address">
-              <Text>Arkan Business Center, Fronds Building <span style={{ fontFamily: 'sans-serif', fontWeight: 300 }}>M06</span>, Al Garhoud</Text>
+              <Text>Fronds Building <span style={{ fontFamily: 'sans-serif', fontWeight: 300 }}>M06</span>, Al Garhoud</Text>
               <Text>Dubai, UAE</Text>
             </Text>
 

@@ -80,7 +80,7 @@ export const ProjectsData: ProjectData[] = [
         id: 'jvc-apartment-renovation',
         title: 'JVC Apartment Renovation',
         image: JVCHeader,
-        ogImage: '/projects/jvc.webp',
+        ogImage: '/projects/jvc.jpg',
         description: 'A residential interior fit-out. We transformed a JVC apartment into a warm, inviting urban retreat using custom timber joinery, integrated greenery, and ambient lighting.',
         story: 'This project was an interior fit-out for a residential apartment, transforming it into a warm and inviting urban retreat. The design features custom timber joinery, integrated greenery, and ambient lighting to create a cozy yet sophisticated atmosphere.',
         client: 'Private Owner',

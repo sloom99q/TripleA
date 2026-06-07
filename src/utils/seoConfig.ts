@@ -21,6 +21,21 @@ export interface SEOMetadata {
 export const BASE_URL = 'https://triple-a.ae';
 export const DEFAULT_BRAND = 'Triple A Interiors';
 export const DEFAULT_OG_IMAGE = `${BASE_URL}/og-image.png`;
+
+/**
+ * Shared Open Graph image array for per-page metadata. Next.js shallow-merges
+ * metadata: when a page sets its own `openGraph`, the parent's `images` are NOT
+ * inherited, so each page that overrides openGraph must re-declare images or it
+ * ships with no social preview image. Dimensions match the real og-image.png.
+ */
+export const DEFAULT_OG_IMAGES = [
+  {
+    url: '/og-image.png',
+    width: 1200,
+    height: 723,
+    alt: 'Triple A Interiors — Luxury Interior Fit-Out in Dubai',
+  },
+];
 export const DEFAULT_DESCRIPTION = "Transform your space with Triple A Interiors - Dubai's leading interior fit-out company specializing in commercial and residential design. Premium craftsmanship and innovative solutions.";
 
 /**
@@ -55,31 +70,31 @@ export const PAGE_SEO_CONFIG = {
   }),
 
   about: createSEOMetadata({
-    title: 'About Us | Triple A Interiors - Interior Design & Fit-Out Dubai',
-    description: 'Discover the story behind Triple A Interiors. Learn about our mission, values, and commitment to delivering exceptional interior fit-out solutions in Dubai since our founding.',
+    title: 'About Triple A Interiors | Dubai Interior Fit-Out Company',
+    description: 'Learn about Triple A Interiors — a Dubai interior fit-out and turnkey company delivering luxury commercial and residential interiors across the UAE since 2015.',
     ogType: 'website',
-    keywords: 'about Triple A Interiors, interior design team Dubai, fit-out company Dubai, our story',
+    keywords: 'about Triple A Interiors, interior fit-out company Dubai, turnkey contractor UAE',
   }),
 
   services: createSEOMetadata({
     title: 'Interior Fit-Out Services in Dubai | Triple A Interiors',
-    description: 'Explore our comprehensive interior fit-out services in Dubai. From commercial offices to luxury residences, we deliver bespoke solutions with premium quality and precision.',
+    description: 'Interior fit-out, MEP, renovations, ceilings, flooring and authority approvals in Dubai for commercial and residential spaces — delivered end to end.',
     ogType: 'website',
-    keywords: 'interior fit-out services, commercial fit-out Dubai, residential design, office renovation, interior services',
+    keywords: 'interior fit-out services Dubai, MEP contracting, renovation, commercial fit-out, residential fit-out',
   }),
 
   projects: createSEOMetadata({
-    title: 'Our Projects | Triple A Interiors - Interior Design Portfolio Dubai',
-    description: 'View our completed interior fit-out projects across Dubai. Discover how we transform commercial and residential spaces with innovative design and flawless execution.',
+    title: 'Interior Fit-Out Projects in Dubai | Triple A Interiors',
+    description: 'Explore completed interior fit-out and renovation projects by Triple A Interiors across Dubai, Sharjah and the UAE — for clients including Emaar, Meraas and Wood Group.',
     ogType: 'website',
-    keywords: 'interior projects Dubai, fit-out portfolio, interior design examples, completed projects, case studies',
+    keywords: 'interior fit-out projects Dubai, fit-out portfolio, case studies, completed projects UAE',
   }),
 
   contact: createSEOMetadata({
-    title: 'Contact Us | Triple A Interiors - Get Your Project Started',
-    description: 'Get in touch with Triple A Interiors for premium interior fit-out services in Dubai. Let\'s discuss your project and bring your vision to life. Call or visit us today.',
+    title: 'Contact Triple A Interiors | Dubai Interior Fit-Out',
+    description: 'Contact Triple A Interiors for interior fit-out and renovation in Dubai. Call +971 58 550 0359 or request a free quote and consultation for your project.',
     ogType: 'website',
-    keywords: 'contact interior designer Dubai, get quote, interior fit-out inquiry, contact Triple A',
+    keywords: 'contact interior fit-out Dubai, get a quote, fit-out consultation, Triple A Interiors',
   }),
 };
 

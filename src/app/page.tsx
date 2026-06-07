@@ -6,10 +6,19 @@ import { CTASection, TimelineSection } from "@/components/pages/About";
 import { ProjectsGrid } from "@/components/pages/Projects";
 import ProcessComplianceSection from "@/components/ProcessComplianceSection";
 import { PageContainer, FullPageContainer } from "@/layout/PageContainer";
+import { JsonLd } from "@/components/JsonLd";
+import { buildFaqPageLd } from "@/utils/structuredData";
+import { FAQData } from "@/mockups/FAQData";
 
 export default function HomePage() {
+  // FAQPage schema is emitted here (a server component) because the visual FAQ
+  // is a client component — this way crawlers and AI engines get the Q&A as
+  // structured data without executing JavaScript.
+  const faqLd = buildFaqPageLd(FAQData);
+
   return (
     <>
+      <JsonLd data={faqLd} />
       {/* Hero Section */}
       <section aria-label="Hero section">
         <HeroSection />

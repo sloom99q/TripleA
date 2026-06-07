@@ -34,7 +34,7 @@ export default function ContactInfo() {
         <Stack gap={0}>
           <Text fw={600} size="sm" c="dimmed">Location</Text>
             <Text fw={700} size="sm">
-            Arkan Business Center, Fronds Building, <span style={{ fontFamily: 'sans-serif' }}>M06</span>, Sheikh Rashid Rd, Al Garhoud, Dubai
+            Fronds Building, <span style={{ fontFamily: 'sans-serif' }}>M06</span>, Sheikh Rashid Rd, Al Garhoud, Dubai
             </Text>
         </Stack>
       </Group>

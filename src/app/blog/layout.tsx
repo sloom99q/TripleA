@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { DEFAULT_OG_IMAGES } from "@/utils/seoConfig";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Blog | Triple A Interiors - Interior Fit-Out & Design Insights Dubai",
+    absolute: "Interior Fit-Out Blog & Guides Dubai | Triple A Interiors",
   },
   description:
     "Expert guides on interior fit-out, MEP, finishes, renovation costs and design trends in Dubai, from the Triple A Interiors team.",
@@ -13,9 +14,10 @@ export const metadata: Metadata = {
     type: "website",
     url: "/blog",
     siteName: "Triple A Interiors",
-    title: "Blog | Triple A Interiors",
+    title: "Interior Fit-Out Blog & Guides | Triple A Interiors",
     description:
       "Expert guides on interior fit-out, finishes, renovation and design trends in Dubai.",
+    images: DEFAULT_OG_IMAGES,
   },
 };
 

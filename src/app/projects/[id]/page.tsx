@@ -19,6 +19,8 @@ import { MoreProjects } from "@/components/pages/Project/MoreProjects";
 import { CTASection } from "@/components/pages/About";
 import { PageContainer } from "@/layout/PageContainer";
 import { ProjectsData } from "@/mockups/ProjectsData";
+import { JsonLd } from "@/components/JsonLd";
+import { buildProjectLd, buildBreadcrumbLd } from "@/utils/structuredData";
 
 const SITE_URL = "https://triple-a.ae";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
@@ -79,7 +81,6 @@ export async function generateMetadata({
           type: "image/webp",
         },
       ],
-      publishedTime: new Date().toISOString(),
       authors: ["Triple A Interiors"],
       tags: ["Interior Design", "Fit-Out", cleanTitle, project.client || ""],
     },
@@ -104,8 +105,21 @@ export default async function ProjectPage({ params }: { params: Promise<{ id: st
     notFound();
   }
 
+  const projectLd = buildProjectLd(selectedProject);
+  const breadcrumbLd = buildBreadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Projects", path: "/projects" },
+    {
+      name: selectedProject.title.replace(/\s+/g, " ").trim(),
+      path: `/projects/${selectedProject.id}`,
+    },
+  ]);
+
   return (
     <>
+      <JsonLd data={projectLd} />
+      <JsonLd data={breadcrumbLd} />
+
       {/* Project Hero Section */}
       <Box component="section" aria-label={`${selectedProject.title} project hero`}>
         <ProjectHero project={selectedProject} />
