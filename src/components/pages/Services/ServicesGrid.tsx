@@ -16,10 +16,10 @@ const ServiceGrid: React.FC = memo(() => {
   return (
     <Group mt={80}>
       <Title ta="left" size="lg" fw={500} mb={10} className={`${styles.mainHeading} ${motionStyles.scrollFloat}`}>
-        Start Building Your Dream Project
+        Interior Fit-Out Services in Dubai
       </Title>
       <Text ta="left" c="dimmed" className={`${styles.subheading} ${motionStyles.scrollFloat}`}>
-        Write us by completing the form. We will get back to you as soon as possible!
+        From concept to handover — interior fit-out, MEP, renovations, ceilings, flooring, wall finishes and authority approvals for commercial and residential spaces.
       </Text>
 
       <Grid gutter={0} mt={0} mb={40}>

@@ -80,6 +80,7 @@ export const organizationGraph = {
       "@id": ORG_ID,
       name: "Triple A Interiors",
       legalName: "Triple A Interior Fit-Out",
+      alternateName: ["AAA", "AAA Fit-Out", "Triple A Fit-Out"],
       url: `${SITE_URL}/`,
       logo: {
         "@type": "ImageObject",

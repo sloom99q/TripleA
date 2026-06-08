@@ -14,10 +14,10 @@ export const MoreProjects = () => {
 
   const otherProjects = useMemo(() =>
     ProjectsData
-      .filter((p) => p.id !== params.id)
+      .filter((p) => p.id !== params?.id)
       .sort(() => Math.random() - 0.5)
       .slice(0, 3),
-    [params.id]
+    [params?.id]
   );
 
   return (
