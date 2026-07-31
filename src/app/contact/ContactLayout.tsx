@@ -15,6 +15,7 @@ import FAQComponent from "@/components/FAQ";
 import MapComponent from "@/components/pages/Contact/MapComponent";
 import SocialMedia from "@/components/pages/Contact/Socials";
 import { PageContainer } from "@/layout/PageContainer";
+import { ContactFAQ } from "@/mockups/FAQData";
 
 export default function ContactLayout() {
   return (
@@ -45,9 +46,9 @@ export default function ContactLayout() {
           <SocialMedia />
         </Box>
 
-        {/* FAQ Section */}
+        {/* FAQ Section — page-relevant subset (full FAQ + schema live on Home) */}
         <Box component="section" aria-label="Frequently asked questions" mt={80}>
-          <FAQComponent />
+          <FAQComponent items={ContactFAQ} />
         </Box>
       </Box>
     </PageContainer>

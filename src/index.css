@@ -30,7 +30,9 @@ html.lenis, html.lenis body {
 body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
-    max-width: 1600px;
+    /* Relaxed from 1600px so full-bleed sections use more of large/ultrawide
+       monitors; auto margins still prevent absurd line lengths beyond this. */
+    max-width: 1920px;
     margin-left: auto;
     margin-right: auto;
     background-color: white;
@@ -54,5 +56,61 @@ img {
 @supports (-webkit-touch-callout: none) {
   html, body {
     overscroll-behavior: none;
+  }
+}
+
+/* Widen the Mantine Container scale so content sections breathe on large
+   monitors. Mantine re-declares these vars on the Container element itself, so
+   we override on the stable static class (loaded after Mantine styles). lg and
+   xl are bumped; xs/sm/md stay at their readable defaults. */
+.mantine-Container-root {
+  --container-size-lg: calc(77.5rem * var(--mantine-scale));  /* ~1240px */
+  --container-size-xl: calc(93.75rem * var(--mantine-scale)); /* ~1500px */
+}
+
+/* Skip-to-content link: hidden until focused, then visible for keyboard users */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  padding: 12px 20px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0 0 12px 0;
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform 150ms ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Never trap keyboard focus outline on the <main> wrapper itself */
+main:focus {
+  outline: none;
+}
+
+/* Visible keyboard-focus ring for custom role="button" cards (ServiceBox etc.).
+   White ring + dark halo stays visible over both light and dark imagery. */
+[role="button"]:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Respect users who prefer reduced motion: dampen entrance/scroll animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

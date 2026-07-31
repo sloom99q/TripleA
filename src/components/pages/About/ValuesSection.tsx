@@ -66,7 +66,7 @@ export default function ValuesSection({
 }: ValuesSectionProps) {
   return (
     <Box m={25} py={100} bg="rgb(245, 245, 245)" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', borderRadius: 70 }}>
-      <Container size="lg">
+      <Container size="xl">
         <Stack align="center" gap="md" mb={60}>
           <CustomBadge>{subtitle}</CustomBadge>
 

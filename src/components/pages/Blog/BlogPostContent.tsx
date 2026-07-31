@@ -7,7 +7,8 @@
  */
 
 import React from 'react';
-import { Container, Title, Text, Box, Anchor } from '@mantine/core';
+import { Container, Title, Text, Box, Anchor, Button } from '@mantine/core';
+import Link from 'next/link';
 import { PageContainer } from '@/layout/PageContainer';
 
 /**
@@ -246,9 +247,16 @@ export function BlogPostContent({ post }: { post: BlogPost }) {
           <Text fw={600} mb={12} size="sm">
             Ready to start your interior fit-out project?
           </Text>
-          <Text mb={16} size="sm" c="dimmed">
-            Contact Triple A Interiors for a free consultation on your next project.
+          <Text mb={20} size="sm" c="dimmed">
+            Contact Triple A Interiors for a free consultation, or explore our{" "}
+            <Anchor component={Link} href="/services" c="dark" fw={600} underline="always">
+              interior fit-out services in Dubai
+            </Anchor>
+            .
           </Text>
+          <Button component={Link} href="/contact" color="dark" radius="xl" size="md">
+            Get a free fit-out consultation
+          </Button>
         </Box>
       </Box>
     </PageContainer>

@@ -1,5 +1,4 @@
 // About Page Components
-export { default as AboutPage } from './AboutPage';
 export { default as AboutHero } from './AboutHero';
 export { default as StorySection } from './StorySection';
 export { default as StatsSection } from './StatsSection';

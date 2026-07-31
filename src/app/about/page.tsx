@@ -5,10 +5,19 @@ import WhyChooseUsSection from "@/components/pages/About/WhyChooseUsSection";
 import TimelineSection from "@/components/pages/About/TimelineSection";
 import CTASection from "@/components/pages/About/CTASection";
 import { PageContainer, FullPageContainer } from "@/layout/PageContainer";
+import { JsonLd } from "@/components/JsonLd";
+import { buildBreadcrumbLd } from "@/utils/structuredData";
 
 export default function AboutPage() {
+  const breadcrumbLd = buildBreadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+  ]);
+
   return (
     <>
+      <JsonLd data={breadcrumbLd} />
+
       {/* Hero Section */}
       <section aria-label="About hero section">
         <AboutHero />

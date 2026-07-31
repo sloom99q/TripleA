@@ -1,10 +1,10 @@
 import HeroSection from "@/components/pages/Home/HomeHero";
+import HeroLeadForm from "@/components/pages/Home/HeroLeadForm";
 import Clients from "@/components/pages/Home/ClientsSection";
 import EmaarTestimony from "@/components/pages/Home/ClientTestimony";
 import FAQComponent from "@/components/FAQ";
 import { CTASection, TimelineSection } from "@/components/pages/About";
 import { ProjectsGrid } from "@/components/pages/Projects";
-import ProcessComplianceSection from "@/components/ProcessComplianceSection";
 import { PageContainer, FullPageContainer } from "@/layout/PageContainer";
 import { JsonLd } from "@/components/JsonLd";
 import { buildFaqPageLd } from "@/utils/structuredData";
@@ -23,6 +23,13 @@ export default function HomePage() {
       <section aria-label="Hero section">
         <HeroSection />
       </section>
+
+      {/* Lead Capture — directly under the hero (no scroll needed to contact us) */}
+      <PageContainer>
+        <div style={{ width: "100%", marginTop: 56, marginBottom: 40 }}>
+          <HeroLeadForm />
+        </div>
+      </PageContainer>
 
       {/* Client Testimony Section */}
       <PageContainer>
@@ -48,15 +55,12 @@ export default function HomePage() {
         <TimelineSection />
       </FullPageContainer>
 
-      {/* FAQ Section */}
+      {/* FAQ Section — SEO-focused, carries process + authority-approval content */}
       <PageContainer>
         <div style={{ width: "100%", marginTop: 150 }}>
           <FAQComponent />
         </div>
       </PageContainer>
-
-      {/* Process & Compliance Section */}
-      <ProcessComplianceSection />
 
       {/* Call-to-Action Section */}
       <CTASection />

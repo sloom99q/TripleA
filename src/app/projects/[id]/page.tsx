@@ -50,17 +50,26 @@ export async function generateMetadata({
 
   // Clean up title (remove newlines)
   const cleanTitle = project.title.replace(/\s+/g, ' ').trim();
-  const pageTitle = `${cleanTitle} | Project Showcase`;
-  const description = project.story || project.description || 
+  // Use title.absolute so the root template ("%s | Triple A Interiors") is not
+  // appended on top of a second brand-style suffix (avoids double-branding and
+  // an over-long <title>).
+  const pageTitle = `${cleanTitle} — Interior Fit-Out Project | Triple A Interiors`;
+  const fullDescription = project.story || project.description ||
     `Discover the ${cleanTitle} project by Triple A Interiors. A premium interior fit-out solution delivered with innovation and precision.`;
-  
+  // Keep the meta/social description in the ~155–160 char sweet spot; the full
+  // story still lives in the on-page copy and the JSON-LD description/abstract.
+  const description =
+    fullDescription.length > 160
+      ? `${fullDescription.slice(0, 157).trimEnd()}…`
+      : fullDescription;
+
   // Use the dedicated ogImage field for social sharing
-  const projectImageUrl = project.ogImage 
-    ? `${SITE_URL}${project.ogImage}` 
+  const projectImageUrl = project.ogImage
+    ? `${SITE_URL}${project.ogImage}`
     : DEFAULT_OG_IMAGE;
 
   return {
-    title: pageTitle,
+    title: { absolute: pageTitle },
     description: description,
     alternates: {
       canonical: `${SITE_URL}/projects/${resolvedParams.id}`,

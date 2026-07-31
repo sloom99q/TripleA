@@ -30,7 +30,16 @@ export const ServiceBox = memo(({ service }: { service: Service }) => {
   return (
     <Box
       ref={scrollRef}
+      role="button"
+      tabIndex={0}
+      aria-label={`View ${service.title}`}
       onClick={handleClick}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -56,9 +65,7 @@ export const ServiceBox = memo(({ service }: { service: Service }) => {
           src={typeof service.image === 'string' ? service.image : service.image.src}
           alt={`${service.title} - Premium interior fit-out service by Triple A Interiors`}
           fit="cover"
-          // loading="lazy"
-          // w={600}
-          // h={400}
+          loading="lazy"
           style={{
             width: '100%',
             height: '100%',

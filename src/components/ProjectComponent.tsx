@@ -8,7 +8,8 @@ import { useMediaQuery } from '@mantine/hooks';
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({
   image,
-  imageAlt = 'Project image',
+  imageAlt,
+  video,
   title,
   description,
   scopeOfWork,
@@ -25,33 +26,63 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
     (features && features.length > 0)
   );
   const hasImage = Boolean(image);
+  const hasVideo = Boolean(video);
+  const hasMedia = hasImage || hasVideo;
   const imageSrc = image ? (typeof image === 'string' ? image : image.src) : '';
-  
-  const imageColumn = hasImage ? (
-    <Box
-            // ref={imageRef}
+  const resolvedAlt =
+    imageAlt ||
+    (title?.trim()
+      ? `${title.trim()} — interior fit-out project by Triple A Interiors`
+      : 'Interior fit-out project by Triple A Interiors');
 
-        // onMouseEnter={() => setIsHovered(true)}
-        // onMouseLeave={() => setIsHovered(false)}
-      key="image"
+  const mediaRadius = {
+    borderTopLeftRadius: isMobile ? '30px' : '80px',
+    borderBottomRightRadius: isMobile ? '30px' : '80px',
+  };
+
+  const mediaColumn = hasMedia ? (
+    <Box
+      key="media"
       p={0}
       w={'100%'}
       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}
     >
-      <Image
-        className={styles.heroContainer}
-        src={imageSrc}
-        alt={imageAlt}
-        // loading="lazy"
-        style={{            transition: 'transform 1200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms ease',
-            // opacity: isHovered ? 0.7 : 0.85,
+      {hasVideo ? (
+        <Box
+          w="100%"
+          h={{ base: '200px', sm: '300px', md: '95vh' }}
+          style={{ overflow: 'hidden', ...mediaRadius }}
+        >
+          <video
+            src={video}
+            poster={imageSrc || undefined}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-label={resolvedAlt}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+          />
+        </Box>
+      ) : (
+        <Image
+          className={styles.heroContainer}
+          src={imageSrc}
+          alt={resolvedAlt}
+          loading="lazy"
+          style={{
+            transition: 'transform 1200ms cubic-bezier(0.19, 1, 0.22, 1), opacity 800ms ease',
             borderRadius: 'inherit',
-            willChange: 'transform, opacity', borderTopLeftRadius: isMobile ? '30px' : '80px', borderBottomRightRadius: isMobile ? '30px' : '80px' }}
-        fit="cover"
-        w="100%"
-        p={0}
-        h={{ base: '200px', sm: '300px', md: '95vh' }}
-      />
+            willChange: 'transform, opacity',
+            ...mediaRadius,
+          }}
+          fit="cover"
+          w="100%"
+          p={0}
+          h={{ base: '200px', sm: '300px', md: '95vh' }}
+        />
+      )}
     </Box>
   ) : null;
 
@@ -104,9 +135,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
 
   return (
     <Box w="100%" p={0} className={className}>
-      {!hasContent && hasImage ? (
-        <Box w="100%">{imageColumn}</Box>
-      ) : !hasImage ? (
+      {!hasContent && hasMedia ? (
+        <Box w="100%">{mediaColumn}</Box>
+      ) : !hasMedia ? (
         <Box w="100%">{contentColumn}</Box>
       ) : (
       <Flex
@@ -115,7 +146,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({
         gap={{ base: 24, md: 50 }}
         w="100%"
       >
-        {imageColumn}
+        {mediaColumn}
         {contentColumn}
       </Flex>
       )}

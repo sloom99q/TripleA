@@ -1,7 +1,6 @@
 import ServicesGrid from "@/components/pages/Services/ServicesGrid";
 import ServiceDetails from "@/components/pages/Services/ServiceDetails";
 import CustomDivider from "@/components/CustomDivider";
-import ProcessComplianceSection from "@/components/ProcessComplianceSection";
 import { FullPageContainer } from "@/layout/PageContainer";
 import { JsonLd } from "@/components/JsonLd";
 import { buildServicesLd, buildBreadcrumbLd } from "@/utils/structuredData";
@@ -32,8 +31,6 @@ export default function ServicesPage() {
           <ServiceDetails />
         </section>
       </FullPageContainer>
-
-      <ProcessComplianceSection />
     </>
   );
 }

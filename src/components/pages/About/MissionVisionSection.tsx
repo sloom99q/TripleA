@@ -82,7 +82,7 @@ export default function MissionVisionSection({
 }: MissionVisionProps) {
   return (
     <Box style={{ minHeight: '100vh', display: 'flex', alignItems: 'center' }}>
-      <Container size="lg">
+      <Container size="xl">
         <Stack align="center" gap="md" mb={60}>
           <CustomBadge>Our Purpose</CustomBadge>
 

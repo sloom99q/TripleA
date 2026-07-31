@@ -13,6 +13,11 @@ const isIOS = () =>
   typeof navigator !== 'undefined' &&
   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Creates smooth scroll - platform-aware
 export function useSmoothScroll() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -20,9 +25,15 @@ export function useSmoothScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Honor prefers-reduced-motion: skip hijacked smooth scrolling entirely so
+    // the browser's native (accessible) scrolling is used instead.
+    if (prefersReducedMotion()) {
+      return;
+    }
+
     const iOS = isIOS();
     const isTouch = isTouchDevice();
-    
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),

@@ -11,7 +11,7 @@ export function ClientsSection({
 }: ClientsSectionProps) {
   return (
     <Box py={80} px={20}>
-      <Container bg={'white'} size="lg">
+      <Container bg={'white'} size="xl">
         <Stack align="center" gap="lg" mb={60}>
           <Title ta={'center'} order={2} size={48}>
             {title}
@@ -47,11 +47,11 @@ export function ClientsSection({
 
                 <Image
                   src={typeof client.logo === 'string' ? client.logo : client.logo.src}
-                  alt={client.alt}
+                  alt={`${client.alt} — Triple A Interiors client logo`}
                   fit="contain"
                   height={100}
                   w={200}
-                  // loading="lazy"
+                  loading="lazy"
                   style={{ maxWidth: '80%' }}
                 />
               </Box>

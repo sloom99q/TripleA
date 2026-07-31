@@ -6,29 +6,14 @@ import styles from '@/css/HeroSection.module.css';
 import '@/css/HeroScroll.globals.css';
 import motionStyles from '@/css/HeroScroll.module.css';
 import { useRouter } from 'next/navigation';
-// @ts-ignore
 import HeroImg from '@/assets/imgs/HeroImg.webp';
+import Dune3 from '@/assets/imgs/dune-sahara/3.jpg';
 
 export default function HeroSection() {
         const router = useRouter();
 
   return (
     <Box m={25}>
-    {/* <ActionIcon
-      variant="light"
-      color={dark ? 'yellow' : 'black'}
-      onClick={() => {
-      console.log('colorSchemeContext:', colorSchemeContext);
-      colorSchemeContext.onChange(dark ? 'light' : 'dark');
-      }}
-      title="Toggle color scheme"
-    >
-      {dark ? (
-      <IconSunFilled style={{ width: 18, height: 18 }} />
-      ) : (
-      <IconMoonFilled style={{ width: 18, height: 18 }} />
-      )}
-    </ActionIcon> */}
     <Box
       className={styles.heroContainer}
       style={{
@@ -43,7 +28,7 @@ export default function HeroSection() {
     >
       {/* LCP hero image - use native img for fetchpriority support */}
       <img
-        src={typeof HeroImg === 'string' ? HeroImg : HeroImg.src}
+        src={typeof Dune3 === 'string' ? Dune3 : Dune3.src}
         alt="Background photograph of a modern interior showroom used in homepage hero"
         width={1920}
         height={1080}
@@ -74,7 +59,7 @@ export default function HeroSection() {
       />
 
       {/* Content */}
-      <Container size="lg" className={styles.content} style={{ position: 'relative', zIndex: 2 }}>
+      <Container size="xl" className={styles.content} style={{ position: 'relative', zIndex: 2 }}>
       <Stack
         align="center"
         justify="center"

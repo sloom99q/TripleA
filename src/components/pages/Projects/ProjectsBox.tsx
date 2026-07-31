@@ -4,7 +4,7 @@ import React, { useState, useCallback, useMemo, memo } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Text, Image, Box, Group, UnstyledButton, Badge } from '@mantine/core';
 import { IconArrowUpRight } from '@tabler/icons-react';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { StaticImageData } from 'next/image';
 
 interface Project {
@@ -35,7 +35,6 @@ const ProjectsBox = memo(
   }) => {
     const isMobile = useMediaQuery('(max-width: 990px)');
     const [isHovered, setIsHovered] = useState(false);
-    const router = useRouter();
 
     const accent = useMemo(() => accentPalette[index % accentPalette.length], [index]);
 
@@ -53,7 +52,6 @@ const ProjectsBox = memo(
 
     const handleMouseEnter = useCallback(() => setIsHovered(true), []);
     const handleMouseLeave = useCallback(() => setIsHovered(false), []);
-    const handleNavigate = useCallback(() => router.push(`/projects/${project.id}`), [router, project.id]);
 
     const cardShadow = useMemo(
       () =>
@@ -71,9 +69,11 @@ const ProjectsBox = memo(
 
     return (
       <UnstyledButton
+        component={Link}
+        href={`/projects/${project.id}`}
+        aria-label={`View project: ${project.title}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onClick={handleNavigate}
         style={{
           textAlign: 'left',
           width: '100%',
@@ -129,10 +129,8 @@ const ProjectsBox = memo(
             >
               <Image
                 src={typeof project.image === 'string' ? project.image : project.image.src}
-                alt={project.title}
-                // loading="lazy"
-                // w={800}
-                // h={600}
+                alt={`${project.title} — interior fit-out project by Triple A Interiors`}
+                loading="lazy"
                 style={{
                   width: '100%',
                   height: '100%',

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from "react";
 import {
   Portal,
   Overlay,
@@ -9,6 +10,7 @@ import {
   Button,
   ThemeIcon,
   Box,
+  FocusTrap,
 } from "@mantine/core";
 import { IconCheck, IconX } from "@tabler/icons-react";
 
@@ -23,6 +25,35 @@ export default function ContactStatus({
   status: Status;
   onClose: () => void;
 }) {
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  // Remember what was focused when the dialog opened (the Submit button) and
+  // return focus there when it closes — required by the aria-modal contract.
+  useEffect(() => {
+    if (!opened) return;
+    triggerRef.current = (document.activeElement as HTMLElement) ?? null;
+    return () => {
+      triggerRef.current?.focus?.();
+    };
+  }, [opened]);
+
+  // Move focus to the Close button once dismissible, and close on Escape.
+  useEffect(() => {
+    if (!opened) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && status !== "loading") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+
+    if (status !== "loading") {
+      closeRef.current?.focus();
+    }
+
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [opened, status, onClose]);
+
   if (!opened) return null;
 
   return (
@@ -33,17 +64,22 @@ export default function ContactStatus({
         blur={8}
         backgroundOpacity={0.75}
         zIndex={10000}
-        onClick={onClose}
+        onClick={status !== "loading" ? onClose : undefined}
         style={{
-          background:
-            "rgba(0,0,0,0.55)",
+          background: "rgba(0,0,0,0.55)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        {/* STOP CLICK PROPAGATION */}
-        <Box onClick={(e) => e.stopPropagation()}>
+        {/* DIALOG */}
+        <FocusTrap active>
+          <Box
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="contact-status-title"
+            onClick={(e) => e.stopPropagation()}
+          >
           <Paper
             radius={32}
             p={40}
@@ -58,67 +94,60 @@ export default function ContactStatus({
             <Stack align="center" gap="lg">
               {/* ICON */}
               {status === "success" && (
-                <ThemeIcon
-                  size={64}
-                  radius="xl"
-                  color="green"
-                  variant="light"
-                //   style={{
-                //     backgroundColor: "rgba(0, 255, 13, 1)",
-                //   }}
-                >
+                <ThemeIcon size={64} radius="xl" color="green" variant="light" aria-hidden="true">
                   <IconCheck size={32} />
                 </ThemeIcon>
               )}
 
               {status === "error" && (
-                <ThemeIcon
-                  size={64}
-                  radius="xl"
-                  color="red"
-                  variant="light"
-                >
+                <ThemeIcon size={64} radius="xl" color="red" variant="light" aria-hidden="true">
                   <IconX size={32} />
                 </ThemeIcon>
               )}
 
-              {/* TEXT */}
-              {status === "loading" && (
-                <>
-                  <Text ta={'center'} fw={700} size="lg">
-                    Sending message…
-                  </Text>
-                  <Text size="sm" c="gray.4" ta="center">
-                    Please wait a moment
-                  </Text>
-                </>
-              )}
+              {/* TEXT (announced to screen readers) */}
+              <Box aria-live="assertive" style={{ width: "100%" }}>
+                <Stack align="center" gap="xs">
+                  {status === "loading" && (
+                    <>
+                      <Text id="contact-status-title" ta="center" fw={700} size="lg">
+                        Sending message…
+                      </Text>
+                      <Text size="sm" c="gray.4" ta="center">
+                        Please wait a moment
+                      </Text>
+                    </>
+                  )}
 
-              {status === "success" && (
-                <>
-                  <Text ta={'center'} fw={800} size="lg">
-                    Message Sent
-                  </Text>
-                  <Text size="sm" c="gray.4" ta="center">
-                    We’ve received your request and will contact you shortly.
-                  </Text>
-                </>
-              )}
+                  {status === "success" && (
+                    <>
+                      <Text id="contact-status-title" ta="center" fw={800} size="lg">
+                        Message Sent
+                      </Text>
+                      <Text size="sm" c="gray.4" ta="center">
+                        We&rsquo;ve received your request and will contact you shortly.
+                      </Text>
+                    </>
+                  )}
 
-              {status === "error" && (
-                <>
-                  <Text ta={'center'} fw={800} size="lg">
-                    Something went wrong
-                  </Text>
-                  <Text size="sm" c="gray.4" ta="center">
-                    Please try again later or contact us directly.
-                  </Text>
-                </>
-              )}
+                  {status === "error" && (
+                    <>
+                      <Text id="contact-status-title" ta="center" fw={800} size="lg">
+                        Something went wrong
+                      </Text>
+                      <Text size="sm" c="gray.4" ta="center">
+                        Please try again later or contact us directly.
+                      </Text>
+                    </>
+                  )}
+                </Stack>
+              </Box>
 
               {/* ACTION */}
               {status !== "loading" && (
                 <Button
+                  ref={closeRef}
+                  data-autofocus
                   fullWidth
                   mt="md"
                   onClick={onClose}
@@ -134,7 +163,8 @@ export default function ContactStatus({
               )}
             </Stack>
           </Paper>
-        </Box>
+          </Box>
+        </FocusTrap>
       </Overlay>
     </Portal>
   );

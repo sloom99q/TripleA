@@ -3,6 +3,8 @@ import { contactEmailTemplate } from "@/components/contacts/emailTemplate";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+type SendEmailResponse = { error?: string; message?: string };
+
 type ContactState = {
   formData: {
     subject: string;
@@ -80,11 +82,11 @@ export const useContactStore = create<ContactState>((set, get) => ({
         body: JSON.stringify(payload),
       });
 
-      let responseData: any = {};
+      let responseData: SendEmailResponse = {};
       try {
         const text = await res.text();
         if (text) {
-          responseData = JSON.parse(text);
+          responseData = JSON.parse(text) as SendEmailResponse;
         }
       } catch (parseError) {
         console.error("Failed to parse response:", parseError);

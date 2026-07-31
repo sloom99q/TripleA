@@ -3,8 +3,8 @@
 import { useRef, useState, useEffect, useCallback, memo } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
 import { Box, Group, Text, UnstyledButton } from '@mantine/core';
-import { useRouter, usePathname } from 'next/navigation';
-// @ts-ignore
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import navLogo from '@/assets/imgs/navlogo.webp';
 
 type NavbarLink = { label: string; href: string };
@@ -21,9 +21,14 @@ const NAV_LINKS: NavbarLink[] = [
   { label: 'Contact', href: '/contact' },
 ];
 
+// Rendered as real <a> (next/link) for crawlability + keyboard access; onClick
+// only closes the mobile menu — navigation is handled by the anchor.
 const NavLink = memo(({ link, isActive, onClick }: { link: NavbarLink; isActive: boolean; onClick: () => void }) => (
   <UnstyledButton
+    component={Link}
+    href={link.href}
     onClick={onClick}
+    aria-current={isActive ? 'page' : undefined}
     style={{
       padding: '10px 18px',
       borderRadius: 12,
@@ -38,7 +43,10 @@ const NavLink = memo(({ link, isActive, onClick }: { link: NavbarLink; isActive:
 
 const MobileNavLink = memo(({ link, isActive, onClick }: { link: NavbarLink; isActive: boolean; onClick: () => void }) => (
   <UnstyledButton
+    component={Link}
+    href={link.href}
     onClick={onClick}
+    aria-current={isActive ? 'page' : undefined}
     style={{
       display: 'flex',
       justifyContent: 'space-between',
@@ -61,15 +69,17 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
   const [visible, setVisible] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
-  const router = useRouter();
 
-  const isActive = useCallback((href: string) => pathname === href, [pathname]);
+  // Highlight the section link on nested routes too (e.g. /blog/[slug] → Insights).
+  const isActive = useCallback(
+    (href: string) => {
+      const path = pathname ?? '';
+      return href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`);
+    },
+    [pathname]
+  );
 
-  const handleNavigate = useCallback((href: string) => {
-    setOpened(false);
-    router.push(href);
-  }, [router]);
-
+  const closeMenu = useCallback(() => setOpened(false), []);
   const toggleMenu = useCallback(() => setOpened(prev => !prev), []);
 
   // Scroll hide/show effect - only triggers on direction change
@@ -81,7 +91,7 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
     const updateVisibility = () => {
       const currentScrollY = window.scrollY;
       const scrollDelta = currentScrollY - lastScrollY.current;
-      
+
       // Always show at top of page
       if (currentScrollY < 100) {
         if (!visible) setVisible(true);
@@ -90,15 +100,15 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
         ticking = false;
         return;
       }
-      
+
       // Only process if scroll distance exceeds threshold
       if (Math.abs(scrollDelta) < scrollThreshold) {
         ticking = false;
         return;
       }
-      
+
       const newDirection = scrollDelta > 0 ? 'down' : 'up';
-      
+
       // Only update if direction actually changed
       if (newDirection !== lastDirection) {
         lastDirection = newDirection;
@@ -108,7 +118,7 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
           setVisible(true);
         }
       }
-      
+
       lastScrollY.current = currentScrollY;
       ticking = false;
     };
@@ -135,6 +145,7 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
   return (
     <Box
       component="nav"
+      aria-label="Primary"
       style={{
         position: 'fixed',
         top: 50,
@@ -165,7 +176,7 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
       >
         <Group justify="space-between" align="center" wrap="nowrap">
           {/* Logo */}
-            <UnstyledButton onClick={() => handleNavigate('/')}>
+          <UnstyledButton component={Link} href="/" aria-label="Triple A Interiors — home">
             <img src={typeof navLogo === 'string' ? navLogo : navLogo.src} alt="Triple A Interiors logo - compact brand mark" width={isMobile ? 96 : 114} height={isMobile ? 32 : 38} style={{ height: isMobile ? 32 : 38, width: 'auto' }} />
           </UnstyledButton>
 
@@ -173,11 +184,11 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
           {!isMobile && (
             <Group gap={6}>
               {links.map((link) => (
-                <NavLink 
-                  key={link.href} 
-                  link={link} 
-                  isActive={isActive(link.href)} 
-                  onClick={() => handleNavigate(link.href)}
+                <NavLink
+                  key={link.href}
+                  link={link}
+                  isActive={isActive(link.href)}
+                  onClick={closeMenu}
                 />
               ))}
             </Group>
@@ -186,10 +197,14 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
           {/* Mobile Hamburger */}
           {isMobile && (
             <UnstyledButton
+              type="button"
               onClick={toggleMenu}
+              aria-label={opened ? 'Close menu' : 'Open menu'}
+              aria-expanded={opened}
+              aria-controls="mobile-nav-menu"
               style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              <Box style={{ position: 'relative', width: 22, height: 14 }}>
+              <Box aria-hidden="true" style={{ position: 'relative', width: 22, height: 14 }}>
                 <Box style={{
                   position: 'absolute', width: '100%', height: 2, backgroundColor: '#1a1a1a', borderRadius: 2,
                   transition: 'transform 400ms ease, top 400ms ease',
@@ -207,20 +222,24 @@ const Navbar = memo(({ links = NAV_LINKS }: NavbarProps) => {
           )}
         </Group>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu — inert (not focusable/announced) while collapsed */}
         {isMobile && (
-          <Box style={{
-            maxHeight: opened ? 320 : 0,
-            overflow: 'hidden',
-            transition: 'max-height 400ms ease',
-          }}>
+          <Box
+            id="mobile-nav-menu"
+            inert={!opened || undefined}
+            style={{
+              maxHeight: opened ? 380 : 0,
+              overflow: 'hidden',
+              transition: 'max-height 400ms ease',
+            }}
+          >
             <Box pt={20} pb={10}>
               {links.map((link) => (
-                <MobileNavLink 
-                  key={link.href} 
-                  link={link} 
-                  isActive={isActive(link.href)} 
-                  onClick={() => handleNavigate(link.href)}
+                <MobileNavLink
+                  key={link.href}
+                  link={link}
+                  isActive={isActive(link.href)}
+                  onClick={closeMenu}
                 />
               ))}
             </Box>

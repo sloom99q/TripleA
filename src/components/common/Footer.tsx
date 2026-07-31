@@ -1,10 +1,9 @@
 'use client';
 
-import { ActionIcon, Box, Button, Divider, Group, Image, Paper, Stack, Text, Title } from '@mantine/core';
-import { IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconPhone } from '@tabler/icons-react';
-import { memo, useCallback } from 'react';
+import { Box, Button, Divider, Group, Image, Paper, Stack, Text } from '@mantine/core';
+import { memo } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import navLogoWhite from '@/assets/imgs/navlogowhite.webp';
 import '@/css/Footer.css';
 import Socials from '@/components/pages/Contact/Socials';
@@ -19,20 +18,11 @@ const footerLinks: FooterLink[] = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Projects', href: '/projects' },
+  { label: 'Insights', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
 
 const Footer = memo(() => {
-  const router = useRouter();
-  
-  const handleNavigate = useCallback((href: string) => {
-    router.push(href);
-  }, [router]);
-
-  const handleCall = useCallback(() => {
-    window.location.href = 'tel:+971585500359';
-  }, []);
-
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
@@ -48,9 +38,10 @@ const Footer = memo(() => {
 
             <Stack className="footer__nav" gap={12}>
               {footerLinks.map((link) => (
-                <Box 
-                  key={link.href} 
-                  onClick={() => handleNavigate(link.href)} 
+                <Box
+                  component={Link}
+                  key={link.href}
+                  href={link.href}
                   style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                 >
                   {link.label}
@@ -59,25 +50,15 @@ const Footer = memo(() => {
             </Stack>
 
             <Group className="footer__cta-row" gap="sm">
-              <Button 
-                onClick={() => handleNavigate('/contact')} 
-                className="footer__cta-primary" 
-                radius="xl" 
+              <Button
+                component={Link}
+                href="/contact"
+                className="footer__cta-primary"
+                radius="xl"
                 size="md"
               >
                 Get a Quote
               </Button>
-              {/* <ActionIcon
-                variant="outline"
-                color="gray"
-                radius="xl"
-                size="lg"
-                className="footer__cta-icon"
-                onClick={handleCall}
-                aria-label="Call us"
-              >
-                <IconPhone size={18} stroke={1.8} />
-              </ActionIcon> */}
             </Group>
 
             <Text component="address" className="footer__address">
@@ -103,9 +84,9 @@ const Footer = memo(() => {
             
             {/* Open Hours */}
             <Stack gap={4} mt={24} style={{ textAlign: 'right' }}>
-              <Text ta={isMobile ? 'center' : 'left'} size="sm" c="dimmed">Open Hours:</Text>
+              <Text ta={isMobile ? 'center' : 'left'} size="sm" c="rgba(255,255,255,0.7)">Open Hours:</Text>
               <Text ta={isMobile ? 'center' : 'left'} size="sm" c="white">Mon - Fri: 9am - 5pm</Text>
-              <Text ta={isMobile ? 'center' : 'left'} size="sm" c="dimmed">Saturday & Sunday: Closed</Text>
+              <Text ta={isMobile ? 'center' : 'left'} size="sm" c="rgba(255,255,255,0.7)">Saturday & Sunday: Closed</Text>
             </Stack>
           </Stack>
         </Box>

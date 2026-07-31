@@ -32,7 +32,7 @@ export default function TimelineSection({
         // boxShadow: '0 30px 70px rgba(0,0,0,0.35)',
       }}
     >
-      <Container size="lg">
+      <Container size="xl">
         <Stack align="center" gap="md" mb={40}>
           <Badge
             radius="xl"

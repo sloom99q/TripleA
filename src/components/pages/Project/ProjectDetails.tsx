@@ -4,13 +4,9 @@ import React from "react";
 import { Group } from "@mantine/core";
 import { StaticImageData } from "next/image";
 import Project from "@/components/ProjectComponent";
-// @ts-ignore
 import Interior from '@/assets/imgs/fit-out.webp';
-// @ts-ignore
 import Walls from '@/assets/imgs/Walls.webp';
-// @ts-ignore
 import Flooring from '@/assets/imgs/Flooring.webp';
-// @ts-ignore
 import Ceiling from '@/assets/imgs/FamilySpace.webp';
 import Woodnew1 from '@/assets/imgs/wood/new1.jpg';
 import Woodnew2 from '@/assets/imgs/wood/new2.jpg';
@@ -32,7 +28,6 @@ import Wood13 from '@/assets/imgs/wood/13.jpeg';
 import Wood14 from '@/assets/imgs/wood/3tg.jpg';
 import FacadeEmaar from '@/assets/imgs/Facade-Emaar.webp';
 import LandscapingEmaar from '@/assets/imgs/Landscaping-Emaar.webp';
-import CustomFloatingDesk from '@/assets/imgs/CustomFloatingDesk.gif';
 import Forma2 from '@/assets/imgs/Forma2.jpeg';
 import Forma3 from '@/assets/imgs/Forma3.jpeg';
 import Forma4 from '@/assets/imgs/Forma4.jpeg';
@@ -77,7 +72,9 @@ import Dune8 from '@/assets/imgs/dune-sahara/8.jpg';
 import DuneHeader from '@/assets/imgs/dune-sahara/DuneHeader.webp';
 
 type Detail = {
-    image: string | StaticImageData;
+    image?: string | StaticImageData;
+    imageAlt?: string;
+    video?: string;
     title: string;
     description: string;
     scopeOfWork?: string[];
@@ -181,7 +178,8 @@ const detailsByProject: Record<string, Detail[]> = {
     ],
     'forma-studio-architecture-office-design': [
         {
-            image: CustomFloatingDesk,
+            video: '/custom-floating-desk.mp4',
+            imageAlt: 'Custom floating desk designed and built by Triple A Interiors for the Forma Studio office fit-out',
             title: 'Custom Floating Desk',
             description: ''
         },
@@ -451,6 +449,8 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ projectId }) => 
                 <Project
                     key={`${projectId ?? 'default'}-${idx}-${detail.title}`}
                     image={detail.image}
+                    imageAlt={detail.imageAlt}
+                    video={detail.video}
                     imagePosition={detail.imagePosition}
                     title={detail.title}
                     description={detail.description}

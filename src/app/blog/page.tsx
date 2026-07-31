@@ -33,6 +33,13 @@ import '@/css/HeroScroll.globals.css';
 import motionStyles from '@/css/HeroScroll.module.css';
 import { BlogPostsData } from '@/mockups/BlogPostsData';
 import { CTASection } from '@/components/pages/About';
+import { JsonLd } from '@/components/JsonLd';
+import { buildBreadcrumbLd } from '@/utils/structuredData';
+
+const blogBreadcrumbLd = buildBreadcrumbLd([
+  { name: 'Home', path: '/' },
+  { name: 'Insights', path: '/blog' },
+]);
 
 // Extract unique categories
 const categories = Array.from(new Set(BlogPostsData.map(post => post.category).filter(Boolean)));
@@ -57,6 +64,8 @@ export default function BlogPage() {
 
   return (
     <>
+      <JsonLd data={blogBreadcrumbLd} />
+
       {/* Hero Section */}
       <Box
         style={{

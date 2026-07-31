@@ -95,10 +95,13 @@ export default function RootLayout({
       </head>
 
       <body>
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <SmoothScrollProvider>
           <MantineProvider theme={theme}>
             <Navbar />
-            <main>{children}</main>
+            <main id="main" tabIndex={-1}>{children}</main>
             <Footer />
             <WhatsAppFloatingButton />
           </MantineProvider>
