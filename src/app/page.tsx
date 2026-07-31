@@ -24,17 +24,17 @@ export default function HomePage() {
         <HeroSection />
       </section>
 
-      {/* Lead Capture — directly under the hero (no scroll needed to contact us) */}
-      <PageContainer>
-        <div style={{ width: "100%", marginTop: 56, marginBottom: 40 }}>
-          <HeroLeadForm />
-        </div>
-      </PageContainer>
-
       {/* Client Testimony Section */}
       <PageContainer>
         <div style={{ marginTop: 80, marginBottom: 120 }}>
           <EmaarTestimony />
+        </div>
+      </PageContainer>
+
+      {/* Lead Capture — directly under the hero (no scroll needed to contact us) */}
+      <PageContainer>
+        <div style={{ width: "100%", marginTop: 56, marginBottom: 40 }}>
+          <HeroLeadForm />
         </div>
       </PageContainer>
 
